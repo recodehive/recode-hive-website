@@ -1,0 +1,157 @@
+   Exception Sub process with SOAP Sender Adapter
+
+Exception Sub process with SOAP Sender Adapter
+==============================================
+
+Tags: CPI,SAP CPI,SOAP Adapter
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Fri Sep 18 2020
+
+Table of Contents
+
+Toggle
+
+*   [INTRODUCTION :](https://recodehive.com/exception-sub-process-with-soap-sender-adapter/#INTRODUCTION "INTRODUCTION :")
+*   [CREATING ARTIFACT TO THROW EXCEPTION :](https://recodehive.com/exception-sub-process-with-soap-sender-adapter/#CREATING_ARTIFACT_TO_THROW_EXCEPTION "CREATING ARTIFACT TO THROW EXCEPTION :")
+*   [EDITING ARTIFACT TO HANDLE EXCEPTION :](https://recodehive.com/exception-sub-process-with-soap-sender-adapter/#EDITING_ARTIFACT_TO_HANDLE_EXCEPTION "EDITING ARTIFACT TO HANDLE EXCEPTION :")
+*   [FINAL VERDICT :](https://recodehive.com/exception-sub-process-with-soap-sender-adapter/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### INTRODUCTION :
+
+This article covers SOAP Sender Adapter in SAP CPI, Testing Integration Flow using Postman Client, and Using Exception Subprocess to handle Exceptions in SAP CPI . 
+
+The Demo shows what happens when an Exception occurs in an Integration Flow and how it can be handled using Exception Subprocess and optionally  how the error message can be sent to intended recipients using Mail Receiver adapter. 
+
+#### CREATING ARTIFACT TO THROW EXCEPTION :
+
+**Step 1** : Create an **Artifact**. Go to **Edit** mode. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-43-1024x310.png)
+
+**Step 2** : Connect **Sender** to **Start** Event. From the Pop Up appearing, Choose **SOAP** –> **SOAP 1.x** 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-46.png)
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-44.png)
+
+**Step 3** : Go to **_Connection_** tab of **SOAP Adapter** and enter any relative address. ( _/Exceptions_ ). This is to generate end point for accessing the Integration Flow. Keep rest of the fields untouched. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-45.png)
+
+**Step 4** : Add a **Content Modifier**. In **_Message Body_** tab, type as given Below. 
+
+    <Result1> 
+    
+    ${in.property.Test}        ---> This line should throw error as there is no such invocation available 
+    
+    Integration Process 
+    
+    </Result1> 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-48.png)
+
+**Step 5** : **Save** and **Deploy**.
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-58-1024x437.png)
+
+**Step 6** : Go to **Overview Window** and Click on **All** tile to check if your flow is started successfully. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-47.png)
+
+**Step 7** : Once it is started, Go to **_Endpoints_** and click on **_Copy button_** as highlighted in the below image. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-55-1024x396.png)
+
+**Step 8** :  Open [Postman](https://www.postman.com/downloads/) app.  
+
+Keep the request in **POST** mode. 
+
+Paste the Endpoint copied in **[Step 7](#Step 7)** in to **URL tab**. 
+
+In **Authorization** tab, Choose **TYPE : Basic Auth** 
+
+**Username** : Client ID 
+
+**Password** : Client Secret 
+
+Client Id and Client Secret you will get when you create Process Integration Runtime Instance during tenant setup. ( Refer **Step 34** of [this](https://recodehive.com/set-up-sap-cpi-tenant-in-trial-account-2/) post )
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-54-1024x377.png)
+
+**Step 9** : In **_Body_** tab, Choose **Raw** radio Button and from types, Choose **XML**. 
+
+Paste the below sample XML code. 
+
+    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:demo="http://cpi.sap.com/demo"> 
+       <soapenv:Header/> 
+       <soapenv:Body> 
+          <demo:Order_MT> 
+             <orderNumber>1</orderNumber> 
+          </demo:Order_MT> 
+       </soapenv:Body> 
+    </soapenv:Envelope>
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-50.png)
+
+**Step 10** : Click on **SEND**. You will receive back the following _Fault_ message. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-62-1024x270.png)
+
+**Step 11** :  Check the Message status in **Monitoring Window**. The Flow will be in **Failed** status with below shown error description. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-51-1024x240.png)
+
+#### EDITING ARTIFACT TO HANDLE EXCEPTION :
+
+**Step 12** : Go back to the **Integration Flow**. Add an **Exception Subprocess** from the Pallet and place it inside Integration Process. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-56-1024x279.png)
+
+**Step 13** : It will Look as below. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-63.png)
+
+**Step 14** :  Add a **Content Modifier** inside **Exception Subprocess**. In **_Message Body_** tab, Type as below. 
+
+    <Result2> 
+    ${exception.message}     ---> This line will catch Error Message thrown by integration Process. 
+    Exception Subprocess in Action 
+    </Result2>
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-53.png)
+
+**Step 15**: **Save** and **Deploy**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-59-1024x329.png)
+
+**Step 16** :  Make sure that your Flow is in **Started** state again. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-49.png)
+
+**Step 17** : Go back to **Postman**. The settings used earlier will still be available. Just _**Click**_ on **Send**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-60.png)
+
+**Step 18** : You will get back the Response in Postman as below.  
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-57-1024x289.png)
+
+From the Response Received, it is clear that the Exception Subprocess gives the Error as SOAP body. Where in it was included with fault message earlier. 
+
+**Step 19** : The Integration Flow will now be in **Completed** state. This is because, we have caught and processed the exception successfully in Exception Subprocess. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-52.png)
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-64.png)
+
+**Step 20** : You can even get the response in [Step 18](#Step 18) directly to your Gmail Inbox by adding **Mail Receiver Adapter** as below. Refer my [Previous](https://recodehive.com/mail-receiver-adapter-in-sap-cpi-a-step-by-step-guide/) blog on how to configure Mail Receiver Adapter in SAP CPI to get the detailed Configuration steps. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-61.png)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Exception Sub process with SOAP Sender Adapter** ”, If yes, then don’t forget to spread a word about it. Do send the feedback and to know more about it. Signing off [sudarshan@recodehive.com](sudarshan@recodehive.com) 
+
+[Adaptation](https://recodehive.com/the-adaptation/) [Growth Hacking](https://recodehive.com/tag/growth-hacking/) [Developer Bundle](https://recodehive.com/category/dev-labs/)[Hope and Focus](https://recodehive.com/hopeandfocus/) [My Day at Google Campus](https://recodehive.com/my-day-at-google-campus-hyderabad/)[Time Machine](https://recodehive.com/time-machine-2-0/) [Manifestation of life after death](https://recodehive.com/the-manifestation-of-life-after-death/)

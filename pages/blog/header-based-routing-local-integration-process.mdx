@@ -1,0 +1,241 @@
+   Header based Routing & Local Integration Process
+
+Header based Routing & Local Integration Process
+================================================
+
+Tags: CPI,Learning,SAP,SAP CPI
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Mon Sep 28 2020
+
+Table of Contents
+
+Toggle
+
+*   [INTRODUCTION](https://recodehive.com/header-based-routing-local-integration-process/#INTRODUCTION "INTRODUCTION")
+*   [CREATING ARTIFACT](https://recodehive.com/header-based-routing-local-integration-process/#CREATING_ARTIFACT "CREATING ARTIFACT ") 
+*   [TESTING THE ARTIFACT](https://recodehive.com/header-based-routing-local-integration-process/#TESTING_THE_ARTIFACT "TESTING THE ARTIFACT ") 
+*   [TESTING USING A JSON PAYLOAD](https://recodehive.com/header-based-routing-local-integration-process/#TESTING_USING_A_JSON_PAYLOAD "TESTING USING A JSON PAYLOAD ") 
+*   [REMOVING ALLOWED HEADER](https://recodehive.com/header-based-routing-local-integration-process/#REMOVING_ALLOWED_HEADER "REMOVING ALLOWED HEADER")
+*   [FINAL VERDICT :](https://recodehive.com/header-based-routing-local-integration-process/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### INTRODUCTION
+
+The article aims at demonstrating how an incoming header can be retained and used in any integration flow. In this particular demo, I have retained the incoming header named **_ID_** and used the header to dynamically route the message via different routes based on its value. One of the route includes calling an local integration process. 
+
+#### CREATING ARTIFACT 
+
+**Step 1** : Create an **Artifact** 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-94-1024x192.png)
+
+**Step 2** : Open the artifact in **edit** mode. Connect **Sender** to **start Message**. From the Pop up, Choose **HTTPS** adapter. In **_Connection_** tab, give any relative **address** ( /HRouting ). Keep rest settings untouched. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-95.png)
+
+**Step 3** : Add a **Local Integration Process**. This is done just to demonstrate how it can be called. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-98.png)
+
+**Step 4** : Get a **local Process call** to call the Local Integration Process. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-96.png)
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-97.png)
+
+**Step 5** :  Collect the various Blocks required from Pallet and arrange as shown in the figure. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-123.png)
+
+**Step 6** : Select **Route1**. In **_Processing_** tab,  Select **Non-XML** . 
+
+               **Condition** : **${header.ID} = ‘1’** 
+
+This Route will be taken if the incoming Message Header has ID=1. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-124.png)
+
+**Step 7** : Select **Route2**. In **_Processing_** tab,  Select **Non-XML** . 
+
+               **Condition : ${header.ID} = ‘2’** 
+
+This Route will be taken if the incoming Message Header has ID=2. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-115.png)
+
+**Step 8** :  Select **Route3**. In **_processing_** tab, Check the **Default route** button so that, the message picks this route if ID in header is any value other than 1 and 2 or id ID is not present. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-108.png)
+
+**Step 9** :  Select **Content Modifier** in **_Route1_**. In **Message Body** tab,  
+
+**Type** : Expression 
+
+**Body** :   
+
+                 <Final> 
+
+                  ${in.body} 
+
+                  Message via Route1 with ID=1 
+
+                  </Final> 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-114.png)
+
+**Step 10** : Select **Content Modifier** in **_Route2_**. In **Message Body** tab,  
+
+**Type** : Expression 
+
+**Body** :   
+
+                 <Final> 
+
+                  ${in.body} 
+
+                  Message via Route2 with ID=2 
+
+                  </Final> 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-122.png)
+
+**Step 11** :  Select **Process Call 1**. In **_Processing_** tab, Click on **Select** button. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-103.png)
+
+**Step 12** : It will list the available Local integration Process. Select the one. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-99.png)
+
+**Step 13** : Select the **Content Modifier** inside the **_Local Integration Process_**. 
+
+**Type** : Expression 
+
+**Body** :  
+
+             <Final>  
+
+             ${in.body}  
+
+             Default Route Chosen. 
+
+             </Final>  
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-121.png)
+
+**Step 14** :  Click anywhere outside the Integration Process. In **Runtime Configuration** tab,  
+
+**Allowed Header(s) : ID**    
+
+This is done to retain the incoming Headers  for further processing. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-113.png)
+
+**Step 15** : **Save** and **Deploy** the Artifact. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-100-1024x82.png)
+
+**Step 16** : In the **Overview Window**, make sure that the artifact is in **Started** state.  Copy the Endpoint by clicking the **Copy button** highlighted below. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-120-1024x281.png)
+
+#### TESTING THE ARTIFACT 
+
+**Step 17** : Open [POSTMAN](https://www.postman.com/downloads/). Create a new request with type **GET**. 
+
+  Paste the Endpoint copied in previous step in URL tab. 
+
+ **Type** : Basic Auth 
+
+**Username** : Client ID 
+
+**Password** : Client Secret 
+
+Client Id and Client Secret you will get when you create Process Integration Runtime Instance during tenant setup. ( Refer **Step 34** of [this](https://recodehive.com/set-up-sap-cpi-tenant-in-trial-account-2/) post )
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-119-1024x294.png)
+
+**Step 18** : In **_Body_** tab, Select **Raw** message, **XML** type. Type any custom XML message. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-116.png)
+
+<employees> 
+
+  <employee> 
+
+    <firstName>John</firstName> <lastName>Doe</lastName> 
+
+  </employee> 
+
+</employees> 
+
+**Step 19** : Under **Headers**, Define a header as ID with Value=1. Click on **Send**. 
+
+**KEY : ID                                      VALUE: 1** 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-107.png)
+
+**Step 20** : You will get back the Result as Below. It is evident that Message passed via **Route1**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-109.png)
+
+**Step 21** : Change the **VALUE=2** and click on **SEND**.  You will get back the result as below. It is evident that Message passed via **Route2**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-101.png)
+
+**Step 22** : Change **VALUE = 5** ( Any value other than 1 and 2 ) and click on **SEND**. You will get the Message as below. It is evident that Message passed via **default Route** and has called the **Local Integration Process**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-112.png)
+
+#### TESTING USING A JSON PAYLOAD 
+
+**Step 23** : Go back to the **Artifact**. Add an **JSON to XML Converter** just before the  **Router**.
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-104.png)
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-110.png)
+
+**Step 24** :  It should look as below. **Save** and **Deploy.** 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-118-1024x327.png)
+
+**Step 25** : Make sure the Artifact is **Started** again. 
+
+**Step 26** : Go to **POSTMAN**. From Previous Settings, Change the **Input type** to **JSON** and write a sample JSON code.  
+
+{  
+
+“productIdentifier”: “HT-2000”  
+
+}  
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-105.png)
+
+**Step 27** : **Repeat** the **[Step 19 to Step 22](#Step 19)**. **You should get the similar Results**. 
+
+#### **REMOVING ALLOWED HEADER**
+
+**Step 28** : Go back to the **artifact**.  Click anywhere outside the Integration Process.  **_Remove ID from Allowed Headers_** under **Runtime Configuration.** ( Which was included in [Step 14](#Step 14) )
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-111.png)
+
+**Step 28** : **Save** and **Deploy** 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-102.png)
+
+**Step 29** : Make sure that the Flow is **started** again. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-117.png)
+
+**Step 30** : Go to **POSTMAN** and **[repeat Step 19 to Step 22](#Step 19)**. Now Each time you will get the response as below. The flow will **always take Default Route** as the Incoming Headers are not retained at runtime and hence the Value in ID cannot be determined. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-106.png)
+
+In Short, the Incoming Headers are not retained to be used in the Integration Flow unless its specified in runtime Configuration tab of the Artifact. 
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Header based Routing & Local Integration Process**”, If yes, then don’t forget to spread a word about it. Do send the feedback and to know more about it. Signing off [Sudarshan@recodehive.com](Sudarshan@recodehive.com)
+
+[Adaptation](https://recodehive.com/the-adaptation/) [Growth Hacking](https://recodehive.com/tag/growth-hacking/) [Developer Bundle](https://recodehive.com/category/dev-labs/)[Hope and Focus](https://recodehive.com/hopeandfocus/) [My Day at Google Campus](https://recodehive.com/my-day-at-google-campus-hyderabad/)[Time Machine](https://recodehive.com/time-machine-2-0/) [Manifestation of life after death](https://recodehive.com/the-manifestation-of-life-after-death/)

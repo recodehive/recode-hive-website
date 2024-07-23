@@ -1,0 +1,73 @@
+   How to use the Excel COUNTIFS function
+
+How to use the Excel COUNTIFS function
+======================================
+
+Tags: excel,Excel Tutorials,MS Excel
+
+**Author:** Sanjay KV
+
+**Date:** Thu May 06 2021
+
+When working with large data to extract the information you need to create a summary report. Countif, sum if are the two basics we need to learn about it. it can take up to very large criteria to work with. Let’s look at How to use the Excel COUNTIFS function and SUMIF Fucntions. CountIfs are available from Excel 2007 versions
+
+Table of Contents
+
+Toggle
+
+*   [How to work with COUNT Function in Excel](https://recodehive.com/how-to-use-the-excel-countifs-function/#How_to_work_with_COUNT_Function_in_Excel "How to work with COUNT Function in Excel")
+*   [What is COUNTIFS Function in Excel](https://recodehive.com/how-to-use-the-excel-countifs-function/#What_is_COUNTIFS_Function_in_Excel "What is COUNTIFS Function in Excel")
+*   [SUMIFS Function in Excel](https://recodehive.com/how-to-use-the-excel-countifs-function/#SUMIFS_Function_in_Excel "SUMIFS Function in Excel")
+*   [FINAL VERDICT :](https://recodehive.com/how-to-use-the-excel-countifs-function/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### How to work with COUNT Function in Excel
+
+The count is used to evaluate how many values are present in the column, for example counting the total number package received on a specific date, this would be much easier if we used Named ranges. To use the count function select the cell, Go the Formulas Tab then select create from selection, uncheck the left column in the pop-up, and click on Okay.
+
+*   COUNT Function: Counts all the occurrences of Numeric value
+*   COUNTA Function: Irrespective of numeric, and alphabet value it counts occurrences
+*   COUNTBLANK Function: Counts the blank values in a given range
+
+![use the Excel COUNT function](https://recodehive.com/wp-content/uploads/2021/05/image-2.png)
+
+\=count(B2:B7)       Excel will return 4 as ouptut
+=countblank(B2:B7)  Excel will return 2 as output
+=countA(col)        Excel will return 5 as output
+
+#### What is COUNTIFS Function in Excel
+
+The above COUNT function we used as a whole without any criteria, Now [COUNTIFS](https://exceljet.net/formula/if-cell-contains-this-or-that) will help to get the count based on certain criteria. Criteria can be number, text if criteria are expression should be specified in quotation mark. There are also wild card characters like? These are allowed to use as criteria,? used to match with the character in the criteria.
+
+COUNTIFS(Name range, Crietria1)
+=COUNTIFS(Name,A1)
+=COUNTIFS(Year,2021)
+=COUNTIFS(State,"Kerala") #for state = Kerala
+=COUNTIFS(Year,">2011")  #for year greater than 2011
+
+![use the Excel COUNTIFS function](https://recodehive.com/wp-content/uploads/2021/05/image-3.png)
+
+COUTNIF(B2:B7, 5)    returns the value 1 as only 5$ occurances
+COUTNIF(B2:B7, ">1")    returns the value 3 as satisfy the condition, Quotation is important here.
+COUTNIF(B2:B7, <>1)     Not equal to 1
+COUTNIF(B2:B7, "<>")     Not blank
+COUTNIF(B2:B7, "")      Is blank
+
+#### SUMIFS Function in Excel
+
+It will count total values in the table. Helps to summarise the Data, order of selecting the range is one thing to keep in mind. Similar to COUNTIF formula criteria can be added to this. One disadvantage of SUMIF is it only supports one condition. Any Characters must be quoted with ” “.
+
+SUMIFS(range, criteria)
+SUMIF(A1:A10, ">1.2")    returns value greater than 100
+
+![use the Excel SUMIFS function](https://recodehive.com/wp-content/uploads/2021/05/image-4.png)
+
+\=SUMIFS(**B2:B7**,A2:A7,"Flipkart") returns 3.4 by satisfying the condition.
+
+A small sneak peak to Absolute Cell Referencing here, can use shortcut Key F4 Multiple Times to make a switch.
+$B1 : Coloum stagnet when copy
+$B$1 : Coloum and row dont change when copy : For Example When i do cell filling, i want B1 coloumn to refer in all other cell.
+B$1 : Row, coloumn dont change when copy
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**How to use the Excel COUNTIFS function**”. You can refer to our [Excel Tutorials](https://recodehive.com/tag/excel/) for beginners to learn other Excel functions. Signing off **[Sanjay Kv](https://recodehive.com/about-us/)**

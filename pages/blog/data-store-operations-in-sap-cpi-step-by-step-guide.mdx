@@ -1,0 +1,275 @@
+   Data Store Operations in SAP CPI – Step by Step Guide
+
+Data Store Operations in SAP CPI – Step by Step Guide
+=====================================================
+
+Tags: CPI,DataStore,GET,SAP,WRITE
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Mon Feb 01 2021
+
+Table of Contents
+
+Toggle
+
+*   [Introduction](https://recodehive.com/data-store-operations-in-sap-cpi-step-by-step-guide/#Introduction "Introduction")
+*   [Configuring StoreFlow](https://recodehive.com/data-store-operations-in-sap-cpi-step-by-step-guide/#Configuring_StoreFlow "Configuring StoreFlow")
+*   [Postman Settings](https://recodehive.com/data-store-operations-in-sap-cpi-step-by-step-guide/#Postman_Settings "Postman Settings")
+    *   [Explanation](https://recodehive.com/data-store-operations-in-sap-cpi-step-by-step-guide/#Explanation "Explanation ")
+*   [Configuring the Consumer Flow](https://recodehive.com/data-store-operations-in-sap-cpi-step-by-step-guide/#Configuring_the_Consumer_Flow "Configuring the Consumer Flow")
+*   [FINAL VERDICT](https://recodehive.com/data-store-operations-in-sap-cpi-step-by-step-guide/#FINAL_VERDICT "FINAL VERDICT ")
+
+#### Introduction
+
+Data Store operations are a way of Persisting messages to access the same at a later point in time.
+
+**Hypothetical Scenario :** Data processed by an integration flow (iflow1) needs to be fetched by  another integration flow (iflow2) within 5 days.  
+
+**Solution** : Use Data store operations ( Note : The Data Store mentioned here is a pallet object available in SAP CPI integration Flow and NOT SAP Cloud Platform Integration for data services)
+
+In this example, We will create two flows; One to Store the data ( StoreFlow), another to retrieve data ( ConsumeFlow ) and understand its working.
+
+#### Configuring StoreFlow
+
+**Step 1 :** Create two Integration Flows. One that stores the message (**_StoreFlow_**) and other that consumes the stored message (**_ConsumeFlow_**). 
+
+![i-Flows](https://recodehive.com/wp-content/uploads/2021/01/image-15-1024x240.png)
+
+**Step 2 :**  Open **_StoreFlow_** in edit mode. Connect **Sender to Start** event and Choose **HTTPS** protocol and Configure the adapter as below. 
+
+![HTTPS](https://recodehive.com/wp-content/uploads/2021/01/image-16.png)
+
+**Step 3 :**  Use a **Content Modifier** to Add EntryID as Header which will be used in Write step and body as below. 
+
+![Header](https://recodehive.com/wp-content/uploads/2021/01/image-18-1024x411.png)
+
+![Content Body](https://recodehive.com/wp-content/uploads/2021/01/image-17.png)
+
+**Step 4 :**  **Select Persistence –> Data Store Operations –> Write** from the pallet 
+
+![Persistence](https://recodehive.com/wp-content/uploads/2021/01/image-19.png)
+
+![Data Store Operations](https://recodehive.com/wp-content/uploads/2021/01/image-21.png)
+
+**Step 5 :**  Configure the write step as below. 
+
+**Name of the Element** 
+
+**Value** 
+
+**Description** 
+
+Data Store Name 
+
+D1 
+
+Data Store will be created at runtime with this name 
+
+Visibility 
+
+Global 
+
+_Global_ : It can be accessed by any  integration flows.   
+_Integration Flow_ : It is local to the integration flow. 
+
+Entry ID 
+
+${header.EntryID} 
+
+The Name with which the message will be stored under Data Store Name. Multiple Messages can be stored under a single Data Store Name. In this case, the Name will be chosen from incoming message _orderNumber_ stored as header in _**Step 3**_ .
+
+Retention Threshold For Alerting ( in d) 
+
+5 
+
+The stored Message has to be consumed within these days from the date of creation of Data Store Entry. 
+
+Expiration Period (in d) 
+
+90 
+
+The Data store will be deleted after 90 days. 
+
+Encrypt Stored Message 
+
+Yes 
+
+To encrypt the stored message 
+
+Overwrite Existing Message 
+
+No 
+
+To overwrite the message with same Entry ID if it already exists. 
+
+Include Message Headers 
+
+No 
+
+To include message headers while storing the message 
+
+![Data Store Write Config](https://recodehive.com/wp-content/uploads/2021/01/image-20.png)
+
+**Step 6 :** The final Flow will look as below. **Save and Deploy** the Flow. 
+
+![Data Store WRITE](https://recodehive.com/wp-content/uploads/2021/01/image-34.png)
+
+**Step 7 :**  From the **Overview Window –> Manage Integration Content –> Started** . Copy the End Point URL of StoreFlow. 
+
+![End Point](https://recodehive.com/wp-content/uploads/2021/01/image-23-1024x220.png)
+
+#### Postman Settings
+
+**Step 8** :  Open [Postman](https://www.postman.com/downloads/) app.  
+
+Keep the request in **GET** mode. 
+
+Paste the Endpoint copied in **[Step 7](#Step 7)** in to **URL tab**. 
+
+In **Authorization** tab, Choose **TYPE : Basic Auth** 
+
+**Username** : Client ID 
+
+**Password** : Client Secret 
+
+Client Id and Client Secret you will get when you create Process Integration Runtime Instance during tenant setup. ( Refer **Step 34** of [this](https://recodehive.com/set-up-sap-cpi-tenant-in-trial-account-2/) post )
+
+**Or**  
+
+ ( If you have followed [these](https://recodehive.com/access-iflows-using-trial-account-login-credentials-in-postman/) steps that allows one to access flows using Tenant Login Details) 
+
+**Username :** Tenant Login ID 
+
+**Password :** Tenant Login Password 
+
+**Body :** 
+
+    <Order_MT> 
+             <orderNumber>1</orderNumber> 
+             <supplierName>Walt</supplierName> 
+             <productName>Timber</productName> 
+    </Order_MT> 
+
+![Payload](https://recodehive.com/wp-content/uploads/2021/01/image-27.png)
+
+**Step 9 :** Click on **Send** 
+
+**Step 10 :** Go to Overview Window. Check if message is delivered successfully. 
+
+![Monitoring](https://recodehive.com/wp-content/uploads/2021/01/image-30-1024x256.png)
+
+**Step 11 :** Under Manage Stores tile of overview window, Click on **Data Stores.**  
+
+![Data Store](https://recodehive.com/wp-content/uploads/2021/01/image-22.png)
+
+**Step 12 :**  Verify your entry with the Values assigned in **Step 5**. 
+
+![Data Store](https://recodehive.com/wp-content/uploads/2021/01/image-26-1024x192.png)
+
+##### **Explanation**
+
+The Data Store will have **Name** D1. 
+
+**ID** will be “1” because the incoming Message had productNumber as 1. 
+
+**Status** is “waiting” which means the Stored message is not Consumed yet. 
+
+**Due Date** will indicate the Date by Which the Message needs to be Consumed (5 days as configured). 
+
+**Created At** will indicate the date and time of the creation of the Message. 
+
+**Retain Until** indicates the date by which the Entry gets deleted automatically. 
+
+**Message ID** helps to navigate to the related messages. 
+
+The operation of StoreFlow will end here. We need to create Consumer Flow (ConsumeFlow) to consume this stored Data. 
+
+#### Configuring the Consumer Flow
+
+**Step 13 :** Open **ConsumeFlow** in Edit mode. Replace Start Even with **Timer Start Event** and Configure it to start based on your preference. I have configured to start as soon as the flow is deployed. 
+
+![Timer](https://recodehive.com/wp-content/uploads/2021/01/image-29.png)
+
+**Step 14 :**  Add a **Data Store Operation ( GET )** and Configure the Values as below. 
+
+**Field Name**
+
+**Value** 
+
+**Description** 
+
+Data Store Name 
+
+D1 
+
+Name of the Data Store from where the Message is to be fetched. 
+
+Visibility 
+
+Global 
+
+_Global_ : If the message is to be extracted from the message ID of Other flow.  
+ _Integration Flow_ : If the message is to be fetched from the same flow message ID. 
+
+Entry ID 
+
+1 
+
+The Entry ID of the message. It is hardcoded 1 for demo purpose as in earlier step, the ID of stored message is  
+
+Delete On Completion 
+
+Yes 
+
+It will Delete the Message  
+
+Throw Exception on Missing Entry 
+
+Yes 
+
+It will  throw error if the Entry ID is not present in the Data Store mentioned in Data Store Name. 
+
+![GET](https://recodehive.com/wp-content/uploads/2021/01/image-24.png)
+
+**Step 15 :**  Add a **Groovy script** to log the payload to verify the output. 
+
+    import com.sap.gateway.ip.core.customdev.util.Message; 
+    import java.util.HashMap; 
+    def Message processData(Message message) { 
+        def body = message.getBody(java.lang.String) as String; 
+        def messageLog = messageLogFactory.getMessageLog(message); 
+        if(messageLog != null){ 
+            messageLog.setStringProperty("Logging#1", "Printing Payload As Attachment") 
+            messageLog.addAttachmentAsString("ResponsePayload:", body, "text/plain"); 
+         } 
+        return message; 
+    } 
+
+**Step 16 :** The final flow will look as below. **Save and Deploy** the flow. 
+
+![ConsumeFlow](https://recodehive.com/wp-content/uploads/2021/01/image-25-1024x322.png)
+
+**Step 17 :** In the **Overview Window**, Make sure that the Integration in **Started**. 
+
+![Endpoint](https://recodehive.com/wp-content/uploads/2021/01/image-31-1024x248.png)
+
+**Step 18 :**  Click on the **Completed Message**. Under **_ConsumeFlow–>Attachments_**, Click on **Response Payload** 
+
+![Monitoring](https://recodehive.com/wp-content/uploads/2021/01/image-32-1024x349.png)
+
+**Step 19 :**  Verify the Output to be same as the message that was stored earlier. 
+
+![Payload](https://recodehive.com/wp-content/uploads/2021/01/image-33.png)
+
+**Step 20 :** Navigate to the Manage Stores. As per the Configuration used in **_Step 14_**, the Entry Will be **deleted** after successful retrieval of the Message. 
+
+![Data Store](https://recodehive.com/wp-content/uploads/2021/01/image-28.png)
+
+Try out various possible configuration combinations to understand the working.
+
+Similarly experiment with Select and Delete Operations.
+
+#### FINAL VERDICT
+
+In conclusion, I hope you enjoyed reading this article on “**Data Store Operations in SAP CPI – Step by Step Guide**”, If yes, then don’t forget to spread a word about it. Do send the feedback and to know more about it. Signing off [Sudarshan@recodehive.com](Sudarshan@recodehive.com)

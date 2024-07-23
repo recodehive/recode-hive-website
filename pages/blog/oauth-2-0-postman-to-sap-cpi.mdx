@@ -1,0 +1,92 @@
+   OAuth 2.0 | Postman to SAP CPI
+
+OAuth 2.0 | Postman to SAP CPI
+==============================
+
+Tags: Authorization,OAuth 2.0,Postman,RecodeHive,SAP CPI
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Thu Mar 10 2022
+
+Table of Contents
+
+Toggle
+
+*   [Overview](https://recodehive.com/oauth-2-0-postman-to-sap-cpi/#Overview "Overview")
+*   [Prerequisites](https://recodehive.com/oauth-2-0-postman-to-sap-cpi/#Prerequisites "Prerequisites")
+*   [Mocking a receiver](https://recodehive.com/oauth-2-0-postman-to-sap-cpi/#Mocking_a_receiver "Mocking a receiver")
+*   [Getting new Access Token](https://recodehive.com/oauth-2-0-postman-to-sap-cpi/#Getting_new_Access_Token "Getting new Access Token")
+*   [Using the OAuth 2.0 Token](https://recodehive.com/oauth-2-0-postman-to-sap-cpi/#Using_the_OAuth_20_Token "Using the OAuth 2.0 Token")
+*   [Final Verdict](https://recodehive.com/oauth-2-0-postman-to-sap-cpi/#Final_Verdict "Final Verdict")
+
+Overview
+--------
+
+The article shows the process of accessing an SAP CPI endpoint from the Postman client using **_OAuth 2.0_** as an Authorization mechanism.
+
+Prerequisites
+-------------
+
+*   Roles to design, deploy and monitor integration artifacts in SAP CI.
+*   An [instance of Process Integration Runtime and Its Service Key](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/).
+
+Mocking a receiver
+------------------
+
+For the demo, I have created a simple integration flow to a mock receiver in SAP CPI. It uses an _**HTTPS sender adapter**_ and a _**Content Modifier**_ whose body is set to “**_This is a dummy receiver used for testing_**” ( _This will be the response that we will be expecting at the end of the demo_). The **_endpoint_** obtained by deploying the integration artifact looks as shown below.
+
+![CPI End point](https://recodehive.com/wp-content/uploads/2022/02/image-1.png)
+
+**Step 1:** Copy the endpoint and keep it handy to use as described in further steps.
+
+Getting new Access Token
+------------------------
+
+**Step 2:** Open [POSTMAN](https://www.postman.com/downloads/). Create a new request with the type **GET**.
+
+Paste the endpoint copied in **_Step 1_** into the **request URL**.
+
+Under **Authorization**, choose Type as **OAuth 2.0**.
+
+Scroll down to the ” **Configure New Token** ” section.
+
+Fill in the details against the fields listed. The details can be obtained by following [these](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/) (Step 10 ) steps.
+
+**Token Name:** Any Valid name.
+
+**Grant Type:** _Client Credentials._
+
+**Access Token URL :**  tokenurl .
+
+**Client ID :** _clientId_ .
+
+**Client Secret**: client secret.
+
+**Client Authentication:** _Send as Basic Auth header_.
+
+Click on **Get New Access Token**.
+
+![Getting new access token](https://recodehive.com/wp-content/uploads/2022/02/image-5.png)
+
+Using the OAuth 2.0 Token
+-------------------------
+
+**Step 3:** You will get the Token as below. Click on **Use Token**.
+
+![Using the access token](https://recodehive.com/wp-content/uploads/2022/02/image-6.png)
+
+Token gets added to the **Access Token** field.
+
+**Step 4:** Leave header prefix as Bearer. Click on **Send**.
+
+![Response](https://recodehive.com/wp-content/uploads/2022/02/image-7.png)
+
+You should get the expected response. In my case, I am getting the content set in Content Modifier as a response.
+
+You can also select **Password credentials** as **Grant Type** in **Step 2** and provide the _**user name**_ and _**password**_ in the respective fields. But to get the token successfully, the **Password credentials** must be included while creating an instance as described [here](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/).
+
+Final Verdict
+-------------
+
+In conclusion, I hope you enjoyed reading this article on “**OAuth 2.0 | Postman to SAP CPI**”, If yes, then don’t forget to spread the word about it. Do send the feedback to know more about it. Signing off [sudarshanpatwardhan@gmail.com](mailto:sudarshanpatwardhan@gmail.com)

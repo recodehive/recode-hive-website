@@ -1,0 +1,126 @@
+   SAP Cloud Platform Integration Basics
+
+SAP Cloud Platform Integration Basics
+=====================================
+
+Tags: CPI,SAP
+
+**Author:** Sanjay KV
+
+**Date:** Tue Dec 29 2020
+
+SAP CPI also is known as **HCI is a cloud platform** which provides a variety of service such as **IAAS, SAAS, PAAS.** SAP as an official declared the support for SAP PO will be withdrawn in the year 2025 later changed to 2028. So it”s necessary to migrate to new technology to sustain in this SAP Field. This is the introductory post of the [SAP CPI (Cloud platform Integration) Tutorials](https://recodehive.com/category/tech/) series, where we will let you cover the basics of SAP cpi tutorial for beginners
+
+Table of Contents
+
+Toggle
+
+*   [PREREQUISITES & MYTHS](https://recodehive.com/sap-cloud-platform-integration-basics/#PREREQUISITES_MYTHS "PREREQUISITES & MYTHS")
+*   [CLOUD SERVICES](https://recodehive.com/sap-cloud-platform-integration-basics/#CLOUD_SERVICES "CLOUD SERVICES")
+*   [TYPES OF INTEGRATION](https://recodehive.com/sap-cloud-platform-integration-basics/#TYPES_OF_INTEGRATION " TYPES OF INTEGRATION")
+    *   [ON-PREMISE INTEGRATION](https://recodehive.com/sap-cloud-platform-integration-basics/#ON-PREMISE_INTEGRATION "ON-PREMISE INTEGRATION")
+*   [ON-PREMISE TO PARTNER SCENARIO](https://recodehive.com/sap-cloud-platform-integration-basics/#ON-PREMISE_TO_PARTNER_SCENARIO "ON-PREMISE TO PARTNER SCENARIO")
+*   [ON-PREMISE TO CLOUD INTEGRATION](https://recodehive.com/sap-cloud-platform-integration-basics/#ON-PREMISE_TO_CLOUD_INTEGRATION "ON-PREMISE TO CLOUD INTEGRATION")
+*   [CLOUD TO CLOUD INTEGRATION](https://recodehive.com/sap-cloud-platform-integration-basics/#CLOUD_TO_CLOUD_INTEGRATION "CLOUD TO CLOUD INTEGRATION")
+*   [FEATURES:](https://recodehive.com/sap-cloud-platform-integration-basics/#FEATURES "FEATURES:")
+*   [DIFFERENCE: CPI VS PO](https://recodehive.com/sap-cloud-platform-integration-basics/#DIFFERENCE_CPI_VS_PO "DIFFERENCE: CPI VS PO")
+*   [HOW TO GET STARTED WITH SAP CPI](https://recodehive.com/sap-cloud-platform-integration-basics/#HOW_TO_GET_STARTED_WITH_SAP_CPI "HOW TO GET STARTED WITH SAP CPI")
+*   [FINAL VERDICT :](https://recodehive.com/sap-cloud-platform-integration-basics/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### PREREQUISITES & MYTHS
+
+Before getting started with SAP CPI Tutorials we have to understand what is SAP CPI(Cloud Platform Integration properly) The below are the misconception which you need to understand before dealing with CPI.
+
+•HCI renamed to CPI – So both are the same, basically, there is a name change. If you refer to SAP [CPI Tutorials blog](https://www.udemy.com/course/overview-of-sap-cloud-platform-integration-cpi/)s you might encounter these words usually so don’t get confused.  
+•CPI not PO software on the cloud.  
+•IPAAS – Integration platform like syncing up data between 2 systems.Ex: SAP offers.
+
+#### CLOUD SERVICES
+
+(**IAAS**) Servers, VM’s, Networking, Storage, SAP HANA.  
+(**PAAS**) Java Runtime Environment, SAP cloud, Middleware, Environment to write the code, and run it.  
+(**SAAS**) SuccessFactors, Ariba, Concur is ready to use the software. You can buy the premium service and use it.
+
+#### TYPES OF INTEGRATION
+
+##### ON-PREMISE INTEGRATION
+
+Integration within your landscape \* You can say local system integrating with each other
+
+![SAP CPI On Premise Integration example](https://recodehive.com/wp-content/uploads/2020/05/Picture1.png)
+
+Image Credit: Udemy SAP CPI Course
+
+#### ON-PREMISE TO PARTNER SCENARIO
+
+On your left, there is 2  scenario which is A2A •You need to send some file to the partner which is crossing your firewall and post the Message on the internet and into this partner, and all this security, encryption comes to pictures, • The partner is not your system it can be somebody else like supplier bank, etc.
+
+![SAP CPI On Premise to partner example](https://recodehive.com/wp-content/uploads/2020/05/Picture2.png)
+
+Image Credit: Udemy SAP CPI Course
+
+#### ON-PREMISE TO CLOUD INTEGRATION
+
+![SAP CPI to cloud integration example](https://recodehive.com/wp-content/uploads/2020/05/Picture3.png)
+
+Image Credit: Udemy SAP CPI Course
+
+•SAP connector helps to connect between your local system to cloud. Application in on-premise wants to talk to the cloud.
+
+SAP ECC  Idoc to the connector then it will pass to CPI,  then that Idoc msg is converted to **EDI** msg **ANCI x12** or **EDIFACT** then EDI msg send over AS2 to the partner.
+
+The integration tool is in the cloud not on the premise.
+
+#### CLOUD TO CLOUD INTEGRATION
+
+![SAP CPI cloud to cloud integration example](https://recodehive.com/wp-content/uploads/2020/05/Picture4.png)
+
+Image Credit: Udemy SAP CPI Course
+
+Application in on-premise wants to talk to the cloud. So this diagram and concept will be useful in Near future
+
+•[Ariba](https://www.ariba.com/) and [concur](https://www.concur.co.in/)  
+•If any messages come from this should handle with the cloud to cloud  
+•No connector has been used, no PO is used.
+
+•ECC is moved to HANA in the cloud.
+
+#### FEATURES:
+
+API Management \*Connectivity ->cloud to cloud, inprimise  
+\*Cloud Integration ->like flow \*Enterprise Messaging   
+\*[Odata](https://blogs.sap.com/2016/02/08/odata-everything-that-you-need-to-know-part-1/) – if you have – NetWeaver  
+\*Open connectors – 3rd party Connector  
+\*Rabbit MQ – if have JMS scenario this helps  
+\*SMART data integration – sync job b/w 1 application to another application  
+\*Also allow social media Integration as you can link to Facebook and all. Pay for u use   
+\*Automatic upgrade and maintenance \*Subscription model Eg: Dropbox  
+\*[Groovy](https://blogs.sap.com/2020/09/26/cpi-groovy-examples-repository/) ->dynamic language build above java   
+\*Using Apache camel language for camel Notation.  
+\*Predefined Integration Packages BPM solution u can use workflow in the cloud  
+\*Groovy is a drag and drop option like a widget to drag and copy to your **IFlow** and customize it. 
+
+Resource Scaling – which makes the easy upgrade of plans.
+
+#### DIFFERENCE: CPI VS PO
+
+Unlike SAP PO, SAP CPI is a subscription Based, PO in Annual Fess based  
+CPI up to date software will be there.  
+PO needs to plan for Software upgrade and DowntimeCPI Supports Resource Scaling, Data Visualization.  
+Pre Packed content like Ariba connection. You can your own pre-packed content and use it as future Like integration for Succesfactor & Ariba
+
+#### HOW TO GET STARTED WITH SAP CPI
+
+To get started with SAP CPI Basics you need to create a Trial account first initially SAP allowed only 90 days Free account, now SAP Supports **1 year Trial SAP CPI subscription. Setup is a** bit complicated as SAP CPI UI changes frequently. Dont worry We have made it very easy on our Free SAP CPI Tutorials Course.
+
+To continue to setup SAP CPI Trial Tenant go to the below button [Part 2: Trial Setup](https://recodehive.com/setup-your-sap-cpi-trial-account-2/)
+
+![](https://recodehive.com/wp-content/uploads/2020/12/image-23.png)
+
+[Part 2: Trial Setup –>](https://recodehive.com/setup-your-sap-cpi-trial-account-2/)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “SAP cloud platform Tutorial”, If yes, then don’t forget to spread a word about it. We would love to hear the feedback from your side and if any doubts contact us. Signing off **[sanjay@recodehive.com](https://recodehive.com/about-us/)**
+
+[Adaptation](https://recodehive.com/the-adaptation/) [Growth Hacking](https://recodehive.com/tag/growth-hacking/) [Developer Bundle](https://recodehive.com/category/dev-labs/)[Hope and Focus](https://recodehive.com/hopeandfocus/) [My Day at Google Campus](https://recodehive.com/my-day-at-google-campus-hyderabad/)[Time Machine](https://recodehive.com/time-machine-2-0/) [Manifestation of life after death](https://recodehive.com/the-manifestation-of-life-after-death/)

@@ -1,0 +1,68 @@
+   How to Install Mysql on Mac OS
+
+How to Install Mysql on Mac OS
+==============================
+
+Tags: mac os,mysql,setup,sql 8.0.1
+
+**Author:** Sanjay KV
+
+**Date:** Sat May 08 2021
+
+Mysql is a database management system, initial release happened in 1995 by ORACLE which is free and open source. Explore the [opensource MySQL in Github.](https://github.com/mysql/mysql-server) There are multiple ways to install on Mac OS, here we have listed the easiest Setup. Let’s have a look at How to Install Mysql on Mac OS.
+
+Table of Contents
+
+Toggle
+
+*   [How to install:](https://recodehive.com/how-to-install-mysql-on-mac-os/#How_to_install "How to install:")
+*   [MySQL on macOS with errors resolved](https://recodehive.com/how-to-install-mysql-on-mac-os/#MySQL_on_macOS_with_errors_resolved "MySQL on macOS with errors resolved")
+*   [Watch the video :](https://recodehive.com/how-to-install-mysql-on-mac-os/#Watch_the_video "Watch the video : ")
+*   [Final Verdict :](https://recodehive.com/how-to-install-mysql-on-mac-os/#Final_Verdict "Final Verdict :")
+
+#### How to install:
+
+**Step 1:** Download the latest version of MySQL [from the website](https://dev.mysql.com/downloads/mysql/) to install the MySQL, We will be downloading the community server. Skip the Oracle signing option, Go ahead with downloading the file. The file size will be approximately 400 mb.
+
+![install mysql window](https://recodehive.com/wp-content/uploads/2019/01/Screenshot-2019-01-02-at-11.58.33-PM-1024x540.png)
+
+**Step 2:** After that extract the file, Double click and open the .pkg file and run the installation. Once the installation is done, you may get a password in a pop window. Keep the password safe, you may need it when configuring mysql for mac.
+
+![](https://recodehive.com/wp-content/uploads/2021/05/image-6-1024x706.png)
+
+**Step 3**: It may take a while to finish the configuration in the mac, Once it is done open the terminal, make sure the MySQL running in the background, please watch the attached video for more reference related to the auto-starting of MySQL when the system turns on.
+
+![How to Install Mysql on Mac OS](https://recodehive.com/wp-content/uploads/2019/01/Screenshot-2019-01-03-at-12.00.07-AM.jpg)
+
+**Step 4:**  Similarly put the path like this. Once you enter the 1st command Mysql on the terminal will ask for the password, Give the same password you used in **Step 2.** Following that enter the 2nd command given below.
+
+     sudo/usr/local/mysql/bin/mysql -u root -p
+     sudo /usr/local//mysql/bin/mysql/ -h 127.0.0.1 -u root
+
+![](https://recodehive.com/wp-content/uploads/2021/05/image-7.png)
+
+**Step 5**: Now The Installation has successfully completed, the SHOW DATABASE command will show the existing database list in the terminal. QUIT to exit from the SQL Terminal.
+
+![](https://recodehive.com/wp-content/uploads/2021/05/image-8.png)
+
+#### MySQL on macOS with errors resolved
+
+Some case there will be errors when you execute the Mysql on Mac os Terminal, For this Go to System Terminal, Make sure the SQL is running already and enabled to run when system Startup. Else you can enter a command in Terminal to start the sql service instantly.
+
+mysql.server start
+
+![Setup terminal. How to Install Mysql on Mac OS](https://recodehive.com/wp-content/uploads/2019/01/Screenshot-2019-01-03-at-12.32.15-AM.jpg)
+
+Still facing Errors while setting up you can do Flush Privilages or the following commands to make it work, These are the common error while set up mysql on mac.
+
+sudo mysql
+mysql> FLUSH PRIVILEGES;
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
+
+#### Watch the video :
+
+#### Final Verdict :
+
+In conclusion, I hope you enjoyed reading this article on “ How to Install Mysql on Mac OS ”, If yes, then don’t forget to spread the word about it. We would love to hear the feedback from your side and if any doubts contact us. Signing off. [](https://recodehive.com/about-us/) **[Sanjay@recodehive.com](https://recodehive.com/about-us/)**
+
+[Adaptation](https://recodehive.com/the-adaptation/) [Growth Hacking](https://recodehive.com/tag/growth-hacking/) [Developer Bundle](https://recodehive.com/category/dev-labs/)[Hope and Focus](https://recodehive.com/hopeandfocus/) [My Day at Google Campus](https://recodehive.com/my-day-at-google-campus-hyderabad/)[Time Machine](https://recodehive.com/time-machine-2-0/) [Manifestation of life after death](https://recodehive.com/the-manifestation-of-life-after-death/)

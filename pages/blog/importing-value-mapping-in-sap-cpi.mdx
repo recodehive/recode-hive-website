@@ -1,0 +1,113 @@
+   Importing Value Mapping in SAP CPI
+
+Importing Value Mapping in SAP CPI
+==================================
+
+Tags: CPI,Learning,SAP,SAP CPI,Value Map
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Fri Oct 02 2020
+
+Table of Contents
+
+Toggle
+
+*   [INTRODUCTION](https://recodehive.com/importing-value-mapping-in-sap-cpi/#INTRODUCTION "INTRODUCTION")
+*   [PREPARING THE VALUE MAPPING TABLE](https://recodehive.com/importing-value-mapping-in-sap-cpi/#PREPARING_THE_VALUE_MAPPING_TABLE "PREPARING THE VALUE MAPPING TABLE")
+*   [IMPORTING THE CREATED/EXPORTED VALUE MAPPING](https://recodehive.com/importing-value-mapping-in-sap-cpi/#IMPORTING_THE_CREATEDEXPORTED_VALUE_MAPPING "IMPORTING THE CREATED/EXPORTED VALUE MAPPING")
+*   [FINAL VERDICT :](https://recodehive.com/importing-value-mapping-in-sap-cpi/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### INTRODUCTION
+
+Importing a value mapping comes into picture when you need to move the objects from one Environment (say Development) to another Environment (say Quality). This will reduce the efforts and is the ideal way.
+
+In this Demo, I have created a sample CSV file instead of exporting. 
+
+If you already have a csv file exported, you can skip Step 1 to Step 4. 
+
+#### PREPARING THE VALUE MAPPING TABLE
+
+**Step1** : Open a fresh **Excel** Work Book. 
+
+**Step 2** : write as below. 
+
+ 
+
+Source|ID 
+
+Target|Desc 
+
+1 
+
+A| 
+
+Apple 
+
+2 
+
+B| 
+
+Ball 
+
+3 
+
+C| 
+
+Cat 
+
+Sample VM table to import
+
+![Importing VM](https://recodehive.com/wp-content/uploads/2020/09/image-157.png)
+
+![Legend for Importing VM](https://recodehive.com/wp-content/uploads/2020/09/image-158.png)
+
+**Step 3** : Browse a location to save the sheet in **CSV** Format. Click on t**ools –> Web Options** 
+
+![Importing VM](https://recodehive.com/wp-content/uploads/2020/09/image-159.png)
+
+**Step 4** : Under **_Encoding_** tab, Select **Unicode ( [UTF-8](https://www.w3schools.com/charsets/ref_html_utf8.asp))**. Click on **OK**. **Save** the file. 
+
+![Importing VM](https://recodehive.com/wp-content/uploads/2020/09/image-160.png)
+
+#### IMPORTING THE CREATED/EXPORTED VALUE MAPPING
+
+**Step 5** : Go to **Design** Window of your Tenant. **Create/Choose** the **package** where you want to import the Value Mapping Artifact. Click on **Edit**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-161-1024x188.png)
+
+**Step 6** : Under **_Artifacts_** tab, Click on **Add –> Value Mapping** 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-164.png)
+
+**Step 7** :Check **Create** Radio Button. Enter a valid **name** for Value Mapping and click on **OK**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-163.png)
+
+**Step 8** : Open the newly created value Mapping and click on **edit**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-162-1024x207.png)
+
+**Step 9** : Click on **Import**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-165-1024x181.png)
+
+**Step10** : **Browse** and select the CSV file saved earlier in [Step 4](#Step 4). 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-163.png)
+
+**Step 11** :  It will Look as below. **Save** and **Deploy**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-167-1024x406.png)
+
+**Step 12** : Make Sure that the artifact Deployed is in **Started** state. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-166.png)
+
+**Step 13**: Leverage the Value Mapping in any Message Mapping. 
+
+You can use the Value mapping [here](https://recodehive.com/?p=5236).
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Importing Value Mapping in SAP CPI**”, If yes, then don’t forget to spread a word about it. Do send the feedback and to know more about it. Signing off [Sudarshan@recodehive.com](Sudarshan@recodehive.com)

@@ -1,0 +1,238 @@
+   JMS Sender and Receiver Adapters In SAP CPI
+
+JMS Sender and Receiver Adapters In SAP CPI
+===========================================
+
+Tags: Adapter,CPI,JMS,Learning,SAP CPI
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Thu Nov 26 2020
+
+Table of Contents
+
+Toggle
+
+*   [Introduction](https://recodehive.com/jms-sender-and-receiver-adapters-in-sap-cpi/#Introduction "Introduction")
+*   [Creating A Sender Flow](https://recodehive.com/jms-sender-and-receiver-adapters-in-sap-cpi/#Creating_A_Sender_Flow "Creating A Sender Flow")
+*   [POSTMAN Setup](https://recodehive.com/jms-sender-and-receiver-adapters-in-sap-cpi/#POSTMAN_Setup "POSTMAN Setup")
+*   [Creating Consumer Flow](https://recodehive.com/jms-sender-and-receiver-adapters-in-sap-cpi/#Creating_Consumer_Flow "Creating Consumer Flow")
+*   [Conclusion](https://recodehive.com/jms-sender-and-receiver-adapters-in-sap-cpi/#Conclusion "Conclusion")
+*   [FINAL VERDICT :](https://recodehive.com/jms-sender-and-receiver-adapters-in-sap-cpi/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### Introduction
+
+JMS Sender and Receiver adapters are used to facilitate asynchronous message transfer. The message is temporarily stored in a queue and scheduled for processing. Let’s have a look at this scenario, a demo flow in SAP CPI is given below. 
+
+#### Creating A Sender Flow
+
+**Step 1**: Create an [integration flow](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/e5724cd84b854719973afe0356ea128b.html#:~:text=An%20integration%20flow%20allows%20you,with%20a%20graphical%20user%20interface.) artifact. 
+
+![JMS Adapter](https://recodehive.com/wp-content/uploads/2020/11/image-1-1024x83.png)
+
+**Step 2**: Open the Artifact and click on **Edit**. 
+
+![Sender Flow](https://recodehive.com/wp-content/uploads/2020/11/image-2-1024x320.png)
+
+**Step 3**: Connect **Sender** to **Start Event**. From the Pop up, select **SOAP adapter–> [SOAP 1.x](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/57f7b34b9b86438d9cb760c5c541f88c.html)** 
+
+![SOAP](https://recodehive.com/wp-content/uploads/2020/11/image-3.png)
+
+![Message Protocol 
+SAP RM 
+SOAP l.x ](https://recodehive.com/wp-content/uploads/2020/11/image.png)
+
+**Step 4**: Connect the **End event** to the **Receiver**. From the Pop up choose **[JMS Adapter](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/0993f2aa14124376a4adc7c5ba95d3f8.html).** 
+
+![Processing](https://recodehive.com/wp-content/uploads/2020/11/image-10.png)
+
+**Step 5** : Click on **SOAP** Sender Channel and under **Connections**, Enter a Valid address ( /JMSQ ) to create an Endpoint to access the Flow. 
+
+![;eneral 
+Sender 
+Connection 
+WS-Security 
+IJMSQ 
+Manual 
+Conditions 
+ECTION DETAILS 
+Address: * 
+Service Definition: ](https://recodehive.com/wp-content/uploads/2020/11/image-21.png)
+
+**Step 6**: Click on the **JMS Receiver Adapter**. Under **Processing** Tab, Give a valid Queue Name ( JMSQUEUE ). The Same Name has to be used in JMS Sender Channel to access it ( Will be shown in the next steps ).
+
+![](https://recodehive.com/wp-content/uploads/2020/11/image-10.png)
+
+**Step 7** : **Save** and **Deploy**. 
+
+![Save](https://recodehive.com/wp-content/uploads/2020/11/image-5.png)
+
+Note that we have not yet created the second Flow with JMS Sender Adapter ( A Receiver ). In this case, the Content will be stored in JMS Queue.  
+
+**Step 8**: Go to the Overview window and make sure that the deployed flow is **Started**. **Copy the** [**Endpoint**](https://answers.sap.com/questions/12648600/how-can-i-expose-cpi-api-endpoint-as-an-rest-servi.html) from the Endpoints tab as highlighted below. 
+
+![Monitoring](https://recodehive.com/wp-content/uploads/2020/11/image-13-1024x305.png)
+
+#### POSTMAN Setup
+
+1.  **Step 9**: Open the [Postman](https://www.postman.com/downloads/) app.  
+2.  Keep the request in **POST** mode. 
+3.  Paste the Endpoint copied in **Step 8** in the **URL** tab. 
+4.  Check **raw** radio button and choose **XML** message format. 
+5.  In the Authorization tab, Choose TYPE**: Basic Auth** 
+6.  **Username: Client ID** 
+7.  **Password**: Client Secret 
+8.  The client id and client secret you will get when you create Instance of Runtime during tenant setup. ( Refer **Step 34** of [this](https://recodehive.com/set-up-sap-cpi-tenant-in-trial-account-2/) post )
+9.  In the **Body** tab, Enter the Message to be passed. 
+10.  Click on **Send.** 
+
+![POSTMAN](https://recodehive.com/wp-content/uploads/2020/11/image-14.png)
+
+**Step 10**: In the **Overview window,** you will see 1 message in the Success state. 
+
+#### Creating Consumer Flow
+
+**Step 11**: Create another artifact to consume the stored message in the JMS queue. 
+
+![](https://recodehive.com/wp-content/uploads/2020/11/image-11-1024x237.png)
+
+**Step 12** : Open the artifact in **Edit** mode. Connect **Sender to Start Event**. From the pop-up, Select **JMS adapter**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/11/image-15.png)
+
+**Step 13** :  Select a **[groovy script](https://www.guru99.com/groovy-tutorial.html)** from Pallet to your left to log Payload. 
+
+![Y 
+Decoder 
+EDI Extractor 
+Encoder 
+Filter 
+Message Digest 
+Script ](https://recodehive.com/wp-content/uploads/2020/11/image-6.png)
+
+![JMS Adapter](https://recodehive.com/wp-content/uploads/2020/11/image-9.png)
+
+**Step 14** : Click on the highlighted sign of Groovy Script to write script code. 
+
+![十 @ 
+一 丨 ;dlJOS 00 」 9 
+33a00 亅 ](https://recodehive.com/wp-content/uploads/2020/11/image-8.png)
+
+**Step 15** : Write the below script by removing the preexisting sample code. Click on **OK**. 
+
+    import com.sap.gateway.ip.core.customdev.util.Message;
+    import java.util.HashMap;
+    
+    def Message processData(Message message)
+    {   
+        def body = message.getBody(java.lang.String) as String;
+        def messageLog = messageLogFactory.getMessageLog(message);
+        if(messageLog != null)
+        {
+            messageLog.setStringProperty("log1","Printing Payload As Attachment")
+            messageLog.addAttachmentAsString("log1",body,"text/plain");
+        }
+        return message;
+    }
+
+![Design I JMS I JMS Consumer Flow / scriptl.groovy I 
+scriptl.groovy 
+import com.sap.gateway . ip.core.custondev.utiI.Message; 
+import 
+3 • def message processData (Message message) 
+def body = .1ang . String) as String; 
+= messageLogFactory. getmessageLog(message); 
+def messageLog 
+if (message Log 
+messageLog. "Printing Payload As Attachment") 
+messageLog. addAttachmentAsString( " Responsepayload: " , 
+body, "text/ plain"); 
+return message; 
+11 
+OK 
+Cancel ](https://recodehive.com/wp-content/uploads/2020/11/image-16-1024x184.png)
+
+**Step 16**: Select the **JMS Adapter** and under the **Connection** tab, Give the address of the Queue from where you want to fetch the data. Since we have stored data in **JMSQUEUE** in the previous flow. In this flow let us fetch from the same Queue. Therefore give the same Queue name.
+
+![JMS Adapter](https://recodehive.com/wp-content/uploads/2020/11/image-17.png)
+
+**Step 17**: **Save** and **Deploy** the artifact. 
+
+![Save 
+Save as version 
+Deploy 
+Cancel 
+Delete ](https://recodehive.com/wp-content/uploads/2020/11/image-4.png)
+
+**Step 18** : Check **Overview Window**. Now you will see **2** messages in the Success state in place of 1. 
+
+![Monitor Message Processing 
+All Integration Flows 
+Past Hour 
+Messages 
+All Integration Flows 
+Past Hour 
+Retry Messages 
+All Integration Flows 
+Past Hour 
+Failed Messages 
+All Integration Flows 
+Past Hour 
+Completed Messages ](https://recodehive.com/wp-content/uploads/2020/11/image-12.png)
+
+Note that you have not triggered any message after deploying the second artifact. Since there was already a message triggered to first Flow, that message was stored in JMS Queue and was available for any flow to consume. As we have given the address of the same JMS queue in the Second artifact, it fetches the data from that queue.
+
+**Step 19** : In order to understand better, open the successful messages, and in the second artifact under the attachments tab you will find the **payload**. Click on it to open the payload. 
+
+![Time: 
+Status: 
+Past Hour 
+Completed 
+Nov 18, 2020, - Nov 18, 2020, 
+Messages (2) 
+Artifact Name 
+JMS Consumer Flow 
+Nov 18, 2020, 
+SOAP Sender Flow 
+Nov 18, 2020, 
+Artifact: 
+All Integration Flows 
+Message, Correlation or Application ID 
+1 
+JMS Consumer Flow Last Updated at: Nov 18, 2020, 
+Status 
+Completed 
+1 sec 80 ms 
+Completed 
+386 ms 
+Status 
+Name 
+Properties 
+Logs 
+Attachments 
+Action 
+Modified At 
+Nov 18, 2020, 
+Size 
+ResponsePayload: 
+text/ plain ](https://recodehive.com/wp-content/uploads/2020/11/image-18-1024x282.png)
+
+**Step 20**: From [payload](https://blogs.sap.com/2020/06/25/sap-cpi-testing-automation-with-postman/), verify the content if it’s the same as it was triggered from POSTMAN to the First artifact via SOAP channel in **Step  9**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/11/image-22.png)
+
+#### Conclusion
+
+From this, it is clear that whenever you send any data via JMS adapter, in case the receiver is not available/not reachable, the JMS will store the message in its queue and retries to deliver until either the receiver is available or it times out.
+
+![JMS Adapter](https://recodehive.com/wp-content/uploads/2020/11/image-7-1024x313.png)
+
+If you check the Default Connection settings of the JMS adapter, the Adapter will retry sending the message every 1 min. If you have checked the Exponential Backoff button, The retry interval doubles for each successive retry. ( Eg., 1min,2 min,4 min, 8 min, and so on) till the value specified in the Maximum Retry interval is reached ( 60 mins in this case ). After that, the message is deleted from the queue.
+
+Checking the Dead letter Queue will let your message be in a locked state if there are 2 successive memeory errors/ worker node failure in case of large messages to avoid unnecessary traffic congestion. The lock can be removed from the Monitoring window under Manage Locks Tile. 
+
+![Manage Locks](https://recodehive.com/wp-content/uploads/2020/11/image-20.png)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**JMS Sender and Receiver Adapters In [SAP CPI](https://recodehive.com/sap-cpi-integration/)** ”, If yes, then don’t forget to spread the word about it. Do send the feedback and to know more about it. Signing off [Sudarshan](sudarshan@recodehive.com)

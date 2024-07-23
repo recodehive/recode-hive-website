@@ -1,0 +1,97 @@
+   How to link Excel sheets and workbooks
+
+How to link Excel sheets and workbooks
+======================================
+
+Tags: excel,Excel Tutorials,MS Excel,Tutorials
+
+**Author:** Sanjay KV
+
+**Date:** Wed Apr 21 2021
+
+Table of Contents
+
+Toggle
+
+*   [What will learn from this post?](https://recodehive.com/how-to-link-excel-sheets-and-workbooks/#What_will_learn_from_this_post "What will learn from this post?")
+*   [What are Excel Worksheet?](https://recodehive.com/how-to-link-excel-sheets-and-workbooks/#What_are_Excel_Worksheet "What are Excel Worksheet?")
+*   [3D Formulas in Excel](https://recodehive.com/how-to-link-excel-sheets-and-workbooks/#3D_Formulas_in_Excel "3D Formulas in Excel")
+*   [How to link excel Workbooks in Excel?](https://recodehive.com/how-to-link-excel-sheets-and-workbooks/#How_to_link_excel_Workbooks_in_Excel "How to link excel Workbooks in Excel?")
+*   [Summarise Data from Different Workbook in Excel](https://recodehive.com/how-to-link-excel-sheets-and-workbooks/#Summarise_Data_from_Different_Workbook_in_Excel "Summarise Data from Different Workbook in Excel")
+*   [Types of Cell References in Excel](https://recodehive.com/how-to-link-excel-sheets-and-workbooks/#Types_of_Cell_References_in_Excel "Types of Cell References in Excel")
+*   [FINAL VERDICT :](https://recodehive.com/how-to-link-excel-sheets-and-workbooks/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### What will learn from this post?
+
+You might know Excel has Worksheet, Workbooks, This can be used to join the data from the 2 sheet and to work efficiently. Also will learn some Shortcut to do the same. In this tutorial, we will learn how to link excel sheets and workbooks to fetch data and excel cell referencing.
+
+*   Working with Multiple Worksheet/Linking Workbooks
+*   3D Formulas and Calculations
+
+#### What are Excel Worksheet?
+
+By Default when you open a new excel sheet you will get sheet1 as default, Now what if you have multiple source of data from Different Organisation like Google, Microsoft. Maintaining them on the different sheet is Good Idea right?
+
+*   To insert a new worksheet you can click on the **+ button**, or right-click and insert the button
+*   To change the color of the tab, Right-click on the worksheet tab then click on Tab color, Choose the color from the list
+*   Short cut to Create a copy of the Excel worksheet: **Press CTRL,** left-click on the worksheet drag, and release this will create a copy of the document. If you are using a Mac system instead of CTRL, **press alt.**
+*   To make changes in Multiple cells at a time in a different worksheet, **Press CTRL, select the worksheet you want to go to any cell** type what you need, and press enter.
+
+![Creating new Excel worksheet](https://recodehive.com/wp-content/uploads/2021/04/image-91-1024x461.png)
+
+#### 3D Formulas in Excel
+
+To summing up the values across multiple worksheets we will use 3D Formulas, **This will only apply all the worksheet has the same structure.** Let’s see how to use the 3D Formula in Excel below.
+
+*   Google, Microsoft are two worksheets with the same structure here and I want to add the total no of employees
+*   Select any cell you want to get the sum, type **\=Sum**
+*   Then Go to Google cell select the cell which has the total employee number **press shift and clicks on the Microsoft ta**b then **press enter.**
+
+\=SUM(Google:Microsoft!B4)
+
+![What is 3D formulas in Excel ](https://recodehive.com/wp-content/uploads/2021/04/3D-Formulas.gif)
+
+#### How to link excel Workbooks in Excel?
+
+*   Above you have seen how to link the excel sheets using 3D Formulas. Browse all the [workbook](https://support.microsoft.com/en-us/office/create-a-new-workbook-ae99f19b-cecb-4aa0-92c8-7126d6212a83) and arrange them all as stacked (**View -> Arrange all,** Select the option Tiled and then click on okay,
+*   **Type =** in the cell of the current workbook and select the cells from **workbook 1,** **Press F4 for this 3 times** until you get! (**Relative cell Referencing**) in the equation. using relative cell reference to cope with the changes in the future.
+*   In the future, if you want to delete the link between the Workbook **Go to Data -> Edit Link,** and break the link.
+
+![how to link Excel sheets and workbook](https://recodehive.com/wp-content/uploads/2021/04/image-92-1024x500.png)
+
+\=\[Book1.xlsx\]Microsoft!C6    
+! stands for relative Cell Referncing 
+Use F4 in Windows          
+
+![](https://recodehive.com/wp-content/uploads/2021/04/image-93-1024x343.png)
+
+#### Summarise Data from Different Workbook in Excel
+
+**Consolidate Tool** will help in Summarizing data from different ranges and produce results in a single output. All the cells you selected from the different columns will appear on the new consolidated workbook.
+
+*   Go to **Data**, then select the **Consolidate icon**.
+*   A pop-up will appear from this select the reference cells from the different workbooks and click on Add button and then click on okay.
+
+![Using menus to link Excel sheets and workbook data](https://recodehive.com/wp-content/uploads/2021/04/image-94-1024x394.png)
+
+#### Types of Cell References in Excel
+
+$B1 : Coloum stagnant when copy
+$B$1 : Coloum and row dont change when copy
+B$1 : Row dont change when copy
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**How to link Excel sheets and workbooks**”. In the next post, will be introduce how to work with Date and Text Functions, Data Wrangling using Excel. How to make use of Business Intelligence with excel. Signing off **[Sanjay Kv](https://recodehive.com/about-us/)**
+
+**Can i undo a deleted Excel sheet?**
+
+No, You cannot undo a deleted Excel sheet. so Make sure while you work or delete Excel Worksheet.
+
+**will the 3D formula result change if we move the cell later?**
+
+As long has you dont delete any sheet which used for 3D formula calculation nothing affects the result.
+
+**Is it possible to undo a operation in Consolidation with link on excel?**
+
+You cannot undo Consolidation with link in Microsoft Excel.

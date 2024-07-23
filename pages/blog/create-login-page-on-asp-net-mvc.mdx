@@ -1,0 +1,97 @@
+   Create Login Page on ASP.NET MVC
+
+Create Login Page on ASP.NET MVC
+================================
+
+Tags: .Net,devlabs,devlopement,full,Login,MVC,stack
+
+**Author:** Sanjay KV
+
+**Date:** Tue May 11 2021
+
+The login page is inevitable if you are providing a service through internet website, Most of the website has this login feature you notice, log in with username and password, login with Google or Apple login, now that includes a complicated configuration and look into more aspects like making sure proper steps need to take for authentication. Let’s Create Login Page on ASP.NET MVC
+
+Table of Contents
+
+Toggle
+
+*   [Prerequisites:](https://recodehive.com/create-login-page-on-asp-net-mvc/#Prerequisites "Prerequisites:")
+
+*   [How to Setup:](https://recodehive.com/create-login-page-on-asp-net-mvc/#How_to_Setup "How to Setup:")
+*   [Reference :](https://recodehive.com/create-login-page-on-asp-net-mvc/#Reference "Reference :")
+*   [Final Verdict:](https://recodehive.com/create-login-page-on-asp-net-mvc/#Final_Verdict "Final Verdict:")
+
+##### Prerequisites:
+
+You need to have the following setup to start the build. You can download the [visual stuido community](https://visualstudio.microsoft.com/vs/community/) version here.
+
+     1. Visual Studio 2015 or higher
+     2. 4GB RAM, windows 7 or higher OS
+
+#### How to Setup:
+
+**Step 1:** Open the Microsoft Visual Studio and open new project by clicking on New on File menu then click on Project.
+
+![Create Login Page on ASP.NET MVC](https://recodehive.com/wp-content/uploads/2019/03/Screenshot-2019-03-06-at-2.07.20-AM.jpg)
+
+**Step 2:** Now Another page will open from the left side select the WEB Category and select ASP.NET Application. Give a good Project name also.
+
+**Step 3:** In the next screen click on the MVC icon and click on the OK Button.
+
+![MVC Application](https://recodehive.com/wp-content/uploads/2019/03/Screenshot-2019-03-06-at-2.08.17-AM.jpg)
+
+**Step 4:** A new window will open now, from the right side of the window select the **Homecontroller.cs** from the Controller folder.
+
+![Homecontroller](https://recodehive.com/wp-content/uploads/2019/03/Screenshot-2019-03-06-at-2.08.43-AM.jpg)
+
+**Step 5:** Homecontroller.cs will appear like this, add few code like shown below.
+
+**Step 6:** I hope you copied and paste the code above, now right click on the ActionResult you created and click on Add View.
+
+![Login Page Creation ](https://recodehive.com/wp-content/uploads/2019/03/Screenshot-2019-03-06-at-2.09.34-AM.jpg)
+
+**Step 7:** There will be a pop up window comes next click on The view name as Login.
+
+Viewname : Login
+
+Template : Empty(without Model)
+
+![Login add](https://recodehive.com/wp-content/uploads/2019/03/Screenshot-2019-03-06-at-2.09.41-AM.jpg)
+
+![Create Login Page on ASP.NET MVC](https://recodehive.com/wp-content/uploads/2019/03/Screenshot-2019-03-06-at-2.10.25-AM.jpg)
+
+**Step 8:** The control page will look like the above one. Now go to [codepen](https://codepen.io/virn/pen/GeqYLm?page=1&) select your template and paste the HTML code in the **Login.cshtml** page.
+
+Step 9: Now like you see in the above screen, right click on the template, click on add then **click New** Item, then in the next window select stylesheet.
+
+Give the Name as **Login.css**
+
+**Step 9:** copy paste the css code from the [codepen website.](https://codepen.io/virn/pen/GeqYLm?page=1&)
+
+![Create Login Page on ASP.NET MVC](https://recodehive.com/wp-content/uploads/2019/03/Screenshot-2019-03-06-at-2.12.05-AM.jpg)
+
+**Step 10:** Now go to you controller page and change the action name to **Login**
+
+![code snippet](https://recodehive.com/wp-content/uploads/2019/03/Screenshot-2019-03-06-at-2.12.23-AM.jpg)
+
+routes.IgnoreRoute("{resource}.axd/{\*pathInfo}");
+routes.MapRoute(
+name: “Default",
+url: "{controller}/{action}/{id}",
+defaults: new { controller = “Home", action = “Login", id = Urlparameter.Optional }
+);
+}
+}
+}
+
+![Controller code](https://recodehive.com/wp-content/uploads/2019/03/Screenshot-2019-03-06-at-2.12.35-AM.jpg)
+
+**Step 11:** Go to Views-> shared-> ViewStart.cshtml page and delete all the content and Run the project. You can see the Login Page opening in Browser.
+
+#### Reference :
+
+#### Final Verdict:
+
+In conclusion, I hope you enjoyed reading this article on “ **Create Login Page on ASP.NET MVC** ”, If yes, then don’t forget to spread the word about it. We would love to hear the [feedback](https://recodehive.com/contact-us/) from your side and if any doubts contact us. Signing off [sanjay.kanakkot@gmail.com](https://recodehive.com/about-us/)
+
+_**Author :** Sanjay K V_

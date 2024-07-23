@@ -1,0 +1,90 @@
+   User Defined Message Search in SAP CPI
+
+User Defined Message Search in SAP CPI
+======================================
+
+Tags: RecodeHive,SAP,SAP CPI,UDMS,User
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Tue Feb 02 2021
+
+#### INTRODUCTION
+
+User-Defined Message Search allows one to search a message based on the content in the incoming payload. This feature is not available in SAP CPI as a standard configuration. However, it can be achieved by using the two header parameters mentioned below. 
+
+1.  **SAP\_ApplicationID :** This header parameter is assigned a Key value from  incoming message using Xpath condition/expression. 
+2.  **SAP\_MessageType :** This header parameter is used to give a description about SAP\_ApplicationID or to specify from which element the value is being taken. This usually is a constant.
+
+#### HYPOTHETICAL SCENARIO
+
+The source is triggering ‘n’ messages where each message is differentiated by Order Number field in the payload as below 
+
+Message 1 : 
+
+    <Order_MT> 
+             <orderNumber>1</orderNumber> 
+             <supplierName>Walt1</supplierName> 
+             <productName>Timber1</productName> 
+    </Order_MT>
+
+Message 2:  
+
+    <Order_MT> 
+             <orderNumber>2</orderNumber> 
+             <supplierName>Walt2</supplierName> 
+             <productName>Timber2</productName> 
+    </Order_MT>
+
+And so on… 
+
+Say you want to Find a message with **Order Number = 5** in monitoring out of processed thousands of messages, 
+
+In this case, 
+
+1.  SAP\_ApplicationID : //orderNumber 
+2.  SAP\_MessageType : Order Number 
+
+Sample Integration Flow would look as below: 
+
+![Integration Flow](https://recodehive.com/wp-content/uploads/2021/02/image-1024x399.png)
+
+#### EXECUTION STEPS
+
+**Step 1**: Create an Integration Flow with **HTTPS** connection. 
+
+![HTTPS](https://recodehive.com/wp-content/uploads/2021/02/image-1.png)
+
+**Step 2**: Use a **Content Modifier** to add **SAP headers** as stated above. 
+
+![User Defined Message Search](https://recodehive.com/wp-content/uploads/2021/02/image-4-1024x421.png)
+
+**Step 3**: In In **Message Body**, use **${in.body}** to add an incoming message. 
+
+![User DMS](https://recodehive.com/wp-content/uploads/2021/02/image-2.png)
+
+**Step 4**: **Save** and **Deploy** the flow. 
+
+**Step 5**:  Copy the **endpoint** from **Overview Window** once the Deployed flow is started. 
+
+![EndPoint](https://recodehive.com/wp-content/uploads/2021/02/image-6-1024x244.png)
+
+**Step 6** : Trigger some 10 messages from [POSTMAN](https://www.postman.com/downloads/) by changing the <orderNumber> value. 
+
+![Postman](https://recodehive.com/wp-content/uploads/2021/02/image-3.png)
+
+**Step 7**: Check that all your messages are **successful** in Overview Window. 
+
+![ monitoring](https://recodehive.com/wp-content/uploads/2021/02/image-5.png)
+
+**Step 8**:  Now, In order to search a message with **Order Number =5**, you just have to type **5** in **the ID** search bar and hit enter as shown below. All the messages with Order Number = 5 in the incoming payload will be Displayed. 
+
+![User Defined Message Search](https://recodehive.com/wp-content/uploads/2021/02/image-7-1024x396.png)
+
+This simple Custom step makes searching a message a lot easier. 
+
+A practical Example could include searching a message using Document Number in IDOC to any scenario.
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**User Defined Message Search in SAP CPI**”, If yes, then don’t forget to spread the word about it. Do send the feedback and to know more about it. Signing off [Sudarshan@recodehive.com](Sudarshan@recodehive.com)

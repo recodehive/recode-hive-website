@@ -1,0 +1,64 @@
+   How to Create APK File for Your Android App
+
+How to Create APK File for Your Android App
+===========================================
+
+Tags: Android Development,apk,studio
+
+**Author:** Sanjay KV
+
+**Date:** Thu Apr 22 2021
+
+It’s time to make your android application live on the Google play store, so the developer has to build the apk and extract the apk and manage to [release on the google play console.](https://support.google.com/googleplay/android-developer/answer/9859348?hl=en) The process is tiring and due to the covid situation review, times are more for complex apk builds. However, in this post, we will see How to Create APK File for Your Android App
+
+Table of Contents
+
+Toggle
+
+*   [Guideliness](https://recodehive.com/build-apk-in-android-studio/#Guideliness "Guideliness")
+*   [Steps to Extract APK file in Android Studio](https://recodehive.com/build-apk-in-android-studio/#Steps_to_Extract_APK_file_in_Android_Studio "Steps to Extract APK file in Android Studio")
+*   [Final Verdict :](https://recodehive.com/build-apk-in-android-studio/#Final_Verdict "Final Verdict :")
+
+#### Guideliness
+
+1.  Link found fatal error should be fixed, if any
+2.  app should not be developerd under “No default package like app.**example.**user”
+
+#### Steps to [Extract](https://developer.android.com/studio/run) APK file in Android Studio
+
+**Step 1:**  Open android studio project, Click on **Generate signed apk** under **build** menu.
+
+![](https://recodehive.com/wp-content/uploads/2021/05/image-36-1024x404.png)
+
+**Step 2:**  Click on next in the pop window, after that you will get a screen as shown below. On this screen, you have to enter the path and respective keys to it. **Key store path** is a respective path for the release.apk.**Key store Password:** Remember this password, because this will be required when you update the app every time in the Playstore.
+
+![](https://recodehive.com/wp-content/uploads/2021/05/image-37.png)
+
+**Step 2a:** If you already have the Keystore path before, you need to enter the password and proceed else you need to click on Create new button on the Key Store path and create a new Keystore path as shown below.
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-1.png)
+
+**Step 3:** Create a new Keystore file in Android studio add the First name and Last name, and Organisation, after that click next to continue. Also note the Keystore password here, in further revision or update of your android app, the Keystore password is important, if you lose the password there is not an alternative way to update your android app in Android studio.
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image.png)
+
+**Step 4:** In the Next window, click on Build Type as Release, make sure you have checked the V1(Jar Signature), **V2(Full APK Signature)**. Then click on the Finish button. Once you did apk build will start in android studio.
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-2.png)
+
+**Step 5:** Now at the down right corner you will get one small box, where you can open and locate the apk file you have created. Click on locate. That’s all you need to do. After that, You can find the extracted file as **release.apk.**
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-3.png)
+
+#### Final Verdict :
+
+In conclusion, I hope you enjoyed reading this article on “**How to Create APK File for Your Android App**”, If yes, then don’t forget to spread the word about it. In case if you update the apk android studio on the play console, have to create a new release apk. Would love to hear your feedback, Signing off [Sanjay K V](https://recodehive.com/sanjay/)
+
+Where to find android studio apk Key store path?
+
+1.  **Go to Gradle icon on the top right of Andorid Studio**
+    
+    Click on lintDebug under verification, on app Gradle sub folder
+    
+
+[Adaptation](https://recodehive.com/the-adaptation/) [Growth Hacking](https://recodehive.com/tag/growth-hacking/) [Developer Bundle](https://recodehive.com/category/dev-labs/)[Hope and Focus](https://recodehive.com/hopeandfocus/) [My Day at Google Campus](https://recodehive.com/my-day-at-google-campus-hyderabad/)[Time Machine](https://recodehive.com/time-machine-2-0/) [Manifestation of life after death](https://recodehive.com/the-manifestation-of-life-after-death/)

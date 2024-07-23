@@ -1,0 +1,51 @@
+   Changing API level Android Studio
+
+Changing API level Android Studio
+=================================
+
+Tags: Android,Android Development
+
+**Author:** Sanjay KV
+
+**Date:** Mon Jul 06 2020
+
+### GETTING STARTED
+
+Trying to update the app and getting the below issue saying change your app’s target [API](https://www.webopedia.com/TERM/A/API.html#:~:text=An%20application%20program%20interface%20\(API,user%20interface%20\(GUI\)%20components.) level? Why this is happening? what’s the solution? We will be discussing that in this blog. The issue is if you are releasing a new version of app after a long time, then the app won’t support the latest update device. So that’s where the API level upgrade required.
+
+![](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.51.01-PM.png)
+
+**Step 1:** Go to the Gradle Script and move to [Build Gradle](https://docs.gradle.org/current/userguide/tutorial_using_tasks.html)(Module app) as highlighted below change to the latest [API](https://www.webopedia.com/TERM/A/API.html#:~:text=An%20application%20program%20interface%20\(API,user%20interface%20\(GUI\)%20components.), currently the latest version is 28, change the version compile sdk to 28 same way change the target sdk version to 28.
+
+![](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.50.52-PM-1-1024x338.png)
+
+    
+    android {
+        compileSdkVersion 28
+        defaultConfig {
+            applicationId "Your package name goes here"
+            minSdkVersion 21
+            targetSdkVersion 28
+            versionCode 2
+            versionName "2.0"
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        }
+    
+
+**Step 2:** Now you can see the new notification appear above the menu tab, saying sync the project. Click on Sync, this will automatically install the latest version of the SDK.
+
+![](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.51.44-PM.png)
+
+**Step 3:** Read the License agreement and click on accept and proceed next.
+
+![](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.51.28-PM-1024x651.png)
+
+**Step 4:** Here you will see which component and package is going to install, once you have done this go and run your application and release the apk.
+
+You can use this mentioned article to see how to manage apk release in play console.
+
+![](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.51.36-PM-1024x692.png)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**How to change the app’s target API level in Android Studio.**”, If yes, then don’t forget to spread a word about it. We would love to hear the feedback from your side and if any doubts contact us. Signing off **[sanjay@recodehive.com](https://recodehive.com/about-us/)**

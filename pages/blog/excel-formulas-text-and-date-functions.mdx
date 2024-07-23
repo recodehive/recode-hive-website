@@ -1,0 +1,93 @@
+   Excel Formulas – Text and Date Functions
+
+Excel Formulas – Text and Date Functions
+========================================
+
+Tags: excel,Excel Tutorials,MS Excel,Tutorials
+
+**Author:** Sanjay KV
+
+**Date:** Fri Apr 30 2021
+
+Table of Contents
+
+Toggle
+
+*   [What will learn from this post?](https://recodehive.com/excel-formulas-text-and-date-functions/#What_will_learn_from_this_post "What will learn from this post?")
+*   [How to combine text in two cells on Excel?](https://recodehive.com/excel-formulas-text-and-date-functions/#How_to_combine_text_in_two_cells_on_Excel "How to combine text in two cells on Excel?")
+*   [How to Make Lower and Uppercase inside a Excel?](https://recodehive.com/excel-formulas-text-and-date-functions/#How_to_Make_Lower_and_Uppercase_inside_a_Excel "How to Make Lower and Uppercase inside a Excel?")
+*   [How to Extract spesfic text from a cell in Excel](https://recodehive.com/excel-formulas-text-and-date-functions/#How_to_Extract_spesfic_text_from_a_cell_in_Excel "How to Extract spesfic text from a cell in Excel")
+*   [How to put current Date in Excel coloumns?](https://recodehive.com/excel-formulas-text-and-date-functions/#How_to_put_current_Date_in_Excel_coloumns "How to put current Date in Excel coloumns?")
+*   [FINAL VERDICT :](https://recodehive.com/excel-formulas-text-and-date-functions/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### What will learn from this post?
+
+Think about the data with inconsistent data throughout and you need to perform some analysis on it. In Most of the business Analytics case studies, we have specific requirements to analyze the information processed during particular dates. Excel Formulas – Text and Date Functions has the power to work with text and Date [Function](https://www.spreadsheetsmadeeasy.com/excel-formulas-for-beginners/) to perform Data Manipulation which we will look at in this post
+
+*   Manupulating Data in Excel – formulas in excel
+*   Working with Text and Date Functions
+
+#### How to combine text in two cells on Excel?
+
+We will be using the **CONCAT function** following **\=** to perform combining two cells in Excel. A person can have 2 different approaches over here either use the **CONCAT function** or go with an **ampersand.** This will allow us to combine the two values in cells and along with that, we can manipulate the data with extra markings using Excel Formulas – Text and Date Functions.
+
+\=concat(cell1," ",Cell2)
+or 
+=cell1&"."&cell2            
+For Email with first name and lastname =cell1&"."&cell2&"@gmail.com"
+
+![Concat function in Excel](https://recodehive.com/wp-content/uploads/2021/04/image-127-1024x368.png)
+
+#### How to Make Lower and Uppercase inside a Excel?
+
+you can use **UPPER, LOWER, PROPER** to manulpate your structure of Data, these are the forumulas in excel
+
+*   Proper – If you want a list of names to start with a capital letter can use Proper function in excel
+*   UPPER – Make all the words to the capital letter in the cell
+*   LOWER – Make cell to lower case.
+
+\=proper(concat(cell1," ",Cell2))
+=lower(cell)
+=Upper(cell)
+
+![Upper and Lower case Functions](https://recodehive.com/wp-content/uploads/2021/04/image-128-1024x281.png)
+
+#### How to Extract spesfic text from a cell in Excel
+
+**LEFT, MID, RIGHT** to fetch or extract data from a cell, this will be more useful in the Data Wrangling phase before Data Analysis, exception case find the pattern of data and use the Find function to extract the data properly. We can use the find function as a helper in the above functions, Find finds the location of the character specified.
+
+*   LEFT – Helps to extract the data from the left
+*   MID – Extract the mid values from the cell, need to define starting and ending positions.
+*   RIGHT – Same like Left, it counts the pointers from the right side of the cell
+
+\=LEFT(text,num\_chars)
+=MID(text,num\_chars\_start,num\_chars\_end)
+=RIGHT(text,num\_chars)
+
+\=FIND("",D3)-4 //This will find the space in the text   and replace it over here =MID(text,num\_chars\_start,FIND("",D3)-4)
+
+![Excel Formulas - Text and Date Functions](https://recodehive.com/wp-content/uploads/2021/04/image-129-1024x289.png)
+
+#### How to put current Date in Excel coloumns?
+
+Users can use the **\=Now()** function to implement the current system date and time, also **=Today**() function, and the function returns in a total number of days rather than years. If you want to get output in years use **\=YEARFRAC, cell, TODAY())**
+
+**\=Now()** 
+**\=Today**()
+**\=YEARFRAC,cell,TODAY())**
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Excel Formulas – Text and Date Functions**”. In the next post, will learn Data Wrangling using Excel. How to make use of Business Intelligence with excel. Signing off **[Sanjay Kv](https://recodehive.com/about-us/)**
+
+**How many arguments sum function allow in excel?**
+
+Excel allows upto 255 Arguments to add in Excel.
+
+**will the 3D formula result change if we move the cell later?**
+
+As long has you dont delete any sheet which used for 3D formula calculation nothing affects the result.
+
+**Is it possible to undo a operation in Consolidation with link on excel?**
+
+You cannot undo Consolidation with link in Microsoft Excel.

@@ -1,0 +1,247 @@
+   Externalize Parameters in SAP CPI
+
+Externalize Parameters in SAP CPI
+=================================
+
+Tags: CPI,Externalize,SAP,SAP CPI
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Mon Sep 14 2020
+
+This article helps you understand how to externalize any parameter in SAP CPI. It also covers different configuration scenarios using the externalized parameter to make you understand the conceptual as well as the technical aspects of Flow control. Go through my previous article to understand the basics of ProcessDirect Adapter.
+
+Table of Contents
+
+Toggle
+
+*   [SCENARIO :](https://recodehive.com/externalize-parameters-in-sap-cpi/#SCENARIO "SCENARIO :")
+*   [CREATING ARTIFACTS](https://recodehive.com/externalize-parameters-in-sap-cpi/#CREATING_ARTIFACTS "CREATING ARTIFACTS ") 
+*   [SETTING UP CONSUMER FLOW (SECOND FLOW)](https://recodehive.com/externalize-parameters-in-sap-cpi/#SETTING_UP_CONSUMER_FLOW_SECOND_FLOW "SETTING UP CONSUMER FLOW (SECOND FLOW) ") 
+*   [SETTING UP CONSUMER FLOW ( THIRD FLOW )](https://recodehive.com/externalize-parameters-in-sap-cpi/#SETTING_UP_CONSUMER_FLOW_THIRD_FLOW "SETTING UP CONSUMER FLOW ( THIRD FLOW ) ") 
+*   [SETTING UP PRODUCER FLOW ( MAIN FLOW )](https://recodehive.com/externalize-parameters-in-sap-cpi/#SETTING_UP_PRODUCER_FLOW_MAIN_FLOW "SETTING UP PRODUCER FLOW ( MAIN FLOW ) ") 
+*   [MONITORING](https://recodehive.com/externalize-parameters-in-sap-cpi/#MONITORING "MONITORING ") 
+*   [EXTERNAL CONFIGURATION OF PARAMETERS to call Different Consumer Flow (THIRD FLOW)](https://recodehive.com/externalize-parameters-in-sap-cpi/#EXTERNAL_CONFIGURATION_OF_PARAMETERS_to_call_Different_Consumer_Flow_THIRD_FLOW "EXTERNAL CONFIGURATION OF PARAMETERS to call Different Consumer Flow (THIRD FLOW) ") 
+*   [EXTERNAL CONFIGURATION OF PARAMETERS to Route via default Route ( Route1 )](https://recodehive.com/externalize-parameters-in-sap-cpi/#EXTERNAL_CONFIGURATION_OF_PARAMETERS_to_Route_via_default_Route_Route1 "EXTERNAL CONFIGURATION OF PARAMETERS to Route via default Route ( Route1 )")
+*   [FINAL VERDICT :](https://recodehive.com/externalize-parameters-in-sap-cpi/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### SCENARIO :
+
+The demo will have a Producer Flow ( named Main Flow ) and Two Consumer Flows ( Second Flow or Third Flow, one at a time). Two parameters will be externalized
+
+1\. **Switch\_To\_Flow2**: This is to decide if the Producer Flow has to extend to Consumer Flow ( with value = true ) or not ( with value = false ).
+
+2\. **Flow\_Name**: This is to decide which Consumer Flow is to be called when Switch\_To\_Flow2 is true ( address=/Flow2 will call Second Flow and address= /Flow3 will call Third Flow )
+
+#### CREATING ARTIFACTS 
+
+**Step 1**: Create three artifacts as shown. **Main Flow** will be the Producer Flow from where we access Consumer flows ( **Second flow** or **Third Flow** ). 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-7-1024x301.png)
+
+#### SETTING UP CONSUMER FLOW (SECOND FLOW) 
+
+**Step 2**: Open the Second Flow and add a Content Modifier. Arrange the blocks as shown below. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-29.png)
+
+**Step 3**: Connect **_Sender_** to **_Start_**. From the Pop-up appearing, Choose **_ProcessDirect_** adapter. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-8.png)
+
+**Step 4**: In the Connection tab of the ProcessDirect, type the address as /Flow2 as in the below image. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-12.png)
+
+**Step 5**: Select Content Modifier. In the Message Body tab, Choose Type = Expression, and in **Body** type any custom message, 
+
+               ${in.body} 
+
+               Second Flow In Action 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-10.png)
+
+**Step 6**: **Save** and **Deploy** the flow. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-13.png)
+
+#### SETTING UP CONSUMER FLOW ( THIRD FLOW ) 
+
+**Step 7**: Open **Third Flow** artifact. Connect Everything as done in Second Flow artifact.  
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-29.png)
+
+**Step 8**:  Connect Sender to start. From the Pop-up, choose ProcessDirect adapter. In the **_connection_** tab, Type address as **/Flow3**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-18.png)
+
+**Step 9**: Select Content Modifier. In the **_Message Body_** tab, type as shown below. 
+
+           ${in.body} 
+
+           Third Flow In Action 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-30.png)
+
+**Step 10** : **Save** and **Deploy**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-28.png)
+
+#### SETTING UP PRODUCER FLOW ( MAIN FLOW ) 
+
+**Step 11**:  Open Main Flow.  Get below shown Blocks from the Pallet on your left and arrange as shown in the below image. The Configuration of each block will be shown in the upcoming steps. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-31.png)
+
+**Step 12**: Select **_Timer_**. In the **_scheduler_** tab, check **Run Once**. This is to make sure the flow gets triggered as soon as it is deployed. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-9.png)
+
+**Step 13**: Select **_Content Modifier_**. In the **_Exchange property_** tab, create a property as shown below. 
+
+**Name**: Switch\_To\_Flow2 ( This can be any Custom Name ) 
+
+**Type**: Expression  
+
+**Value** :   {{Switch\_To\_Flow2}} —->  This is how we externalize the parameter value. It will look as shown below. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-25-1024x164.png)
+
+**Step 14**: Click on the <Define Value>. In the Pop Up appearing, Give Default _**Value = true**_. Click on **OK**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-15.png)
+
+**Step 15**: It should now look as below. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-19-1024x166.png)
+
+**Step 16**: Select **_Content Modifier_**. In **_Message Body_** Tab, Write any custom message as Below. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-26.png)
+
+**Step 17**: Select Route1 and in the Processing tab, Check the Default Route button. This route will now act as the default Route. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-32-1024x373.png)
+
+**Step 18**: Select **_Route2_**. In **_processing_** tab, Choose **Non-XML** expression type. In **Condition** field, 
+
+${property.Switch\_To\_Flow2} = ‘true’
+
+In case, the value of the externalized parameter ( [Step14](#Step 14) ) is **true**, the flow will take this path. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-33.png)
+
+**Step 19**: Connect Request-Reply to Receiver. From the Pop-up appearing, Choose **_ProcessDirect_** adapter. In The **_connections_** tab, click on **Externalize**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-34-1024x306.png)
+
+**Step 20**: In the pop-up appearing, Fill details below. Click **OK**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-35-1024x568.png)
+
+{{Flow\_Name}} –> This can be any custom Name 
+
+/Flow2 —-> this is the address of the default consumer flow to be called (Second Flow or Third Flow ) 
+
+**Step 21**: Select **_[Groovy Script](https://www.tutorialspoint.com/groovy/index.htm)_**. Click on the below-highlighted icon. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-11.png)
+
+**Step 22**: Remove the default coding and paste the following code. This is to log the payload. 
+
+import com.sap.gateway.ip.core.customdev.util.Message;
+def Message processData(Message message) {
+    def body = message.getBody(java.lang.String) as String;
+    def messageLog = messageLogFactory.getMessageLog(message);
+    if(messageLog != null){
+        messageLog.setStringProperty("Logging#1", "Printing Payload As Attachment")
+        messageLog.addAttachmentAsString("ResponsePayload1:", body, "text/plain");
+     }
+    return message;
+}
+
+**Step 23**: Repeat _Step 21_ and _Step 22_ for another Groovy script as well. 
+
+**Step 24**: **_Save_** and **_Deploy_** the flow. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-21.png)
+
+#### MONITORING 
+
+**Step 25**: Go to **Overview Window**. Under **Manage Integration Content**, Click on **All**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-17.png)
+
+**Step 26**: Make sure that all 3 Flows are _**started**_. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-27.png)
+
+**Step 27**: If all 3 flows are started, then go to the **Completed Messages** tile. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-22.png)
+
+**Step 28**: You should see the below two Flows in the **_Completed_** state. Click on **Main Flow** and Click on **Logs**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-36-1024x226.png)
+
+**Step 29** : Under **Attachments**, Click on **_ResponsePayload1_**.  
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-20.png)
+
+**Step 30**: If you have given the custom messages exactly shown in the above screenshots, you should see a response as below. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-16.png)
+
+From the output, you can say that Second Flow is called. This was because we had given the default address of Second Flow ( /Flow2 ) in [Step 20](#Step 20). If u had given the default address of Third Flow (/Flow3 ), it would call Third Flow. 
+
+#### EXTERNAL CONFIGURATION OF PARAMETERS to call Different Consumer Flow (THIRD FLOW) 
+
+**Step 31**: Go to the artifacts tab in the Design window and Click on **_Actions_** of **Main Flow**. Select **_Configure_**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-37-1024x325.png)
+
+**Step 32**: In the Reciever tab of Pop up, Write the address as **/Flow3**. This overwrites the default value ( /Flow2 ) and Directs the call to Third Flow.  
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-14.png)
+
+**Step 33**: In the More tab, keep the value as truth itself. Click on **Save** and **Deploy**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-38-1024x518.png)
+
+**Step 34**: Now under **_Completed messages_**, you will see Main Flow and Third Flow
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-39-1024x327.png)
+
+**Step 35**: Click on **ResponsePayload1** of **Main Flow**. You will see the custom message from Main Flow and Custom Message From Third Flow. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-20.png)
+
+#### EXTERNAL CONFIGURATION OF PARAMETERS to Route via default Route ( Route1 )
+
+**Step 36**: Go to the **_Artifacts_** tab. Click on **_Actions_** of **_Main Flow_**. Select **Configure**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-40-1024x325.png)
+
+**Step 37**: In **_more_**, type value as **false**. **_Save_** and **_Deploy_**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-23-1024x485.png)
+
+**Step 38**: In the **_Overview_** tab, under **_Monitor Message Processing_**, Click on **Completed Messages** Tile. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-41.png)
+
+**Step 39** : Now you will see only **Main Flow** is completed. It is not calling any other flows as the value is set to **false** in [**Step 37**](#Step 37). This makes the flow to take default **_Route1_** in Main Flow. 
+
+**Step 40**: Click on **_Logs_** and then **_ResponsePayload1_** as highlighted. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-42-1024x319.png)
+
+**Step 41**: Output will show only the Custom Message given in Main Flow. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-24.png)
+
+**Tip**: Externalize the parameters which require frequent value change to maintain Quality and save time during testing.
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Externalize Parameters in SAP CPI – A demo**”, If yes, then don’t forget to spread the word about it. Do send the feedback and to know more about it. Signing off [sudarshan@recodehive.com](mailto:sudarshan@recodehive.com)

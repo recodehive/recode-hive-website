@@ -1,0 +1,79 @@
+   Access Iflows using Postman in SAP CPI
+
+Access Iflows using Postman in SAP CPI
+======================================
+
+Tags: CPI,SAP CPI
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Thu Jan 21 2021
+
+Table of Contents
+
+Toggle
+
+*   [Introduction](https://recodehive.com/access-iflows-using-postman-in-sap-cpi/#Introduction "Introduction")
+*   [Prerequisites :](https://recodehive.com/access-iflows-using-postman-in-sap-cpi/#Prerequisites "Prerequisites :")
+*   [FINAL VERDICT :](https://recodehive.com/access-iflows-using-postman-in-sap-cpi/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### Introduction
+
+The article includes the steps to be followed in order to access the integration flows of SAP CPI via Postman using the Trail Account Login Credentials in alternate to the client ID and Client Secret. Hope you have set up your SAP CPI Trail Account and below prerequisites as well.
+
+#### Prerequisites :
+
+1.  SAP CPI [Trial Account](https://recodehive.com/set-up-sap-cpi-tenant-in-trial-account/).
+2.  [Postman](https://www.postman.com/downloads/)
+
+**Step 1**: Log in to your SAP trial account and click on your active subaccount.
+
+![Login](https://recodehive.com/wp-content/uploads/2021/01/image.png)
+
+**Step 2:** From the Left Panel, Select **Role Collections** under Security.
+
+![Role Collections](https://recodehive.com/wp-content/uploads/2021/01/image-1.png)
+
+**Step 3**: Click on + Symbol appearing on the top right to create a new custom Role Collection.
+
+![](https://recodehive.com/wp-content/uploads/2021/01/image-2-1024x269.png)
+
+**Step 4 :** Give any meaningful name and Description. Click on **create**.
+
+![Login](https://recodehive.com/wp-content/uploads/2021/01/image-3.png)
+
+**Step 5**: Search for the newly created Role Collection. Click on > to assign a role to the collection.
+
+![](https://recodehive.com/wp-content/uploads/2021/01/image-4-1024x371.png)
+
+**Step 6:** Click on Edit.
+
+![](https://recodehive.com/wp-content/uploads/2021/01/image-5-1024x365.png)
+
+**Step 7:** Click on the Role Name Value List.
+
+![Roles](https://recodehive.com/wp-content/uploads/2021/01/image-6-1024x353.png)
+
+**Step 8:** Search for **MessagingSend** role and select the same.
+
+![MessagingSend](https://recodehive.com/wp-content/uploads/2021/01/image-7-1024x284.png)
+
+**Step 9:** Select the **MessagingSend** Role and click on **Add.**
+
+![](https://recodehive.com/wp-content/uploads/2021/01/image-8-1024x359.png)
+
+**Step 10**: Now we need to assign a user to the role. Under the Users tab, Give the ID and the rest will be filled automatically.
+
+![](https://recodehive.com/wp-content/uploads/2021/01/image-9-1024x422.png)
+
+**Step 11**: Once the user is assigned, click on **Save.**
+
+![Save](https://recodehive.com/wp-content/uploads/2021/01/image-10-1024x250.png)
+
+**Step 12**: Go to POSTMAN and replace the client ID and Client Secret given in Basic Auth with your **Trial Account Login credentials**.
+
+![Postman](https://recodehive.com/wp-content/uploads/2021/01/image-11.png)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Access Iflows using Postman in SAP CPI**”, If yes, then don’t forget to spread the word about it. Do send the feedback and to know more about it. Signing off [Sudarshan@recodehive.com](Sudarshan@recodehive.com)

@@ -1,0 +1,80 @@
+   Creating Instances and Service Keys in SAP CPI
+
+Creating Instances and Service Keys in SAP CPI
+==============================================
+
+Tags: Client Secret,ClientId,CPI,Instance,OAuth,SAP,SAP CPI,Service Key
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Wed Feb 02 2022
+
+Table of Contents
+
+Toggle
+
+*   [Overview](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/#Overview "Overview")
+*   [Pre-requisites](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/#Pre-requisites "Pre-requisites")
+*   [Steps](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/#Steps "Steps")
+*   [Final Verdict](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/#Final_Verdict "Final Verdict ")
+
+Overview
+--------
+
+The article mainly focuses on creating an instance and associated service key in SAP CPI. In this article, subscription to Process Integration Runtime Instance is shown along with creating a Service key for the same Instance. The Service Key provides the credentials required for OAuth authentication which includes, client id, client secret, URL, and token URL.
+
+Pre-requisites
+--------------
+
+*   An active SAP BTP account with subscription to Integration suite. Follow [this](https://recodehive.com/set-up-your-sap-cpi-trial-account/) blog to create a trail account for free.
+*   The roles AuthGroup\_Adminisrator, AuthGroup\_BusinessExpert, AuthGroup\_IntegrationDeveloper
+
+Steps
+-----
+
+**Step 1:** [](https://accounts.sap.com/saml2/idp/sso)Log in [](https://account.hana.ondemand.com/#/home/welcome)to your SAP BTP Cockpit subaccount. From the list on your left, select Service Marketplace. Search for Process Integration Runtime. Click on “**_Create_**” as shown in the snap below.
+
+![Service Marketplace](https://recodehive.com/wp-content/uploads/2022/01/image-26.png)
+
+**Step 2:** In the pop-up window, select the below-shown values from the dropdown. For “**_Instance Name_**“, give any valid name of your choice. Click on **_Next_**.
+
+![Instance creation](https://recodehive.com/wp-content/uploads/2022/01/image-27.png)
+
+**Step 3**: Select the grant types required from the dropdown and add the roles. The below screenshot values mean that a user with ESBMessaging.send Role can access the Process Integration Runtime Instance using client credentials and password credentials. Therefore, if you want to add any other type of Authorization, do select the same from the dropdown. Click on “**Create**“.
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-28.png)
+
+**Step 4:** The service instance gets created within minutes. To view the same, Click on “**_View Instance_**“.
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-29.png)
+
+**Step 5:** Under **_Instances_**, an instance of **_Process Integration Runtime_** with the name you provided will appear.
+
+![View Instance](https://recodehive.com/wp-content/uploads/2022/01/image-30.png)
+
+**Step 6**:  Click on the 3 dots on the right-hand side and select the “Create Service Key” option from the dropdown.
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-31.png)
+
+**Step 7**: In the pop-up window, provide a valid, meaningful name. Click on “**Create**“.
+
+![Service Key creation](https://recodehive.com/wp-content/uploads/2022/01/image-32.png)
+
+**Step 8:** The Service key with the given name gets created as shown in the snap below.
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-33.png)
+
+**Step 9:** Click on 3 dots to _**View**_ or **_Download_** the Service key created by selecting the right option.
+
+![View Service Key](https://recodehive.com/wp-content/uploads/2022/01/image-34.png)
+
+**Step 10**: The Service Key details would look as shown in the snap below. This will be required for **_OAuth/Bearer/Client credential_** authentications. The same details can be obtained in JSON format if you switch to the JSON tab.
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-35.png)
+
+Keep the above-obtained information handy to use for any Authorization purpose.
+
+Final Verdict
+-------------
+
+In conclusion, I hope you enjoyed reading this article on “**Creating** **Instances and Service Keys in SAP CPI**”, If yes, then don’t forget to spread the word about it. Do send the feedback to know more about it. Signing off [sudarshanpatwardhan@gmail.com](mailto:sudarshanpatwardhan@gmail.com)

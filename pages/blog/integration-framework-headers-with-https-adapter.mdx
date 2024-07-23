@@ -1,0 +1,254 @@
+   Integration Framework Headers with HTTPS Adapter
+
+Integration Framework Headers with HTTPS Adapter
+================================================
+
+Tags: CPI,Header,HTTPS,Learning,SAP
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Mon Sep 21 2020
+
+Table of Contents
+
+Toggle
+
+*   [INTRODUCTION](https://recodehive.com/integration-framework-headers-with-https-adapter/#INTRODUCTION "INTRODUCTION")
+*   [ADDING CERTIFICATE TO THE KEYSTORE](https://recodehive.com/integration-framework-headers-with-https-adapter/#ADDING_CERTIFICATE_TO_THE_KEYSTORE "ADDING CERTIFICATE TO THE KEYSTORE ") 
+*   [CREATING ARTIFACT](https://recodehive.com/integration-framework-headers-with-https-adapter/#CREATING_ARTIFACT "CREATING ARTIFACT ") 
+*   [TESTING THE ARTIFACT](https://recodehive.com/integration-framework-headers-with-https-adapter/#TESTING_THE_ARTIFACT "TESTING THE ARTIFACT")
+*   [FINAL VERDICT :](https://recodehive.com/integration-framework-headers-with-https-adapter/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### **INTRODUCTION**
+
+Various Headers and Exchange Properties are Provided by the Integration Framework that can be utilized while building the integration flow in SAP CPI.
+
+This article is intended to demonstrate leveraging the Integration Framework Headers associated with  HTTPS sender Adapter. 
+
+Consider the below URL as an example. 
+
+_https://abcd.it-cpitrial-rt.cfapps.us10.hana.ondemand.com/http/IF\_Headers?q=London,uk&appid=1_
+
+The respective Integration Framework  headers associated with HTTPS sender Adapter will be as below. 
+
+CamelHttpMethod 
+
+Referes to the Method of Incoming request ( GET, POST, DELETE etc )  
+
+CamelHttpQuery 
+
+Refers to the query string that is contained in the request URL .( q=London,uk&appid=1 )  
+
+CamelHttpResponseCode 
+
+The response from an HTTP call ( 200 : If successful, 401/404 : If error when used with Exception Subprocess )  
+
+CamelHttpUrl  
+
+The Request URL without query string. ( https://abcd.it-cpitrial-rt.cfapps.us10.hana.ondemand.com/http/IF\_Headers)   
+
+CamelServletContextPath  
+
+The Address given in the channel. ( /IF\_Headers )  
+
+Let’s look a demo to understand how to use these Headers. 
+
+I have considered a sample open weather URL to fetch details. 
+
+#### ADDING CERTIFICATE TO THE KEYSTORE 
+
+**Step 1** :  Got to the following URL:  [https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=1](https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=1) . Click on the **Lock icon** as shown below. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-65-1024x127.png)
+
+**Step 2** :  Click on **Certificates** (Valid ) 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-70.png)
+
+**Step 3** : Under **Details** tab, Click on **Copy to File**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-68.png)
+
+**Step 4** :  In the Certificate Export Wizard, Click on **Next** 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-71.png)
+
+**Step 5** : In the next window, Choose **DER encoded binary X.509 (.CER)** radio button. Click on **Next**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-78.png)
+
+**Step 6** : **Browse/Enter** a path to save the Certificate and Click on **Next**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-76.png)
+
+**Step 7** : Click on **Finish**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-69.png)
+
+**Step 8** : In Overview window, Under **_Manage Security_**, Click on **Keystore**. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-89-1024x301.png)
+
+**Step 9** :  Click on **Add** —> **Certificate**. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-88-1024x128.png)
+
+**Step 10** :  In the Pop up, Give any **Alias** name of your choice and **Browse** the certificate that you have already downloaded. Click on **Add**. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-90.png)
+
+**Step 11** : At times you might have to manually Confirm the Certificate. Click on **Confirm**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-67.png)
+
+**Step 12** :  Now you can see that the required certificate is added to the tenant. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-79-1024x171.png)
+
+#### CREATING ARTIFACT 
+
+**Step 13** :  Create a simple **Artifact** as show below. 
+
+Sender Adapter will be _**HTTPS**_. A _**request Reply**_ Step to connect with external sample weather URL. _**Content Modifier**_ to Collect all the above mentioned headers. 
+
+An _**Exception Subprocess**_ is used to handle exception when the HTTP address from Request Reply is not reachable. The _**Content Modifier**_ inside the Exception Subprocess will serve exactly the same purpose as other Content Modifier used. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-77-1024x450.png)
+
+**Step 14** : Select the **HTTPS** Sender Adapter and in **Connection** tab ,Give Relative **address** to generate Endpoint for the Flow. ( _/IF\_Headers_ ). 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-72.png)
+
+**Step 15** : Select **HTTP** Receiver Adapter used with Request Reply Step. In **Connection** tab, 
+
+**Address** :  [https://samples.openweathermap.org/data/2.5/weather](https://samples.openweathermap.org/data/2.5/weather) 
+
+**Query** : **${header.CamelHttpQuery}**             –> this will take the value from incoming request header. 
+
+**Method** : **GET** 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-91.png)
+
+**Step 16** :  Select the **Content Modifier**. In **Message Body** tab, type as below to capture all the Framework headers. 
+
+    <Result> 
+    
+    METHOD : ${header.CamelHttpMethod} 
+    
+    QUERY : ${header.CamelHttpQuery} 
+    
+    RESPONSECODE :${header.CamelHttpResponseCode} 
+    
+    URL : ${header.CamelHttpUrl} 
+    
+    CONTEXTPATH : ${header.CamelServletContextPath} 
+    
+    BODY : ${in.body} 
+    
+    </Result> 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-85.png)
+
+**Step 17** : Select **Content Modifier** inside the **_Exception Subprocess_**. In **Message Body** tab, type as below. 
+
+    <Result1> 
+    
+    METHOD : ${header.CamelHttpMethod} 
+    
+    QUERY : ${header.CamelHttpQuery} 
+    
+    RESPONSECODE :${header.CamelHttpResponseCode} 
+    
+    URL : ${header.CamelHttpUrl} 
+    
+    CONTEXTPATH : ${header.CamelServletContextPath} 
+    
+    BODY : ${in.body} 
+    
+    </Result1> 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-81.png)
+
+**Step 18** : **Save** and **Deploy**. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-86.png)
+
+**Step 19** : Make sure that the Flow is **started**. Click on the highlighted **Copy** button under **Endpoints** to copy the Endpoint. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-87-1024x282.png)
+
+#### TESTING THE ARTIFACT
+
+**Step 20** :  Open [Postman](https://www.postman.com/downloads/) app.  
+
+Keep the request in **GET** mode. 
+
+Paste the Endpoint copied in **[Step 19](#Step 19)** in to **URL tab**. 
+
+In **Authorization** tab, Choose **TYPE : Basic Auth** 
+
+**Username** : Client ID 
+
+**Password** : Client Secret 
+
+Client Id and Client Secret you will get when you create Process Integration Runtime Instance during tenant setup. ( Refer **Step 34** of [this](https://recodehive.com/set-up-sap-cpi-tenant-in-trial-account-2/) post )
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-82-1024x388.png)
+
+**Step 21** : Under **Params** tab, insert two **Key**s and **Value**s corresponding to the query. 
+
+**KEY** 
+
+**VALUE** 
+
+q 
+
+London,uk 
+
+appid 
+
+1 
+
+Now you can observe the endpoint URL automatically changes to accommodate the query parameters in it. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-92.png)
+
+**Step 22** :  Under **_Body_** tab, Choose **None**  radio button as we are not sending any input data to the flow. Click on **SEND**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-84.png)
+
+**Step 23** :  You will get back the following response. Verify whether you are getting values as explained in the introduction. 
+
+Note that the **RESPONSE CODE** is **200** which means the **_URL was reached Successfully_**. And the Information returned from the URL is Displayed under **BODY**. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-93-1024x400.png)
+
+**Step 24** :  Go back to the  **Artifact**. Click on **HTTP** Receiver adapter connected from Request Reply to the Receiver. In **Connection** tab, Change the address to [https://samples.openweathermap.org/data/2.5/wea](https://samples.openweathermap.org/data/2.5/wea) so that the end point is incomplete , not reachable and the flow throws exception. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-75.png)
+
+**Step 25** : **Save** and **Deploy**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-66.png)
+
+**Step 26** :  Make sure  that the Flow is **started** again. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-73-1024x126.png)
+
+**Step 27** :  Go back to **POSTMAN**. The previous settings will still be available. Click on **SEND**. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-74-1024x220.png)
+
+**Step 28** :  You will get the below response.  
+
+Note that the **RESPONSE CODE** now is **404** which indicates that the _**URL is not reachable**_ and so the BODY will be blank as nothing is returned from the fault URL. 
+
+![Framework](https://recodehive.com/wp-content/uploads/2020/09/image-83.png)
+
+You can further decide where to route the message based on Response code as per your needs. 
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Integration Framework Headers with HTTPS Adapter**”, If yes, then don’t forget to spread a word about it. Do send the feedback and to know more about it. Signing off [sudarshan@recodehive.com](mailto:sudarshan@recodehive.com)
+
+[Adaptation](https://recodehive.com/the-adaptation/) [Growth Hacking](https://recodehive.com/tag/growth-hacking/) [Developer Bundle](https://recodehive.com/category/dev-labs/)[Hope and Focus](https://recodehive.com/hopeandfocus/) [My Day at Google Campus](https://recodehive.com/my-day-at-google-campus-hyderabad/)[Time Machine](https://recodehive.com/time-machine-2-0/) [Manifestation of life after death](https://recodehive.com/the-manifestation-of-life-after-death/)

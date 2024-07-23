@@ -1,0 +1,73 @@
+   Push large files to Github| Git lfs tutorial
+
+Push large files to Github| Git lfs tutorial
+============================================
+
+Tags: devlabs,Github
+
+**Author:** Sanjay KV
+
+**Date:** Sat May 01 2021
+
+Table of Contents
+
+Toggle
+
+*   [Failed to Push Some Refs | Git Error](https://recodehive.com/push-large-files-to-github-git-lfs-tutorial/#Failed_to_Push_Some_Refs_Git_Error "Failed to Push Some Refs | Git Error")
+*   [What is Git LFS?](https://recodehive.com/push-large-files-to-github-git-lfs-tutorial/#What_is_Git_LFS "What is Git LFS?")
+*   [How to install git lfs](https://recodehive.com/push-large-files-to-github-git-lfs-tutorial/#How_to_install_git_lfs "How to install git lfs")
+*   [FINAL VERDICT :](https://recodehive.com/push-large-files-to-github-git-lfs-tutorial/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### Failed to Push Some Refs | Git Error
+
+I was trying to push File size more than 100 MB to Github. Encountered The error was larger file detected, this exceeds Github’s file size limit of **100.00 MB.** Let’s look into how to push large files to Github| Git lfs tutorial(**Github Large File storage).** Mostly when working with large Dataset this is a limitation.
+
+![git error: failed to push some refs to remote](https://recodehive.com/wp-content/uploads/2021/04/image-104-1024x249.png)
+
+git error: failed to push some refs to remote
+
+#### What is Git LFS?
+
+LFS is [Github’s Large File storage system](https://git-lfs.github.com/), Where Github provides storage service to file greater than **100 MB**, You might need this when working with a larger dataset. To get to know about the LFS storage space in your account you can go to **settings** in Github and click on **Billings and Plans.**
+
+![Git storage view](https://recodehive.com/wp-content/uploads/2021/05/image.png)
+
+Github provides **1 GB of free** file storage for everyone, any files beyond that the user needs to pay as they go. The below is the Dataplan if you need to purchase one. Now let’s upload the bigger file to the Github Repository. We will discuss how to upgrade Github Data plan.
+
+![Github Settings](https://recodehive.com/wp-content/uploads/2021/04/image-103-1024x439.png)
+
+#### How to install git lfs
+
+**Step 1:** Go to the [below link](https://git-lfs.github.com/) and download the file for whichever system you are using once, download the installation is pretty simple like any other software. The file size is 7.4 Mb for git lfs install.
+
+![Git lfs download](https://recodehive.com/wp-content/uploads/2021/04/image-96-1024x362.png)
+
+**Step 2:** Open **CMD**(Command Prompt) and go to the directory where you want to perform this, it can be your cloned repository file or the new folder you have created.
+
+If using windows system
+Type DIR to view to current directory
+Type cd foldername to move to the new exisiting directory
+
+![Push large files to Github | Git Tutorial](https://recodehive.com/wp-content/uploads/2021/04/image-107-1024x336.png)
+
+**Step 3:** Setting up Git LFS, Type the below code in the command promt to install and track the files in the folder.
+
+In the second code what the system will do is track the **CSV files** in your local repository, In case your dataset is **“mpg”** then instead of CSV you can give mpg. Now let’s see how to push large file to Github.
+
+![Git Lfs installation](https://recodehive.com/wp-content/uploads/2021/04/image-108.png)
+
+**Step 4:** Now add the below code and add all the files your required, as my dataset was there in **3 excel in Data Folder**, so I used t**he git add \*** command rather than adding the individual file.
+
+![Push large files to Github](https://recodehive.com/wp-content/uploads/2021/04/image-106-1024x393.png)
+
+**What’s the disadvantage of Git lfs?**
+
+Everytime when the people pull or push to the repository it will cound towards the data store bandwidth and utilize the storage left, if auto debit is enabled the money will deducted from the account.
+
+**What is the alternate way to push python file without using lfs?**
+
+The best approach is store the dataset in different folder and push the python notebook to Github. Use Kaggle storage to do in more efficent way.
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Push large files to Github| Git lfs tutorial**”. Let us know in case you find any issues in executing the above steps. Signing off **[Sanjay Kv](https://recodehive.com/sanjay/)**

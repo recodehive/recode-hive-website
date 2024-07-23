@@ -1,0 +1,147 @@
+   Git Cheat Sheet. 50 Git commands |Git Tutorials
+
+Git Cheat Sheet. 50 Git commands |Git Tutorials
+===============================================
+
+Tags: devlabs,Github
+
+**Author:** Sanjay KV
+
+**Date:** Sun Apr 18 2021
+
+Table of Contents
+
+Toggle
+
+*   [Headsup to the Github Cheatsheet](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#Headsup_to_the_Github_Cheatsheet "Headsup to the Github Cheatsheet")
+*   [Git Setup](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#Git_Setup "Git Setup")
+*   [Git workflow](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#Git_workflow "Git workflow   ")
+*   [Selecting Files to Share](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#Selecting_Files_to_Share "Selecting Files to Share")
+*   [Commiting Changes](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#Commiting_Changes "Commiting Changes")
+*   [The Sharing Flow in Git](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#The_Sharing_Flow_in_Git "The Sharing Flow in Git")
+*   [Adding a Remote](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#Adding_a_Remote "Adding a Remote")
+*   [Uploading a file to Remote](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#Uploading_a_file_to_Remote "Uploading a file to Remote")
+*   [Downloading File from the Remote](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#Downloading_File_from_the_Remote "Downloading File from the Remote")
+*   [Git Commands](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#Git_Commands "Git Commands")
+*   [FINAL VERDICT :](https://recodehive.com/git-cheat-sheet-50-git-commands-git-tutorials/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### Headsup to the Github Cheatsheet
+
+This is part of GitHub/[Git Tutorials](https://recodehive.com/how-to-install-git/) and a continuation of the previous post where we discussed what is git and how to install it, I hope you have a basic understanding of what is Github in general. [Let’s get started with Git](https://try.github.io/) Cheat Sheet. Git Cheat Sheet. 50 Git commands |Git Tutorials
+
+#### Git Setup
+
+Git init
+
+#### Git workflow
+
+![Explaining Git Workflow](https://recodehive.com/wp-content/uploads/2021/04/image-76.png)
+
+The role of Git
+
+#### Selecting Files to Share
+
+git add filename.ipynb
+
+#### Commiting Changes
+
+git commit -m "Give some meaningfull comments"
+
+#### The Sharing Flow in Git
+
+![50 Git commands, git Tutorials](https://recodehive.com/wp-content/uploads/2021/04/image-78.png)
+
+#### Adding a Remote
+
+Git remote add origin URL
+
+![Adding Git commands](https://recodehive.com/wp-content/uploads/2021/04/image-79-1024x410.png)
+
+#### Uploading a file to Remote
+
+git push origin \[name\_of\_your\_new\_branch\] -> Push the branch on github : 
+
+git push origin :\[name\_of\_your\_new\_branch\]  -> Delete the branch on github : 
+
+![Git Cheat Sheet. 50 Git commands](https://recodehive.com/wp-content/uploads/2021/04/image-81.png)
+
+#### Downloading File from the Remote
+
+Git Pull -> To pull the file from the specific branch 
+
+![Git Cheat Sheet. 50 Git commands](https://recodehive.com/wp-content/uploads/2021/04/image-82-1024x422.png)
+
+ Git branch -> to see the existing branch
+ Git checkout main -> To switch between the branch 
+
+![Git Branching](https://recodehive.com/wp-content/uploads/2021/04/image-80-1024x355.png)
+
+Git branch Meow  -> This will create a  new branch called Meow  
+
+Git branch -a -> To see all the branch you created.
+
+#### Git Commands
+
+Here are the 50 Git commands |Git Tutorials whch can help you with different tasks
+
+**#git config**
+git --version
+git config _\--global #for global level config_ 
+git config _#for project level config_ 
+git config --global user.name <"name"> 
+git config --global user.email <"email"> 
+git config --global core.editor <"editor"> 
+git config --global color.ui true 
+
+**#basic git commands** 
+git init _#Initialize a local Git repository_ 
+git add . _#add all file in the current directory_ 
+git add  _#Add a file to the staging area_ 
+git add -A _#Add all new and changed files to the staging area_ 
+git clone _#Create a local copy of a remote repository_ 
+
+**#commit git**
+git commit #commit staged files 
+git commit -a #stage and commit all changes to tracked files 
+git commit -am "message" #stage and commit all files with a message 
+git commit --amend -m "message" #add additional info to last commit 
+
+**#view** 
+git log #view changes 
+git log --summary #view changes detailed 
+git log --oneline #view changes breifly 
+git status git show
+
+**#git diff command** 
+git diff 
+git diff --color-words 
+git diff -staged 
+
+**#to rename a file to directly stage** 
+git mv <filename> <renamed Filename>
+git rm <filename>
+
+**#git branches** 
+git branch #list branches 
+git branch <name> #create new branch
+git branch -d \[branch name\] #delete branch 
+git checkout <branch name>  #Switch to a branch 
+git merge <branch name>   #Merge a branch into the active branch 
+git merge <source name>  <Target name> #Merge a branch into a target branch 
+
+**#undo changes** 
+git checkout --  #telling git to undo changes in working directory. 
+git checkout -- . #undo all changes in working directory 
+git reset HEAD <file> #to unstage the file in staging area 
+git revert <sha value> #to revert back to specfic commit 
+git clean -n #show the untracked file status 
+git clean -f #remove untracked files 
+
+**#adding our project to github** 
+git remote add origin <link URL>  #Add a remote repository 
+git branch -M main #make the branch main 
+git push -u origin main #Push changes to remote repository (and remember the branch
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Git Cheat Sheet. 50 Git commands |Git Tutorials**”. In the next post, We will continue the Git/Github courses with more added materials. Signing off **[Sanjay Kv](https://recodehive.com/about-us/)**

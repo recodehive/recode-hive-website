@@ -1,0 +1,94 @@
+   How to Setup Custom Domain on GitHub Pages
+
+How to Setup Custom Domain on GitHub Pages
+==========================================
+
+Tags: devlabs,Github
+
+**Author:** Sanjay KV
+
+**Date:** Sat Oct 02 2021
+
+This is a continuation of the previous post, We have already created a repository on the same, if not [refer to this](https://recodehive.com/how-to-host-a-website-using-github/) Tutorial to get started. We are going to give a custom domain to the website you have hosted before.
+
+Table of Contents
+
+Toggle
+
+*   [What is Custom Domain](https://recodehive.com/how-to-setup-custom-domain-on-github-pages/#What_is_Custom_Domain "What is Custom Domain")
+*   [Fixing the Error while Setup Custom Domain](https://recodehive.com/how-to-setup-custom-domain-on-github-pages/#Fixing_the_Error_while_Setup_Custom_Domain "Fixing the Error while Setup Custom Domain")
+    *   *   [FINAL VERDICT :](https://recodehive.com/how-to-setup-custom-domain-on-github-pages/#FINAL_VERDICT "FINAL VERDICT :")
+
+What is Custom Domain
+---------------------
+
+By default when you upload a repository and host using **GitHub pages**, It will be as shown below. If this is a company name or a static portfolio page this may not appeal well. So you will have an option to customize this with the domain you want to be, for example, **.com, .in, .io, etc**.
+
+    repo-name.github.io
+
+**Step 1:** We will be creating Custom Domain in Godaddy. For this head to [GoDaddy.com](https://www.godaddy.com/) and search for the domain you wanted and purchase it. Here you can see I have purchased the domain called [sanjaykv.com](http://sanjaykv.com/). Once you purchased a domain you can see the My products Dashboard like this.
+
+**Step 2:** Head to **Manage my domain** under the My Products tab.
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-9-1024x525.png)
+
+**Step 3:** Scroll down on the next page that will be redirected after clicking on **Manage My domain**, then click on **Manage DNS** as highlighted.
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-10-1024x397.png)
+
+**Step 4:** Now you need to add the below, you may wonder why this change is required. Here you are going to redirect Github Server to the Custom Domain Godaddy server.
+
+*   In the Type section “A” row update the (Points to) IP address to: **185.199.108.153**
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-11-1024x538.png)
+
+**Step 5:** In the **CNAME** row with Name “**www**” input your gh-pages website (_username.github.io_). The Steps have been detailed in the below screenshots.
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-12-1024x303.png)
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-13.png)
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-14-1024x444.png)
+
+**Step 6:** click the “ADD” button and make 3 more Type “A” rows with the IP addresses of:
+
+185.199.109.153, 185.199.110.153, 185.199.111.153
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-15-1024x276.png)
+
+In the above screenshot, you have seen adding the IP of **185.199.109.153,** repeat the steps two more times to increase the **185.199.110.153, 185.199.111.153.**
+
+Once you add, it will look something like this now.
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-16-1024x609.png)
+
+**Step 7:** Now the things with Godaddy Dashboard are done. You need to add a CNAME file to the local repository and push it to the remote repository. I have used visual studio for this purpose.
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-18.png)
+
+**Step 8:** In the next step ad the custom Domain name in the repository.
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-23.png)
+
+**Step 9:** Save it Add, commit, and push your changes to GitHub.
+
+**Step 10:** Once you did the push, go to the settings of the GitHub repository.
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-20-1024x506.png)
+
+**Step 11:** Make sure the Enforce HTTPS is checked. If not then SSL certificate. Once this is done your custom domain will work instantly.
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-21-1024x472.png)
+
+Fixing the Error while Setup Custom Domain
+------------------------------------------
+
+You can confirm that your DNS is set up correctly by using **dig the command**, In case you are facing some issue has mentioned below or the custom domain not working. Make sure the CNAME pasted is correct or not.
+
+    Dig custom-domain
+
+![](https://recodehive.com/wp-content/uploads/2021/09/image-22.png)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**How to Setup Custom Domain on GitHub Pages**” Let us know in case you find any issues in executing the above steps. Signing off **[Sanjay Kv](https://recodehive.com/sanjay/)**

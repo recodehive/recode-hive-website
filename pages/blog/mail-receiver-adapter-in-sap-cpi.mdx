@@ -1,0 +1,180 @@
+   Mail Receiver Adapter in SAP CPI
+
+Mail Receiver Adapter in SAP CPI
+================================
+
+Tags: CPI,SAP CPI
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Wed Aug 26 2020
+
+This article is an end to end guide on using Mail Receiver Adapter in SAP CPI for Gmail account.
+
+Table of Contents
+
+Toggle
+
+*   [Prerequisites](https://recodehive.com/mail-receiver-adapter-in-sap-cpi/#Prerequisites "Prerequisites")
+*   [Initial setups to Gmail account](https://recodehive.com/mail-receiver-adapter-in-sap-cpi/#Initial_setups_to_Gmail_account "Initial setups to Gmail account")
+*   [Security Set Ups in Overview Window](https://recodehive.com/mail-receiver-adapter-in-sap-cpi/#Security_Set_Ups_in_Overview_Window "Security Set Ups in Overview Window")
+*   [Creating Integration Flow in Design Window](https://recodehive.com/mail-receiver-adapter-in-sap-cpi/#Creating_Integration_Flow_in_Design_Window "Creating Integration Flow in Design Window")
+*   [Monitoring the Deployed Integration Flow](https://recodehive.com/mail-receiver-adapter-in-sap-cpi/#Monitoring_the_Deployed_Integration_Flow "Monitoring the Deployed Integration Flow")
+*   [FINAL VERDICT :](https://recodehive.com/mail-receiver-adapter-in-sap-cpi/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### Prerequisites
+
+1.  You have setup a _[trial account](https://recodehive.com/setup-your-sap-cpi-trial-account-2/)_, created a _[Tenant](https://recodehive.com/set-up-sap-cpi-tenant-in-trial-account-2/)_ and have assigned yourself all the required roles.
+2.  You have created Package.
+
+#### Initial setups to Gmail account
+
+**Step 1** : Go to your Gmail settings–> Under **Security** tab, **enable Two-Step verification**. After enabling, you will get an option to set up **app passwords**. Click on **App Passwords** as shown below.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/IMG_20200816_112212-191x300.jpg)
+
+  
+
+**Step 2** : In **_select app_** drop down, select **Other( Custom Name)**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/IMG_20200816_111722-190x300.jpg)
+
+**Step 3** : Give Any name of your choice and Click on **Generate** .
+
+![](https://recodehive.com/wp-content/uploads/2020/08/IMG_20200816_111902-216x300.jpg)
+
+**Step 4** : You will receive an 16 digit pass-code. Copy this to your clip board. You will require this for security set ups in your tenant.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/IMG_20200816_111552-138x300.jpg)
+
+#### **Security Set Ups in Overview Window**
+
+**Step 5** : Click on the _**eye**_ symbol highlighted to reach Monitoring window.
+
+**Step 6** :Choose **Connectivity Tests** Tile .
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-25-1024x535.png)
+
+**Step 7** : Select **SMTP** and fill the details as below. Don’t forget to _**un check**_ the _**Valid Server Certificate Required**_ button. Click on **Send**.
+
+This is performed to check connectivity to the [SMTP](https://www.javatpoint.com/simple-mail-transfer-protocol) server of Gmail.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-17.png)
+
+**Step 8** : You will receive the required Server certificates. Click on **Download symbol** as highlighted below. This will give you a zip file with two certificates in it.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-23-1024x394.png)
+
+**Step 9** : Now Click on **Keystore** Tile.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-15-1024x398.png)
+
+**Step 10** : Click on **ADD** –> **Certificate**
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-12-1024x121.png)
+
+**Step 11** : Give any **Alias** name of your choice and Browse to the Certificate that you have downloaded and add it.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-6.png)
+
+**Step 12** : Repeat the same for another certificate too.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-4.png)
+
+**Step 13** : Click on **Security Material** Tile.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-24-1024x485.png)
+
+**Step 14** : Click on **Add** –> **User Credentials**
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-20-1024x157.png)
+
+**Step 15** : Name: Any name of your choice ( _Remember this name_ ).
+
+Type: User Credentials
+
+User: The Gmail ID from which you want to send mail ( Sender Gmail ID).
+
+Password: The app password generated after two step verification in **[Step 4](#Step 4)**.
+
+Once filled, **Deploy**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-11.png)
+
+#### **Creating Integration Flow in Design Window**
+
+**Step 16** : Click on **Add** **_–>_** **Integration Flow** under **_Artifacts_** tab of your Package.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-1-1024x166.png)
+
+**Step 17** : Check **Create** radio button, Enter the mandatory fields. Press **OK**
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-2.png)
+
+**Step 18** : Click on the newly created Integration flow. 
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-3-1024x159.png)
+
+**Step 19** : Click on **Edit**
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-10-1024x271.png)
+
+**Step 20** : Select a **Timer** from Pallet to your left.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-8.png)
+
+**Step 21** : Delete the Start Event and replace it with **Timer**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-7.png)
+
+**Step 22** : Select **Content Modifier** from the Pallet and place to the right of **Timer**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-9.png)
+
+**Step 23** : Click on **Timer**. In **_Scheduler_** tab, Choose **Run Once** radio button
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-14.png)
+
+**Step 24** : Click on **Content Modifier**. In **_Message Body_** tab, Choose **Type = Constant**. and in Body type any Message as shown below.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-22-1024x378.png)
+
+**Step 25** : Drag the arrow on **End** Event towards the **Receiver**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-5.png)
+
+**Step 26** : From the pop up appearing, Choose **Mail** adapter.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-16.png)
+
+**Step 27** : In **_Connection_** tab, Fill the details as shown below. **Credential Name** will be the **[Name](#Name)** you gave in last step of setup.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-27-1024x390.png)
+
+**Step 28** : In the processing tab Fill the **From, To, Subject** tabs. Keep the rest as it is.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-28-1024x396.png)
+
+**Step 29** : Click on **Save** and then **Deploy**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-13-1024x226.png)
+
+#### Monitoring the Deployed Integration Flow
+
+**Step 30** : Go to the **monitoring** tab and click on **All started**.
+
+![CPI](https://recodehive.com/wp-content/uploads/2020/08/image-19-1024x497.png)
+
+**Step 31** : Check the status of your flow to be complete.
+
+![CPI](https://recodehive.com/wp-content/uploads/2020/08/image-26-1024x425.png)
+
+**Step 32** : If its Success as shown below, You will receive the mail to the Gmail address specified in **To** field with the Subject that you gave.
+
+![CPI](https://recodehive.com/wp-content/uploads/2020/08/image-21-1024x490.png)
+
+In case of any error, Check your Gmail account if the access to low security apps is enabled. It needs to be enabled. Feel free to comment your queries.
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Mail Receiver Adapter in SAP – CPI : A step by step Guide!**”, If yes, then don’t forget to spread a word about it. Do send the feedback and to know more about it. Signing off [sudarshan@recodehive.com](mailto:sudarshan@recodehive.com)

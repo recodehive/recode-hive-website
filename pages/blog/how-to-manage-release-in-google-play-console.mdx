@@ -1,0 +1,70 @@
+   How to manage Release in Google Play Console
+
+How to manage Release in Google Play Console
+============================================
+
+Tags: Android,Android Development,Play console
+
+**Author:** Sanjay KV
+
+**Date:** Wed Jul 01 2020
+
+Table of Contents
+
+Toggle
+
+*   [GETTING STARTED](https://recodehive.com/how-to-manage-release-in-google-play-console/#GETTING_STARTED "GETTING STARTED")
+    *   [PREREQUISITES](https://recodehive.com/how-to-manage-release-in-google-play-console/#PREREQUISITES "PREREQUISITES")
+    *   [FINAL VERDICT :](https://recodehive.com/how-to-manage-release-in-google-play-console/#FINAL_VERDICT "FINAL VERDICT :")
+
+### GETTING STARTED
+
+This is post is concentrated for the people who have already published an app in [Google play console](https://play.google.com/apps/publish) and who trying to give an update to the existing app. If you don’t follow the best practice you may end up crashing the existing application.
+
+#### PREREQUISITES
+
+*   App Publish in [Google play console.](https://play.google.com/apps/publish)
+*   Active Google play store application.
+*   Should remember the Keystore value.
+
+**Step 1:** Open Android Studio and go to the project you have already created. Firstly go and edit whatever changes you need to make. then go to **[Gradle Script](https://www.tutorialspoint.com/gradle/gradle_build_script.htm)** -> **build the Gradle** option and go **Version name** and change the Version.
+
+**For Instance:** if it is Version 1 before you can change to **Version** 2, and remember this version number, because while [uploading the apk](https://en.wikipedia.org/wiki/Android_application_package) in Google play console the same will be required.
+
+![How to manage Release in Google Play Console](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.16.21-PM-1024x259.png)
+
+**Step 2:** The same change the Version code as well and remember this version code as well.
+
+![How to manage Release in Google Play Console](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.16.32-PM-1024x292.png)
+
+**Step 3:** you have done your job and now go to Generate Signed APK, in Build Menu. Here you are going to generate a new version of the apk with your existing key-store Password.
+
+![How to manage Release in Google Play Console](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.18.00-PM.png)
+
+**Step 4:** Click on Next.
+
+![How to manage Release in Google Play Console](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.18.11-PM.png)
+
+**Step 5:** So I hope you have given the Keystore value i have skipped the screenshot because of security concern. If you don’t remember the keystore value then its going to hard for you to update the existing application.
+
+After that You can follow the below link to troubleshoot the key-store path.
+
+**Step 6:** Now click on the finish you Gradle will start building and once it got successfully completed them you will get a notification like this below. Click on **locate** and get the **apk file**.
+
+![How to manage Release in Google Play Console](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.41.39-PM.png)
+
+**Step 7:** Go to Google play console, click on the app you need to update. Now go to the **Release management** option, Go to **App release in that,** and in the new window click on manage.
+
+![How to manage Release in Google Play Console](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.42.32-PM-1024x340.png)
+
+**Step 8:** Now you get an option to add apk release and after that upload the apk, once its loaded 100 percentage it will show you any errors if any. if all good to go.
+
+![How to manage Release in Google Play Console](https://recodehive.com/wp-content/uploads/2020/06/Screenshot-2020-06-26-at-10.44.12-PM.png)
+
+**Step 9:** In the bottom, you will have an option to add details regarding your new update. that”s it click on publish, this is how you will manage release in Google play console.
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**How to manage Release in [Google Play Console](https://play.google.com/apps/publish)**”, If yes, then don’t forget to spread a word about it. We would love to hear the feedback from your side and if any doubts contact us. Signing off **[sanjay@recodehive.com](https://recodehive.com/about-us/)**
+
+[Adaptation](https://recodehive.com/the-adaptation/) [Growth Hacking](https://recodehive.com/tag/growth-hacking/) [Developer Bundle](https://recodehive.com/category/dev-labs/)[Hope and Focus](https://recodehive.com/hopeandfocus/) [My Day at Google Campus](https://recodehive.com/my-day-at-google-campus-hyderabad/)[Time Machine](https://recodehive.com/time-machine-2-0/) [Manifestation of life after death](https://recodehive.com/the-manifestation-of-life-after-death/)

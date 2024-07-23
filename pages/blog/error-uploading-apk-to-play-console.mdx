@@ -1,0 +1,48 @@
+   Error Uploading APK to Play Console
+
+Error Uploading APK to Play Console
+===================================
+
+Tags: Android Development
+
+**Author:** Sanjay KV
+
+**Date:** Tue Jun 01 2021
+
+#### GETTING STARTED
+
+Are you facing the error while uploading android apk in [Google play console](https://play.google.com/) saying “You need to use a different package name because “com.example” is restricted.” This is a common issue and we will see how to fix this issue in an easy way.
+
+Issue: “com.example is restricted” when uploading APK to Play Store
+
+**Step 1:** Before heading to fix dont you want to know why this is happening? This is mostly due to com. example package in Android studio. Open your [Android Studio project](https://recodehive.com/android-dev/) where you need to make the changes in the release pack. Head to the app and there will be a settings button and **uncheck the compact Middle Packages.**
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-12.png)
+
+**Step 2:** We need to rename the com.example, For this Go to Java and expand the example package head to Rename in the Refractor. Once you do this a pop window will appear asking to rename the package.
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-13.png)
+
+**Step 3:** Click on Rename package and enter a new package name as shown below and click on the Refractor button.
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-14.png)
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-15.png)
+
+**Step 4:** After click on the refractor button we have to rebuild the Gradle, make sure as highlighted below you clicked on do Refractor, if it fails the first time try again.
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-16-1024x283.png)
+
+**Step 5:** Now there are few steps to do Manually, Navigate to AndroidManifest.xml file and mostly online no 3, you can see the new package name, you can see com. an example has been replaced with com.theme\_forest the new package name I gave. Copy the entire package name till the tag end as shown.
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-17-1024x233.png)
+
+**Step 6:** Click on the build.Gradle on Gradle Scripts. copy this and go to Gradle and on the application id, you have to replace your old package name with a new one. you are almost done with the fix to the error.
+
+![](https://recodehive.com/wp-content/uploads/2021/06/image-18-1024x430.png)
+
+**Step 6:** You can see the Gradle sync button on the right top side and once Sync is completed run the app and [generate a signed apk](https://recodehive.com/build-apk-in-android-studio/) again and upload it to the google play console. Now you won’t face **You need to use a different package name because “com.example” is restricted issue** while releasing apk.
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**You need to use a different package name because “com.example” is restricted.**”, Also look into the other articles to build android applications. Signing off **[sanjay@recodehive.com](https://recodehive.com/about-us/)**

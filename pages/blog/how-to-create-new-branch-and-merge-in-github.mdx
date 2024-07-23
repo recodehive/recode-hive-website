@@ -1,0 +1,115 @@
+   How to Create new branch and Merge in Github?
+
+How to Create new branch and Merge in Github?
+=============================================
+
+Tags: devlabs,Github
+
+**Author:** Sanjay KV
+
+**Date:** Tue Apr 20 2021
+
+Table of Contents
+
+Toggle
+
+*   [What is GitHub Branching?](https://recodehive.com/how-to-create-new-branch-and-merge-in-github/#What_is_GitHub_Branching "What is GitHub Branching?")
+*   [How to do pull request in Github?](https://recodehive.com/how-to-create-new-branch-and-merge-in-github/#How_to_do_pull_request_in_Github "How to do pull request in Github?")
+*   [How to merge changes in Github?](https://recodehive.com/how-to-create-new-branch-and-merge-in-github/#How_to_merge_changes_in_Github "How to merge changes in Github?")
+*   [How to merge Manually in Github using Command line?](https://recodehive.com/how-to-create-new-branch-and-merge-in-github/#How_to_merge_Manually_in_Github_using_Command_line "How to merge Manually in Github using Command line?")
+*   [Extra Git commands for branching (Optional Reference)](https://recodehive.com/how-to-create-new-branch-and-merge-in-github/#Extra_Git_commands_for_branching_Optional_Reference "Extra Git commands for branching (Optional Reference)")
+*   [FINAL VERDICT :](https://recodehive.com/how-to-create-new-branch-and-merge-in-github/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### What is GitHub Branching?
+
+We have discussed the Git branching in [detail here](https://recodehive.com/how-to-install-git/), by creating a branching you can work on the same development without changing the main file. Later **do a pull request and merge the branching**. So thereby can manage the different versions seamlessly through the code development life cycle. Let’s see How to Create a new branch and Merge in Github?
+
+![Git Workflow](https://recodehive.com/wp-content/uploads/2021/04/Github-Tutorials-1024x576.jpg)
+
+Workflow of Git in Grahical Representation.
+
+**Step 1:** Hope there is already a [GitHub local repository](https://recodehive.com/github-tutorials/) created. Now the scenario is somebody has updated the main repository and you want to continue from the updated notebook. We have to pull the new repository to **your local system**. In case if you are a beginner no file to clone. Can use [HTTPS to clone a new repository.](https://github.com/Sanjayviswa/amazon-ebook.git)
+
+Cd and Dir // Navigate to the spesfic folder
+**Git Pull**   // Pull the repository after pull will do github create branch
+
+![github create new branch](https://recodehive.com/wp-content/uploads/2021/04/image-54.png)
+
+**Step 2:** Let’s see the command for how to create a branch in git, Now you have pulled the existing repository to your local machine the next step is to create a branch. Execute the below command to create a new branch. Git branch is used to check which one is your current branch.
+
+ **git branch** new\_branch\_name                   #this will git branch create
+ **git branch**                  
+ **Git checkout** branch\_name\_given
+ **Git branch**               
+
+![How to Create new branch and Merge in Github?](https://recodehive.com/wp-content/uploads/2021/04/image-145.png)
+
+**Step 3:** Open the Jupyter notebook and so the required change to the code, this step is optional. Then come back to your terminal/ command prompt after saving the [Python Jupyter Notebook.](https://realpython.com/jupyter-notebook-introduction/)
+
+![Jupyter Notebook changes to the new branch](https://recodehive.com/wp-content/uploads/2021/04/image-56-1024x217.png)
+
+**Step 4:** Now push the file to the new branch you created, make sure to execute the below code for the same,  where **Sanjay** is a **new branch name** I created. Used **set-upstream** to If we create a branch locally and want to push it to remotes that branch as it is not in remote, Else it will throw a fatal error.
+
+Git add **Python\_file\_you\_changed.ipnyb**
+Git commit **\-m** "Add a meaningful commit message here"
+Git push **--set-upstream origin** sanjay 
+
+![How to Create new branch and Merge in Github?](https://recodehive.com/wp-content/uploads/2021/04/image-143.png)
+
+#### How to do pull request in Github?
+
+**Step 5:** Now can see the new branch has been created and the repository will have the option to compare and pull requests. In case you want to pull changes to the main branch. Click on the compare & Pull request button.
+
+![Created new branch and Merge in Github?](https://recodehive.com/wp-content/uploads/2021/04/image-144.png)
+
+**Step 6:** Now add a commit message and push and click on the Create pull request option.
+
+![github create new branch pull request](https://recodehive.com/wp-content/uploads/2021/04/image-146.png)
+
+#### How to merge changes in Github?
+
+**Step 7:** Now click on the Commit Merge option, it will check for any conflicts in the background after this, If any conflicts it will throw an error to fix the conflicts. If all are in a good phase will be getting a similar screen to the next screenshot.
+
+![](https://recodehive.com/wp-content/uploads/2021/04/image-183.png)
+
+**Step 8:** Click on merge pull request- > then in next screen click on confirm merge.
+
+![Creating a new merge pull request in Github](https://recodehive.com/wp-content/uploads/2021/04/image-147.png)
+
+**Now you can see the branch has been merged**, and in History you can see the previous versions.
+
+![](https://recodehive.com/wp-content/uploads/2021/04/image-182.png)
+
+#### **How to merge Manually in Github using Command line?**
+
+**Step 1:** To see branching you switch between the branch using git checkout command, then use git merge command to merge the branch to the main branch.
+
+git branch -a          // this will list all branch existing
+git checkout main      // switched branch to main
+git branch
+git merge phase\_2      // merged phase\_2 branch with main
+
+![git merge branch to another branch](https://recodehive.com/wp-content/uploads/2021/04/image-122.png)
+
+**Step 2**: Now as a final step you will push to the main branch and the branch update will be visible in Github Repository.
+
+git push origin main      #Excecute this command to push the repository to main
+
+#### Extra Git commands for branching (Optional Reference)
+
+![git update local branch from remote](https://recodehive.com/wp-content/uploads/2021/04/image-151.png)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**How to Create new branch and Merge in Github?**”. In the next post, you will be able to see how to resolve the conflict while merging in Github. Signing off **[Sanjay Kv](https://recodehive.com/about-us/)**
+
+How to Switch Between the branches in Git?
+
+1.  **Type Git chekout branch\_name to switch to the other branch.**
+    
+    If you dont know which branch, use Git Branch to list branch first and execue git checkout command
+    
+
+**How to Delete Github Branch**
+
+Type git branch -d YOUR BRANCH NAME to delete the branch from github, the branch will get deleted.

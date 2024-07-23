@@ -1,0 +1,166 @@
+   How to Configure Hadoop in Ubuntu
+
+How to Configure Hadoop in Ubuntu
+=================================
+
+Tags: devlabs,Hadoop,tech,ubuntu
+
+**Author:** Sai avinash
+
+**Date:** Sat Feb 26 2022
+
+This tutorial will cover everything about installing Hadoop in Ubuntu in a simple and easy way, some of the prerequisites are **10 GB of space on** your laptop and some idea about the terminal commands in Ubuntu.
+
+**Step 1:** We check with the terminal whether Java is installed or not with Java or not with command
+
+**java -version**
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-17-1024x138.png)
+
+**Step 2:** After this, we update the ubuntu terminal with the below commands.
+
+**sudo apt-get update**
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-18-1024x184.png)
+
+**sudo apt-get install update**
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-22-1024x127.png)
+
+**Step 3:** Now we install the required JDK for the system  
+**sudo apt-get install default-jdk**
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-23-1024x487.png)
+
+Step 4: Now we check the JDK version that we installed.
+
+**java -version**
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-24-1024x169.png)
+
+**Step 5:** Now we create a separate user for the Hadoop configuration.
+
+sudo addgroup hadoop
+
+sudo adduser –ingroup hadoop hadoopusr  
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-37-1024x472.png)
+
+**Step 6:** Now use the following command:
+
+sudo adduser hadoopusr sudo
+
+**Step 7:** We need to install the SSH server with the following command.
+
+sudo apt-get install openssh-server
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-38-1024x431.png)
+
+**Step 8:** Now we should change the user to a Hadoop user and type the password.
+
+su – hadoopusr
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-39-1024x156.png)
+
+**Step 9:** Now we need to access the ssh key using the below command.
+
+ssh-keygen -t rsa -P “”
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-40-1024x399.png)
+
+**Step 10:** We should add the below command to authorize the keys.
+
+cat $HOME/ .ssh/id\_rsa.pub >> $HOME/.ssh/authorized\_keys
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-41-1024x133.png)
+
+**Step 11:** Now check for the local host i.e. ssh localhost with the below command and press yes to continue and enter your password if it asks then type exit.
+
+ssh localhost
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-42-1024x431.png)
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-43-1024x330.png)
+
+Now you have completed the basic requirement for Hadoop installation.
+
+**Step 12:** We should download the Hadoop in the ubuntu system.
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-44-1024x578.png)
+
+S**tep 13:** Once you have downloaded **Hadoop-3.2.2.tar.gz** then place this tar file. now we should extract the file.
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-45-1024x218.png)
+
+**Step 14:** We extracted the hadoop file.
+
+sudo mv hadoop /usr/local/hadoop
+
+**Step 15:** Wher change hadoopusr
+
+sudo chown -R hadoopusr /usr/local
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-46-1024x198.png)
+
+**Step 16:** The main step while configuring the Hadoop in ubuntu are these steps.
+
+sudo nano ~/.bashrc
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-47-1024x204.png)
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-48-1024x513.png)
+
+**Step 17:** Before configuring we should check the java version
+
+my case it is java-11-openjdk-amd64
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-49-1024x207.png)
+
+**Step 18:** Now we will configure hadoop-env.sh. For that open the file using the below command.
+
+sudo nano/usr/local/hadoop/etc/hadoop/hadoop-env.sh
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-50-1024x120.png)
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-51-1024x493.png)
+
+**Step 19:** Now we will configure the core-site.xml. For that open that file using the below command:
+
+sudo nano /usr/local/hadoop/etc/hadoop/core-site.xml
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-52-1024x133.png)
+
+Once the file opens copy the below text inside the configuration tag.
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-53-1024x532.png)
+
+**Step 20:** Now we will configure the hdfs-site.xml for that open that file using the below command.
+
+sudo nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-54-1024x84.png)
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-55-1024x457.png)
+
+**Step 21:** Now we will configure the yarn-site.xml which is responsible for the execution of files in the Hadoop environment. For that open that file using the below command:
+
+sudo nano /usr/local/hadoop/etc/hadoop/yarn-site.xml
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-56-1024x59.png)
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-57.png)
+
+**Step 22: Now the last file to configure is mapred-site.xml. For that,** we have mapred-site.xml.template so we need to locate that file then copy this file to that location and then rename it.
+
+sudo cp /usr/local/hadoop/etc/hadoop/mapred-site.xml.template /usr/local/hadoop/etc/hadoop/mapred-site.xml
+
+sudo gedit /usr/local/hadoop/etc/hadoop/mapred-site.xml
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-58-1024x94.png)
+
+![](https://recodehive.com/wp-content/uploads/2022/01/image-59.png)
+
+Final Verdict:
+--------------
+
+In conclusion, I hope you enjoyed reading this article on “**How to Configure Hadoop in Ubuntu**”, for more information refers to the other posts. We would love to hear the [feedback](https://recodehive.com/contact-us/) from your side and if any doubts contact us. Signing off [sanjay@recodehive.com](https://recodehive.com/about-us/)

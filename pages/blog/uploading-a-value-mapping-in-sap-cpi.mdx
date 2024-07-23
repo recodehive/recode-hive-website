@@ -1,0 +1,108 @@
+   Uploading a Value Mapping in SAP CPI
+
+Uploading a Value Mapping in SAP CPI
+====================================
+
+Tags: CPI,Learning,SAP,SAP CPI,tech
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Mon Oct 05 2020
+
+Table of Contents
+
+Toggle
+
+*   [INTRODUCTION](https://recodehive.com/uploading-a-value-mapping-in-sap-cpi/#INTRODUCTION "INTRODUCTION")
+*   [DOWNLOADING A VALUE MAP](https://recodehive.com/uploading-a-value-mapping-in-sap-cpi/#DOWNLOADING_A_VALUE_MAP "DOWNLOADING A VALUE MAP")
+*   [UPLOADING A VALUE MAP](https://recodehive.com/uploading-a-value-mapping-in-sap-cpi/#UPLOADING_A_VALUE_MAP "UPLOADING A VALUE MAP")
+*   [RECTIFYING THE ERROR](https://recodehive.com/uploading-a-value-mapping-in-sap-cpi/#RECTIFYING_THE_ERROR "RECTIFYING THE ERROR")
+*   [FINAL VERDICT :](https://recodehive.com/uploading-a-value-mapping-in-sap-cpi/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### INTRODUCTION
+
+Within the demo, I have downloaded a pre-existing Value Mapping Artifact and uploaded it with a new name under the same tenant. In real-time, this might not be the case. In such cases, few of the below-mentioned steps can be omitted and just the steps associated with uploading shall be used.
+
+#### DOWNLOADING A VALUE MAP
+
+**Step 1**: Go to your **Package** where you have already created a Value Mapping Artifact.  
+
+**Step 2**: Click on the **Actions** button of your Value Mapping Artifact and select **Download**. This will Download a **Zip** File. 
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-1024x425.png)
+
+#### UPLOADING A VALUE MAP
+
+**Step 3**: Go to the Package where you want to Upload the Value Mapping. Under the **_Artifacts_** tab, Click on **Add –> Value Mapping**. 
+
+![Uploading](https://recodehive.com/wp-content/uploads/2020/10/image-1-1024x366.png)
+
+**Step 4**: Choose the **Upload** Radio button. Give a New **Name** for your Value Mapping Artifact. **Browse** and select the Previously Downloaded **Zip file**.
+
+![Uploading](https://recodehive.com/wp-content/uploads/2020/10/image-2.png)
+
+**Step 5**: Click on **OK**.
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-3.png)
+
+**Step 6**: you will get the following **error**. This is because the Downloaded Value Mapping Artifact is already present in the tenant and Again you can’t upload the Artifact with the same name. Even though you are giving a new name while uploading, the files in zip will still have the previous VM name. This Name has to be changed.
+
+![Uploading error](https://recodehive.com/wp-content/uploads/2020/10/image-4.png)
+
+#### RECTIFYING THE ERROR
+
+**Step 7**: **[Extract](https://www.7-zip.org/)** the Downloaded Zip File. 
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-5.png)
+
+**Step 8**: **Open** the Folder –> **META-INF** folder. 
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-6.png)
+
+**Step 9**: Open the **MANIFEST** file in word. 
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-7.png)
+
+**Step 10**:Change the SymbolicName from VM\_Import to New\_VM ( or any other custom name ). **Save** the file. 
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-8.png)
+
+**Step 11**: Select all the items and compress them to a new folder. DO NOT Compress the Parent folder. It will lead to errors. 
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-9.png)
+
+**Step 12**: It should look as below. 
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-10.png)
+
+**Step 13**: Go back to your **Package**. Under **_artifacts_**, **Add –> Value Mapping.** 
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-11-1024x349.png)
+
+**Step 14**:  Check the **upload** radio button. Give a valid **name**. **Browse** and select the **newly zipped folder** as in **_Step 12_**. Click on **OK**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/10/image-12.png)
+
+**Step 15**: That’s it!. Your Value Mapping will be created. 
+
+![Uploading](https://recodehive.com/wp-content/uploads/2020/10/image-13-1024x288.png)
+
+**Step 16**:  Since we are uploading the new Value Mapping in the same tenant as that Downloaded in this demo, both Value Mapping Artifacts will have the same Agency Name. This is not allowed.
+
+Therefore, **Undeploy** your previously Downloaded Value Mapping Artifact **(VM\_Import)**. 
+
+If the download and Upload Tenants are different, then no need for Un deploying.
+
+![Uploading](https://recodehive.com/wp-content/uploads/2020/10/image-14-1024x144.png)
+
+**Step 17**: **Open** the Newly created Value Mapping and **Verify the content**. **Deploy.** 
+
+![Uploading](https://recodehive.com/wp-content/uploads/2020/10/image-15-1024x409.png)
+
+**Step 1**8: Use the artifact in  Message Mapping. 
+
+Refer to [**this**](https://recodehive.com/message-mapping-and-value-mapping-in-sap-cpi/) post to understand and use Value Mapping in Message Mapping.
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Uploading a Value Mapping in SAP CPI**”, If yes, then don’t forget to spread the word about it. Do send the feedback and to know more about it. Signing off [Sudarshan@recodehive.com](Sudarshan@recodehive.com)

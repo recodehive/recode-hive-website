@@ -1,0 +1,191 @@
+   ProcessDirect Adapter in SAP CPI
+
+ProcessDirect Adapter in SAP CPI
+================================
+
+Tags: CPI,SAP
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Thu Sep 03 2020
+
+Table of Contents
+
+Toggle
+
+*   [INTRODUCTION](https://recodehive.com/processdirect-adapter-in-sap-cpi/#INTRODUCTION "INTRODUCTION")
+*   [SETTING UP INTEGRATION FLOWS](https://recodehive.com/processdirect-adapter-in-sap-cpi/#SETTING_UP_INTEGRATION_FLOWS "SETTING UP INTEGRATION FLOWS")
+*   [Configuring the Blocks](https://recodehive.com/processdirect-adapter-in-sap-cpi/#Configuring_the_Blocks "Configuring the Blocks")
+*   [MONITORING INTEGRATION FLOWS](https://recodehive.com/processdirect-adapter-in-sap-cpi/#MONITORING_INTEGRATION_FLOWS "MONITORING INTEGRATION FLOWS")
+*   [COMMON ERROR](https://recodehive.com/processdirect-adapter-in-sap-cpi/#COMMON_ERROR "COMMON ERROR")
+*   [CONCLUSION](https://recodehive.com/processdirect-adapter-in-sap-cpi/#CONCLUSION "CONCLUSION")
+*   [FINAL VERDICT :](https://recodehive.com/processdirect-adapter-in-sap-cpi/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### INTRODUCTION
+
+This article shows how to use a static ProcessDirect adapter in SAP CPI to access one artifact from other located under the same [tenant](https://help.sap.com/viewer/368c481cd6954bdfa5d0435479fd4eaf/Cloud/en-US/eb8a714909e54e3581efc58518e5bcfc.html). This adapter reduces the network latency as this doesn’t go through load balancer network.
+
+#### SETTING UP INTEGRATION FLOWS
+
+**Step 1** : Create two **_Artifacts_** ( Integration Flows) .
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-50-1024x254.png)
+
+**Step 2** : Open the **First Flow** , click on **_Edit_**.
+
+![edit](https://recodehive.com/wp-content/uploads/2020/08/image-51.png)
+
+**Step 3** : Delete the **_Start_** event. This is done to add a timer as trigger event.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-52.png)
+
+**Step 4**:Add a **_Timer_** from Pallet.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-54.png)
+
+**Step 5** : Include a **_Content modifier_** from Pallet to add custom message specific to the flow.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-55.png)
+
+**Step 6** : Add an **_External Call_** –> **_Request Reply_** from Pallet.
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-1.png)
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-2.png)
+
+**Step 7** :Include a **_Groovy Script_** to log the payload.
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-3.png)
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-4.png)
+
+**Step 8** :Arrange the above added blocks as shown below.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-56.png)
+
+#### Configuring the Blocks
+
+**Step 9** : Select the **_Timer_** and in **_Scheduler tab_**, Choose **Run Once**. This makes sure that the Integration Flow is triggered as soon as the artifact is deployed.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-57.png)
+
+**Step 10** : Select **_Content Modifier_**. In the **_Message Body_** tab, Choose **Type=Constant** and **Body= Any custom Message**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-58.png)
+
+**Step 11** : Select **_Request Reply_**. Connect it to the **Receiver**. A pop up will be displayed as below with all the available Adapter types. Select **Process Direct** .
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-59.png)
+
+**Step 12** : Click on the **_Adapter_**. In **Connection** tab, type any address ( /Second ). This same address has to be used in the other flow which we are going to call ( Covered in further steps ).
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-60.png)
+
+**Step 13** : Select **Groovy Script**. Click on the icon highlighted below.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-76.png)
+
+**Step 14** : Remove the default code that appears and Paste the below given code and click on **OK**.
+
+import com.sap.gateway.ip.core.customdev.util.Message;
+def Message processData(Message message) {
+    def body = message.getBody(java.lang.String) as String;
+    def messageLog = messageLogFactory.getMessageLog(message);
+    if(messageLog != null){
+        messageLog.setStringProperty("Logging#1", "Printing Payload As Attachment")
+        messageLog.addAttachmentAsString("ResponsePayload1:", body, "text/plain");
+     }
+    return message;
+}
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-77-1024x211.png)
+
+**Step 15** : The Flow should look as below. **Save** the flow. **DO NOT DEPLOY** ( as second flow which we are going to call is not set up yet ).
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-61-1024x429.png)
+
+**Step 16** : Open the **Second Flow** that you have created.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-62-1024x175.png)
+
+**Step 17** : Add one **Content Modifier**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-63.png)
+
+**Step 18** : Connect from **Sender** to **Start**. From the Pop up window, choose **ProcessDirect** adapter.
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-5.png)
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-6.png)
+
+**Step 19** : Select Adapter and in **Connection** tab, give the address exactly same as given in [Step 12](#Step 12) (/Second).
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-65.png)
+
+**Step 20** : In **_Message Body_** of **_Content Modifier_**, Add the body as
+
+${in.body}
+
+this is to include the message body from the previous flow ( Flow triggered).
+
+Additionally you can add any other Custom message specific to current flow.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-66.png)
+
+**Step 21** : The flow should look as below. **Save** and **Deploy**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-67-1024x319.png)
+
+**Step 22** : Go back to the **First Flow**. **Deploy** the same.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-68-1024x279.png)
+
+#### MONITORING INTEGRATION FLOWS
+
+**Step 23** : Go to **Overview** window. Click on **All** under **Manage Integration Content** as shown below.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-69.png)
+
+**Step 24** : Check if both Flows are in **Started** status.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-70.png)
+
+**Step 25** : Once both flows are started, go to **Completed Messages**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-71.png)
+
+**Step 26** : Click on First Flow ( From where you have called the other flow ). Click on **Logs**. Under Attachments, Click on **ResponsePayload1**.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-72-1024x344.png)
+
+**Step 27** : You will see the below message if you have filled the body of Content Modifier exactly as shown in the screen shots above. In general, the payload will have texts combined from both Flows.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-73.png)
+
+It is clear from the above output that the first artifact calls the second artifact and performs the activities in second artifact and takes the response back to first artifact to give as final output.
+
+The same can be verified by doing the below mentioned steps.
+
+#### COMMON ERROR
+
+Deploy only the first flow but not the second flow ( First Flow is started before the second Flow ).
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-74.png)
+
+The Flow **Fails** with exception : **No Consumer available on endpoi**nt :(Endpoint Name). This is because the ProcessDirect adapter in First flow can’t access the second flow unless the second flow is started.
+
+![](https://recodehive.com/wp-content/uploads/2020/08/image-75-1024x302.png)
+
+#### **CONCLUSION**
+
+This article was intended to show basic configuration with ProcessDirect adapter.
+
+What if there is a requirement to use more than one sub flow (only one at a time is allowed) and different flow has to be called at different time?. It is not recommended to go each time to main flow and change the address mentioned in adapter.
+
+This can be overcome by **Externalizing** **the Address parameter**.
+
+Externalizing the parameter will be covered in another post.
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**ProcessDirect Adapter in SAP CPI – A Step by Step Guide- I**”, If yes, then don’t forget to spread a word about it. Do send the feedback and to know more about it. Signing off [sudarshan@recodehive.com](sudarshan@recodehive.com)

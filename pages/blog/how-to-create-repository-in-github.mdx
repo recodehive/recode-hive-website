@@ -1,0 +1,112 @@
+   How to create repository in Github?
+
+How to create repository in Github?
+===================================
+
+Tags: devlabs,Github
+
+**Author:** Sanjay KV
+
+**Date:** Sat Apr 17 2021
+
+Table of Contents
+
+Toggle
+
+*   [What is Clone/Push in Github](https://recodehive.com/how-to-create-repository-in-github/#What_is_ClonePush_in_Github "What is Clone/Push in Github")
+*   [Prerequisites](https://recodehive.com/how-to-create-repository-in-github/#Prerequisites "Prerequisites")
+*   [How to create Github Repository](https://recodehive.com/how-to-create-repository-in-github/#How_to_create_Github_Repository "How to create Github Repository")
+*   [How to clone Github Repository](https://recodehive.com/how-to-create-repository-in-github/#How_to_clone_Github_Repository "How to clone Github Repository")
+*   [How to push Github Repository?](https://recodehive.com/how-to-create-repository-in-github/#How_to_push_Github_Repository "How to push Github Repository?")
+*   [FINAL VERDICT :](https://recodehive.com/how-to-create-repository-in-github/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### What is Clone/Push in Github
+
+Once you created Repository and have done your part of the analysis or **coding,** the [cloning process](https://www.howtogeek.com/451360/how-to-clone-a-github-repository/#:~:text=Cloning%20a%20GitHub%20repository%20creates,files%20of%20the%20origin%20repo.) will help the 2nd developer to copy your work and add more analysis or changes to the existing code in his **local environmen**t, and create a version of the changes and later merge with the main document. This post will help to Create/Clone/Push Github Repository.
+
+Once cloning is done, the 2nd developer can create a branch and work on the same repository and later push to the branch and ask for a pull request to merge it with the main copy. I hope the process is clear now. Refer to the [Previous Github Tutorials](https://recodehive.com/github-tutorials/) here.
+
+#### Prerequisites
+
+1\. You should have a [Github account](https://recodehive.com/how-to-create-github-account/)
+2. Should have a basic understanding of how Git works/ and Git running in your OS.
+3. [Anaconda](https://www.anaconda.com/products/individual) software Installed
+4. Python Software installed.
+
+#### How to create Github Repository
+
+**Step 1:** Go to Git hub and create a **new Repository**.
+
+![Creating Repository in Github](https://recodehive.com/wp-content/uploads/2021/04/image-36-1024x286.png)
+
+**Step 2:** Specify the Name of the Project, make It public or primate, check on the readme file. Then click on Create repository.
+
+![Creating Readme file and Licence for Github Repository](https://recodehive.com/wp-content/uploads/2021/04/image-37-1024x791.png)
+
+You can also see by default Brach’s name is the main.  
+If you want you can change it.
+
+**Step 3:** Now you can see the file created on that name with a default readme file. You can add content to the **readme file.**
+
+Link to Github Main Respo: [https://github.com/Sanjayviswa/World\_happiness\_Analysis](https://github.com/Sanjayviswa/World_happiness_Analysis)
+
+![Overview of Github Repository](https://recodehive.com/wp-content/uploads/2021/04/image-38-1024x493.png)
+
+#### How to clone Github Repository
+
+**Step 4:** Go to the Code button drop-down and clone the repository.
+
+Link to Respo: [https://github.com/Sanjayviswa/World\_happiness\_Analysis.git](https://github.com/Sanjayviswa/World_happiness_Analysis.git)
+
+![Cloning the Github Repository](https://recodehive.com/wp-content/uploads/2021/04/image-39-1024x413.png)
+
+**Step 5:** Go to the command prompt if you using windows or a terminal if you using Mac or Linux, you can also proceed with Git bash. **Clone the Repository as shown below.**
+
+Git clone SSH URL
+
+![using Git to create to clone repository](https://recodehive.com/wp-content/uploads/2021/04/image-40.png)
+
+Now you have successfully created a local copy of the file in your system.
+
+**Step 6:** Open Anaconda Navigator and **Launch the notebook**, Hope you have [installed Anaconda](https://docs.anaconda.com/anaconda/install/windows/) and python before in your system.
+
+![Anaconda to Launch the Notebook](https://recodehive.com/wp-content/uploads/2021/04/image-41-1024x337.png)
+
+**Step 7:** Click and open as shown above.
+
+![Opening python Notebook](https://recodehive.com/wp-content/uploads/2021/04/image-42-1024x633.png)
+
+**Step 8:** I have already added the data source file to the Data folder and created a new .ipynb file. So you don’t have to worry about it. Open **Happiness\_Analysis.ipnyb file**
+
+![Adding a Python file in Juypter Notebook](https://recodehive.com/wp-content/uploads/2021/04/image-43-1024x281.png)
+
+**Step 9:** I have imported the library and read the data from **world-happiness-report-2021.csv**
+
+![Adding Python codes in Notebook](https://recodehive.com/wp-content/uploads/2021/04/image-45-1024x754.png)
+
+#### How to push Github Repository?
+
+**Step 10:**  Once the work is done click on save and open cmd/ terminal
+
+![Saving the Notebook](https://recodehive.com/wp-content/uploads/2021/04/image-44-1024x239.png)
+
+**Step 11:** Initially when I was creating the repo I used **Git add** \* to add all files in one go.
+
+If you are **committing for the first time** adding a file in this way you may ask to enter your GitHub email id and username to proceed. The screenshot will be the same as below. and then while you enter the push command it will ask you **browser prompt to sign in to Github.**
+
+    git config --global user.email "Enter your github Email"
+    git config --global user.name "Github username"
+
+![](https://recodehive.com/wp-content/uploads/2021/10/image-22.png)
+
+If you are changing only the .ipnyb file just add that file
+
+ **git add "**Happiness\_Analysis.ipynb**"** //This is my File name
+ **git commit -m "**Give some meaning ful comments**"**
+ **git push origin main** 
+
+![Create, Clone,Push Github Repository ](https://recodehive.com/wp-content/uploads/2021/04/image-46-1024x411.png)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “****How to create a repository in Github?****”. In the next post, will introduce you how to fork and work with Github pull and merge request and solve any conflicts happening in between. Signing off **[Sanjay Kv](https://recodehive.com/about-us/)**

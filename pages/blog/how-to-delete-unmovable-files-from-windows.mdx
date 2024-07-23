@@ -1,0 +1,73 @@
+   How to delete unmovable Files from Windows?
+
+How to delete unmovable Files from Windows?
+===========================================
+
+Tags: delete,files,issues,tech,Windows
+
+**Author:** Sanjay KV
+
+**Date:** Sun Dec 15 2019
+
+Table of Contents
+
+Toggle
+
+*   [Prerequisite:](https://recodehive.com/how-to-delete-unmovable-files-from-windows/#Prerequisite "Prerequisite:")
+*   [Solution :](https://recodehive.com/how-to-delete-unmovable-files-from-windows/#Solution "Solution :")
+*   [What’s the cause?](https://recodehive.com/how-to-delete-unmovable-files-from-windows/#Whats_the_cause "What’s the cause?")
+*   [Reference:](https://recodehive.com/how-to-delete-unmovable-files-from-windows/#Reference "Reference: ")
+*   [Final Verdict:](https://recodehive.com/how-to-delete-unmovable-files-from-windows/#Final_Verdict "Final Verdict:")
+
+#### Prerequisite:
+
+1.  A basic idea about using the command line in windows
+
+Hello Friends, In this blog we are looking into how to delete unmovable files from windows. First, we will see the solution then will explain why this is happening.
+
+#### Solution :
+
+**Step 1:** Open your [command prompt](https://www.lifewire.com/command-prompt-2625840) by pressing CRL + R and typing cmd in it.
+
+![Run window](https://recodehive.com/wp-content/uploads/2019/12/Screenshot-2019-12-16-at-10.59.09-AM.png)
+
+**Step 2:** Then you need to type the following command which will navigate you to your desktop.
+
+cd /d C:\\Users\\your\_Pc\_Name\\Desktop
+
+![initial Code](https://recodehive.com/wp-content/uploads/2019/12/Screenshot-2019-12-16-at-10.59.50-AM.png)
+
+**Step 3:** Once you did that you need to list the folders in the desktop by dir command which shown below.
+
+dir /x  
+
+![Command prompt](https://recodehive.com/wp-content/uploads/2019/12/Screenshot-2019-12-16-at-11.02.47-AM.png)
+
+**Step 4:** Here goes the last step type the command to delete the file from the PC.
+
+del /q /s Filename   
+
+![Final code](https://recodehive.com/wp-content/uploads/2019/12/Screenshot-2019-12-16-at-11.03.24-AM-1.png)
+
+  
+**Step 5:**  If you don’t see the file getting removed, I would recommend you to restart the system. it will reflect in your PC once you restart.  
+
+* * *
+
+Alternatives
+
+rmdir /q/s Filename
+
+#### What’s the cause?
+
+File error is the main reason for this to happen, can be multiple scenarios, for example trying to copy from once the source and canceling or system not responding in between which create a ghost object, where the actual path doesn’t exist anymore. All of such scenarios can be handled well in the command line.
+
+#### Reference:
+
+#### Final Verdict:
+
+In conclusion, I hope you enjoyed reading this article on “How to install Flutter on mac os with android studio repository”. If yes, then don’t forget to spread a word about it. We would love to hear the [feedback](https://recodehive.com/contact-us/) from your side and if any doubts contact us. Signing off [sanjay.kanakkot@gmail.com](https://recodehive.com/about-us/)
+
+_**Author:** Sanjay K V_
+
+[Adaptation](https://recodehive.com/the-adaptation/) [Growth Hacking](https://recodehive.com/tag/growth-hacking/) [Developer Bundle](https://recodehive.com/category/dev-labs/)[Hope and Focus](https://recodehive.com/hopeandfocus/) [My Day at Google Campus](https://recodehive.com/my-day-at-google-campus-hyderabad/)[Time Machine](https://recodehive.com/time-machine-2-0/) [Manifestation of life after death](https://recodehive.com/the-manifestation-of-life-after-death/)

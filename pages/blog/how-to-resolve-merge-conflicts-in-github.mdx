@@ -1,0 +1,68 @@
+   How to resolve merge conflicts in github
+
+How to resolve merge conflicts in github
+========================================
+
+Tags: devlabs,Github
+
+**Author:** Sanjay KV
+
+**Date:** Fri Apr 23 2021
+
+Table of Contents
+
+Toggle
+
+*   [Understanding Github Conflicts](https://recodehive.com/how-to-resolve-merge-conflicts-in-github/#Understanding_Github_Conflicts "Understanding Github Conflicts")
+*   [Lets resolve Github Conflicts](https://recodehive.com/how-to-resolve-merge-conflicts-in-github/#Lets_resolve_Github_Conflicts "Lets resolve Github Conflicts")
+*   [FINAL VERDICT :](https://recodehive.com/how-to-resolve-merge-conflicts-in-github/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### Understanding Github Conflicts
+
+Let’s imagine a case where two developer working on one respository by creating 2 different branch and same code line and both of them pulled the file to main repository, Now the github is good understanding the code and merge the conflicts automatically but it fails understanding if developer has put any comments. Now Lets look into How to resolve merge conflicts in github.
+
+#### Lets resolve Github Conflicts
+
+**Step 1:** In case if you dont know how to do pull request in Github, [refer this blog.](https://recodehive.com/how-to-create-new-branch-and-merge-in-github/) Once you press compare and pull request, Github will look into the possibilties of merging that itself if not it will show developer to solve the resolve conflicts Manually.
+
+**Step 2:** Click on Resolve Conflict Button
+
+![how to resolve conflicts in github](https://recodehive.com/wp-content/uploads/2021/04/image-208.png)
+
+**Step 8:** Lets look into how to resolve these github conflicts. As highlighted in 1 there are 16 conflicts here, and these conflicts are highlighted as below. Here Github found there are codes to merge in the same lines, <<<<< sanjay represents your branch. Now if you want to keep the changes as it is just delete the below lines from your entire code base. Click and backspace will do the work.
+
+![resolve conflicts github](https://recodehive.com/wp-content/uploads/2021/04/image-210-1024x351.png)
+
+<<<<<<<< sanjay
+========
+>>>>>>> main
+
+![Somebody has got merge conflicts in the file - those <<< and 
+and >>> lines are how git shows its merge conflicts. To make it 
+valid, you need to get clean up those, and in each chunk, pick one of the bits inbetween them: 
+HEAD 
+Either keep this line... 
+. or this one. But not both! 
+alf5acbaaøøbc1b1e5fc3532ba19ae13a271542c ](https://recodehive.com/wp-content/uploads/2021/04/image-68.png)
+
+referenced image from Github gist
+
+**Step 9:** Once all the conflicts has been removed, you can see the button Mark as resolved became active.
+
+![](https://recodehive.com/wp-content/uploads/2021/04/image-211-1024x296.png)
+
+**Step 10:** Commit Merge to do this merging with the main branch
+
+![](https://recodehive.com/wp-content/uploads/2021/04/image-212-1024x383.png)
+
+**Step 11:** In the next page you can see the merge pull request option, you also have an option to save this draft, here we will proceed with merging the pull request.
+
+![](https://recodehive.com/wp-content/uploads/2021/04/image-213.png)
+
+Now you can see the branch Sanjay has been merged to the main branch. You have successfuly resolved git conflicts and merged changes in branch to main branch.
+
+![](https://recodehive.com/wp-content/uploads/2021/04/image-214.png)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**How to do resolve conflict while merging in GitHub?**”. Refer the complete **[Github tutorial](https://recodehive.com/github-tutorials/)** on recodehive.com. Signing off **[Sanjay Kv](https://recodehive.com/about-us/)**

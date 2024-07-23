@@ -1,0 +1,339 @@
+   Message Mapping and Value Mapping in SAP CPI
+
+Message Mapping and Value Mapping in SAP CPI
+============================================
+
+Tags: CPI,Learning,Mapping,SAP,SAP CPI
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Wed Sep 30 2020
+
+Let’s have a look at what is Message mapping in SAP CPI, In CPI message mapping is required the type of message is different on your sender and receiver systems. In SAP PO message mapping we call this has Graphical mapping or Java Mapping according to the way we do this. This article will help you understand the Implementation of Message Mapping and Value Mapping in SAP CPI. 
+
+Table of Contents
+
+Toggle
+
+*   [CREATING SAP CPI VALUE MAPPING](https://recodehive.com/message-mapping-and-value-mapping-in-sap-cpi/#CREATING_SAP_CPI_VALUE_MAPPING "CREATING SAP CPI VALUE MAPPING")
+*   [CREATING INTEGRATION FLOW](https://recodehive.com/message-mapping-and-value-mapping-in-sap-cpi/#CREATING_INTEGRATION_FLOW "CREATING INTEGRATION FLOW")
+*   [TESTING THE ARTIFACTS](https://recodehive.com/message-mapping-and-value-mapping-in-sap-cpi/#TESTING_THE_ARTIFACTS "TESTING THE ARTIFACTS ")
+*   [SELF- TRY :](https://recodehive.com/message-mapping-and-value-mapping-in-sap-cpi/#SELF-_TRY "SELF- TRY :")
+*   [SAP CPI Message Mapping Tutorial](https://recodehive.com/message-mapping-and-value-mapping-in-sap-cpi/#SAP_CPI_Message_Mapping_Tutorial "SAP CPI Message Mapping Tutorial")
+*   [FINAL VERDICT :](https://recodehive.com/message-mapping-and-value-mapping-in-sap-cpi/#FINAL_VERDICT "FINAL VERDICT :")
+
+#### CREATING SAP CPI VALUE MAPPING
+
+**Step 1** : Go to **Artifacts** tab of your Package. **Add –> Value Mapping**, This will add sap cpi value mapping.
+
+![Adding Value mapping to CPI](https://recodehive.com/wp-content/uploads/2020/09/image-125.png)
+
+**Step 2** : Select **Create** Radio Button and Give a **valid Name**. (This step is sap cpi namespace )
+
+![Message Mapping and Value Mapping in SAP CPI](https://recodehive.com/wp-content/uploads/2020/09/image-155.png)
+
+**Step 3** :  **Click** on the new Value Mapping Created. 
+
+![Adding Artifcats](https://recodehive.com/wp-content/uploads/2020/09/image-127-1024x172.png)
+
+**Step 4** : Click on **edit** 
+
+![Editing the Artificats in SAP CPI](https://recodehive.com/wp-content/uploads/2020/09/image-126-1024x213.png)
+
+**Step 5** :  Click on **Add**. 
+
+![Adding the artifacts in SAP CPI](https://recodehive.com/wp-content/uploads/2020/09/image-128-1024x140.png)
+
+**Step 6** : Fill the required details and Conversion Values. 
+
+**Source** 
+
+**Target**
+
+A 
+
+1 
+
+B 
+
+2 
+
+C 
+
+3 
+
+![message mapping in sap cpi](https://recodehive.com/wp-content/uploads/2020/09/image-147-1024x318.png)
+
+**Step 7** : **Save** and **Deploy**. 
+
+![message mapping in sap cpi](https://recodehive.com/wp-content/uploads/2020/09/image-148-1024x390.png)
+
+**Step 8** :  In **Overview** Window, Make sure that the Value Mapping is **started**. 
+
+![sap cpi message mapping if condition](https://recodehive.com/wp-content/uploads/2020/09/image-136.png)
+
+#### CREATING INTEGRATION FLOW
+
+**Step 9** : Go to **Design** Window and **Create** an **Integration Flow** under Artifacts.
+
+![sap cpi message mapping if condition](https://recodehive.com/wp-content/uploads/2020/09/image-138-1024x246.png)
+
+**Step 10** : **Open** the Integration Flow in **edit** Mode. Add a **_Message Mapping_** and a **_Content Modifier_**. 
+
+Choose **Sender Adapter** as **SOAP**. 
+
+![sap cpi value mapping](https://recodehive.com/wp-content/uploads/2020/09/image-141-1024x277.png)
+
+**Step 11** : Select **SOAP Adapter**. Under **_Connection_** tab, Give a relative **_address_** to define the Endpoint. (/Mapping) 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-144.png)
+
+**Step 12** : Select **Message Mapping** and Click on **Create** button highlighted below. 
+
+![sap cpi Message mapping](https://recodehive.com/wp-content/uploads/2020/09/image-131.png)
+
+**Step 13** :  Give any Valid **_name_** for your Mapping. Click on **Create**. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-129.png)
+
+**Step 14** : Click on **Add Source Message**. 
+
+![Adding source Message sap cpi value mapping](https://recodehive.com/wp-content/uploads/2020/09/image-130.png)
+
+**Step 15** : Click on **_Upload from File System_**. Browse and select the **Source WSDL.** 
+
+Copy the below sample WSDL for Source message and save to upload.
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <wsdl:definitions name="SendOrder_Async"
+    	targetNamespace="http://cpi.sap.com/demo" xmlns:p1="http://cpi.sap.com/demo"
+    	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    	<wsdl:documentation />
+    	<wsp:UsingPolicy wsdl:required="true" />
+    	<wsp:Policy wsu:Id="OP_SendOrder_Async" />
+    	<wsdl:types>
+    		<xsd:schema targetNamespace="http://cpi.sap.com/demo"
+    			xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://cpi.sap.com/demo">
+    			<xsd:element name="Order_MT" type="Order_DT" />
+    			<xsd:complexType name="Order_DT">
+    				<xsd:sequence>
+    					<xsd:element name="orderNumber" type="xsd:string" />
+    					<xsd:element name="Environment" type="xsd:string" />
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:schema>
+    	</wsdl:types>
+    	<wsdl:message name="Order_MT">
+    		<wsdl:documentation />
+    		<wsdl:part name="Order_MT" element="p1:Order_MT" />
+    	</wsdl:message>
+    	<wsdl:portType name="SendOrder_Async">
+    		<wsdl:documentation />
+    		<wsdl:operation name="SendOrder_Async">
+    			<wsdl:documentation />
+    			<wsp:Policy>
+    				<wsp:PolicyReference URI="#OP_SendOrder_Async" />
+    			</wsp:Policy>
+    			<wsdl:input message="p1:Order_MT" />
+    		</wsdl:operation>
+    	</wsdl:portType>
+    	<wsdl:binding name="SendOrder_AsyncBinding" type="p1:SendOrder_Async">
+    		<soap:binding style="document"
+    			transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+    		<wsdl:operation name="SendOrder_Async">
+    			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+    				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+    			<wsdl:input>
+    				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+    			</wsdl:input>
+    		</wsdl:operation>
+    	</wsdl:binding>
+    </wsdl:definitions>
+
+Click on Upload from the file system.
+
+**Step 16** :  **Repeat** the **Step 14 and Step 15** for **Target message** and choose target WSDL. 
+
+Copy the below sample WSDL for Target message and save to upload.
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <wsdl:definitions name="SendOrder_Async"
+    	targetNamespace="http://cpi.sap.com/demo" xmlns:p2="http://cpi.sap.com/demo"
+    	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    	<wsdl:documentation />
+    	<wsp:UsingPolicy wsdl:required="true" />
+    	<wsp:Policy wsu:Id="OP_SendOrder_Async" />
+    	<wsdl:types>
+    		<xsd:schema targetNamespace="http://cpi.sap.com/demo"
+    			xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://cpi.sap.com/demo">
+    			<xsd:element name="Order_MT" type="Order_DT" />
+    			<xsd:complexType name="Order_DT">
+    				<xsd:sequence>
+    					<xsd:element name="orderNumber" type="xsd:string" />
+    					<xsd:element name="Environment" type="xsd:string" />
+    				</xsd:sequence>
+    			</xsd:complexType>
+    		</xsd:schema>
+    	</wsdl:types>
+    	<wsdl:message name="Order_MT">
+    		<wsdl:documentation />
+    		<wsdl:part name="Order_MT" element="p2:Order_MT" />
+    	</wsdl:message>
+    	<wsdl:portType name="SendOrder_Async">
+    		<wsdl:documentation />
+    		<wsdl:operation name="SendOrder_Async">
+    			<wsdl:documentation />
+    			<wsp:Policy>
+    				<wsp:PolicyReference URI="#OP_SendOrder_Async" />
+    			</wsp:Policy>
+    			<wsdl:input message="p2:Order_MT" />
+    		</wsdl:operation>
+    	</wsdl:portType>
+    	<wsdl:binding name="SendOrder_AsyncBinding" type="p2:SendOrder_Async">
+    		<soap:binding style="document"
+    			transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+    		<wsdl:operation name="SendOrder_Async">
+    			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"
+    				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+    			<wsdl:input>
+    				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+    			</wsdl:input>
+    		</wsdl:operation>
+    	</wsdl:binding>
+    </wsdl:definitions>
+
+![sap cpi value mapping](https://recodehive.com/wp-content/uploads/2020/09/image-134.png)
+
+**Step 17** : It will look as below. 
+
+![sap cpi value mapping](https://recodehive.com/wp-content/uploads/2020/09/image-143-1024x256.png)
+
+**Step 18** : Click on Source Element and drag to the target element to map respective fields. Now it will look as below. 
+
+![sap cpi mapping](https://recodehive.com/wp-content/uploads/2020/09/image-140-1024x242.png)
+
+**Step 19** : Click on **fx** Symbol to edit the mapping for that element. 
+
+![sap cpi mapping](https://recodehive.com/wp-content/uploads/2020/09/image-156-1024x164.png)
+
+**Step 20** : From the left window, choose **Conversions –> Value Mapping** 
+
+![using Mapping Expression in SAP CPI](https://recodehive.com/wp-content/uploads/2020/09/image-142.png)
+
+**Step 21** : Place the Value Mapping block in center and **Connect Source  to input** , **valueMapping to Target**  as shown in the below picture. 
+
+![sap cpi message mapping](https://recodehive.com/wp-content/uploads/2020/09/image-133.png)
+
+**Step 22** : Click on **Advanced** and fill the required details same as the **deployed Value Mapping** in [Step 7](#Step 7). 
+
+**On Failure :**  
+
+**On Failure** 
+
+**Expected Outcomes when the incoming Message has any other value apart from the once maintained in the Value Mapping Used ( in our case any value other than A, B , C)** 
+
+ **Use Key**  
+
+It will pass the incoming value as it is. 
+
+**Use Default Value** 
+
+It will pass the Default Value that is specified in the Default Value field. 
+
+**Throw Exception** 
+
+This will throw an exception. 
+
+I have used Use Key.  
+
+![cpi mapping](https://recodehive.com/wp-content/uploads/2020/09/image-145.png)
+
+**Step 23** : Click on **OK** at top right corner. It will redirect you to the Main Integration Flow. 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-137-1024x125.png)
+
+**Step 24** : You can **edit** your mapping any time from **Processing** tab of Message Mapping. 
+
+![Message Mapping and Value Mapping in SAP CPI](https://recodehive.com/wp-content/uploads/2020/09/image-149.png)
+
+**Step 25** : Select the **Content Modifier**. Under **Message Body** tab, choose **Type=Expression** and **Body : ${in.body}** to capture the incoming payload. 
+
+![Message Mapping and Value Mapping in SAP CPI](https://recodehive.com/wp-content/uploads/2020/09/image-146.png)
+
+**Step 26** : **Save** and **Deploy.** 
+
+![](https://recodehive.com/wp-content/uploads/2020/09/image-132.png)
+
+**Step 27** : In **overview** window, make sure that your flow is in **Started** state. Click on **Copy button** highlighted under **_Endpoints_** tab to Copy the Endpoint. 
+
+![Message Mapping and Value Mapping in SAP CPI](https://recodehive.com/wp-content/uploads/2020/09/image-150-1024x276.png)
+
+#### TESTING THE ARTIFACTS
+
+**Step 28** : Open **[POSTMAN](https://www.postman.com/downloads/)**. Create a new request with type **POST**. 
+
+                 Paste the **Endpoint** copied in previous step in **URL** tab. 
+
+ **Type :** Basic Auth 
+
+**Username** : Client ID 
+
+**Password** : Client Secret 
+
+Client Id and Client Secret you will get when you create Process Integration Runtime Instance during tenant setup. ( Refer **Step 34** of [this](https://recodehive.com/set-up-sap-cpi-tenant-in-trial-account-2/) post )
+
+![Postman connection setup](https://recodehive.com/wp-content/uploads/2020/09/image-151-1024x254.png)
+
+**Step 29** : Under **Body** tab, Choose **Raw** radio button and **XML** message Type.  **Type** the below input message. Click on **Send**. 
+
+    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:demo="http://cpi.sap.com/demo"> 
+       <soapenv:Header/> 
+       <soapenv:Body> 
+          <demo:Order_MT> 
+             <orderNumber>A</orderNumber> 
+             <Environment>CS</Environment> 
+          </demo:Order_MT> 
+       </soapenv:Body> 
+    </soapenv:Envelope>
+
+![Postman UI](https://recodehive.com/wp-content/uploads/2020/09/image-152-1024x271.png)
+
+**Step 30** : You will get back the result as below. Note that the _**OrderNumber is changed from A to 1 in output**_. This is due to the use of Value Mapping. 
+
+![cpi  functions](https://recodehive.com/wp-content/uploads/2020/09/image-153.png)
+
+**Step 31** : Change **orderNumber** to **B** and **C** and click on **Send**. You should get the response as **2** and **3** respectively. 
+
+**Step 32** : Change the  **orderNumber** to any **random value**. Say 45. Click on **Send**. You will get back the **same value** 45. This is because we have used “**Use Key**” in On Failure field at [Step 22.](#Step 22) 
+
+![mapping tutorial](https://recodehive.com/wp-content/uploads/2020/09/image-154.png)
+
+#### SELF- TRY :
+
+   1. Try Changing the On Failure value in [Step 22](#Step 22) to “Use Default Value” and “Throw Exception”. Deploy the flow. Test with different input values. 
+
+2.  Try adding different functions available in Mapping window to transform source to target and test the same. 
+
+![Fucntions](https://recodehive.com/wp-content/uploads/2020/09/image-139.png)
+
+#### SAP CPI Message Mapping Tutorial
+
+The below is a detailed example with SAP CPI [message mapping using if conditions,](http://saptechnical.com/Tutorials/XI/Mapping/Concepts.htm) and how to do namespace mapping. If you are good to go with Message mapping in CPI let’s look into a bit advanced version which is [importing value mapping to SAP CPI.](https://recodehive.com/importing-value-mapping-in-sap-cpi/)
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Message Mapping and Value Mapping in SAP CPI**”, If yes, then don’t forget to spread the word about it. Do send the feedback and to know more about it. Also, have a sneak peek at our [SAP CPI Tutorials](https://recodehive.com/sap-cpi/). Signing off [Sudarshan@recodehive.com](Sudarshan@recodehive.com)
+
+[Adaptation](https://recodehive.com/the-adaptation/) [Growth Hacking](https://recodehive.com/tag/growth-hacking/) [Developer Bundle](https://recodehive.com/category/dev-labs/)[Hope and Focus](https://recodehive.com/hopeandfocus/) [My Day at Google Campus](https://recodehive.com/my-day-at-google-campus-hyderabad/)[Time Machine](https://recodehive.com/time-machine-2-0/) [Manifestation of life after death](https://recodehive.com/the-manifestation-of-life-after-death/)
+
+**What is Multi Mapping in SAP CPI?**
+
+It’s a way of using multiple message in sender or reciever system for your message mapping.
+
+**How Message Mapping work?**
+
+It uses Internal Queues, basically these are XML structure of the source message and nodes of these function is categorised into context. This can be use to trace the programs etc.

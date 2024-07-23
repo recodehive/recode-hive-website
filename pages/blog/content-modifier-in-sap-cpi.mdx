@@ -1,0 +1,54 @@
+   Content Modifier in SAP CPI
+
+Content Modifier in SAP CPI
+===========================
+
+Tags: SAP,SAP CPI
+
+**Author:** Sanjay KV
+
+**Date:** Tue May 04 2021
+
+In this post, we will look into how the Content Modifier |SAP Cloud Platform Integration (CPI) is used in SAP CPI, In the previous post we have learned about the basics of [message transformer](https://recodehive.com/start-with-sap-cpi-integration-flow-beginner-tutorial/) functionalities in SAP CPI also looked into [creating SAP CPI Trial Tenant](https://recodehive.com/set-up-your-sap-cpi-trial-account/) for 365 days. Content modifier helps to **tweak the messages in the payload.**
+
+**Step 1:** Log into SAP CPI [https://account.hanatrial.ondemand.com/]( https://account.hanatrial.ondemand.com/ ) and navigate to your integration package.
+
+#### Content Modifier in SAP CPI
+
+Using a content modifier developer can add more data to the existing payload or message processing. The data can be added to the header, body, any attachments. To access the Content Modifier need to go to **Message Transformers -> Content Modifier** as shown below.
+
+![Content Modifier |SAP Cloud Platform Integration ](https://recodehive.com/wp-content/uploads/2020/12/content-modifier-in-CPI.gif)
+
+![](https://recodehive.com/wp-content/uploads/2020/12/image-138-1024x157.png)
+
+Consider your incoming message as follow, this will consider as the incoming body and will be accessed by **$.{inbody}** on the message body tab. This message body tabs have a payload.
+
+    <sales>
+          <place>
+          <name> Kerala</name>
+          </place>
+    <date>2202102</date>
+    </sales>
+
+Now to add additional details to the body header use **${header.** **give the proper message name}** for sample code refer below image. Make sure you specify XPath in the Message header because here we are dealing with XML and if the element passing is the string you need to specify the **data type** as **java.lang.string**
+
+**${header.** **give the proper message name}**
+
+**Step 2:** Go to the message Body, from the drop-down select the type as Expression
+
+![Message body , content modifier CPI](https://recodehive.com/wp-content/uploads/2020/12/image-139-1024x409.png)
+
+The output will be like this:
+
+    <sales>
+          <place> Kerala</place>   $.inheader
+             <date>22022102</date> $.inbody
+    </sales>
+
+This is just an overview of how to use the content modifier in SAP CPI, to make it work u may have to use request-reply ODATA JSON to XML converter, request-reply.
+
+In this pattern, a sending system sends a message to an external system or service and then waits for a reply.  content modifier needs to use before request-reply Request call has must be to an external system Send Step we can not use Process Direct adapter.
+
+#### FINAL VERDICT :
+
+In conclusion, I hope you enjoyed reading this article on “**Content Modifier in SAP CPI**”. Let us know in case you find any issues in executing the above steps on sap cpi. Signing off **[Sanjay Kv](https://recodehive.com/sanjay/)**

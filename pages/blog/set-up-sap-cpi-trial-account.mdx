@@ -1,0 +1,194 @@
+   Set up SAP CPI Trial Account.
+
+Set up SAP CPI Trial Account.
+=============================
+
+Tags: CPI,SAP
+
+**Author:** Sanjay KV
+
+**Date:** Wed May 06 2020
+
+**Note:** Updated as per new SAP CPI Tenant setup UI changes as on **07 May 2021**
+
+This is a continuation of setting up an Account in SAP CPI, [Kindly refer to the previous post to create an Account](https://recodehive.com/setup-your-sap-cpi-trial-account-2/), In order to do the full function is SAP CPI you need to set up SAP CPI Trial account. New account trail offers 365 days rather than 30 days.
+
+**Step 1:** Site Login: you need to log in to the below site to set up a tenant in the SAP CPI Tenant Trial account and **enter the trial account** as mentioned. Once you enter then a **dialog box will pop** asking the region to set up the server.
+
+[https://cockpit.hanatrial.ondemand.com/cockpit/#/home/trial](https://cockpit.hanatrial.ondemand.com/cockpit/#/home/trial)
+
+![SAP cloud platform cockpit](https://recodehive.com/wp-content/uploads/2020/05/1-SAP-cloud-platform-cockpit-1024x286.png)
+
+**Step 2:** Select any of the 2 regions, whichever close to you. I recommend using the **US East.** Once you click on the region you will get the below set up screen. Once the processing is complete click on Continue on SAP cpi trial.
+
+![Set up SAP CPI Trial Account.](https://recodehive.com/wp-content/uploads/2020/10/GetImage-11.png)
+
+**Step 3:**  Once the processing complete **a sub-account** called **trial** has shown below will be created below. to continue set up of SAP CPI tenant click on the trial as shown below.
+
+![Selecting the server SAP CPI](https://recodehive.com/wp-content/uploads/2020/05/2.-Seleceting-the-server-SAP-CPI.png)
+
+**Step 4:** In the next screen you will get a similar screen, if you can see the existing active subscriptions count has 2 or 1 you can jump to step 6
+
+![SAP CPI Tenant in Trial Account.](https://recodehive.com/wp-content/uploads/2020/07/GetImage-1024x393.png)
+
+**Step 4:** If you cant see subscriptions, from the left side click on **Subscriptions -> select Process Integration** and **do subscribe.** Mainly the subscription process is done to subscribe to one of the cloud features, here we are going to subscribe to Process Integration.
+
+**Step 6:**  Once you click on subscribe it will come like subscribed, now to go back to the main screen, Click on Trial.
+
+Are you facing any issue here ? like not able to find the subscription?
+
+Click here to fix the issue: [Not able to see the Subscriptions](https://recodehive.com/error-not-able-to-see-active-subscription-in-sap-cpi/)
+
+**Step 7:**  Now from the Home screen left tab under **security** Click **Role Connection.**
+
+![SAP CPI Tenant in Trial Account.](https://recodehive.com/wp-content/uploads/2020/09/CPI-1024x374.png)
+
+**Step 8:** In the above picture you can see a **+ button** on the right, click on that **add a new Role.**
+
+**Step 9:** Now can enter the name you wish to create the role, it can be anything but you should remember it. it is needed at the end. Type Name and click on **Create Button.**
+
+![Set up SAP CPI Tenant](https://recodehive.com/wp-content/uploads/2020/10/GetImage-3-1024x351.png)
+
+**Step 10:** You can now find the Role you created in the **role collection**s, Now **click on the Role you have created**. THIS means I have created an SAP CPI role in the name of **Tenant\_Administration** I have to select that from the list as shown below.
+
+![Set up SAP CPI Tenant Administrator](https://recodehive.com/wp-content/uploads/2020/05/9-New-TA-SAP-CPI-1024x407.png)
+
+**Step 11:** Once you click on the role you have created, Now you will get a window like this.  Click on the **Add role/edit button** to add a role.
+
+![CPI Tenant in Trial Account.](https://recodehive.com/wp-content/uploads/2020/10/GetImage-5-1024x128.png)
+
+**Step 12:** Select the Application identifier as shown below, it will be the same as the below but the number can be random and select **AuthGroup\_Administrator, AuthGroup\_BusinessExpert**, and **AuthGroup\_Integration Developer**, then Click on Save Button on the right top side. Along with this enter the username and Email ID.
+
+if you don’t see it perfectly fine, refer to the next step.
+
+![sap cloud platform integration trial](https://recodehive.com/wp-content/uploads/2020/10/GetImage-2-1-1024x197.png)
+
+**Step 13:** In most of the case, you won’t see this above option to add so what I suggest you **select any random roles** and continue the step. You can come back again after **step 21.**
+
+![Role collection SAP CPI Trial Account](https://recodehive.com/wp-content/uploads/2020/10/GetImage-4-1024x379.png)
+
+**Step 14:** Now go back to the Home page by clicking on trial as shown below
+
+![Trial Setup](https://recodehive.com/wp-content/uploads/2020/05/13-Trial-SAP-CPI-1024x338.png)
+
+**Step 15:** You will be in the home page of SAP CPI Tenant set up. Navigate to **Trust Configuration** under security. 
+
+![Trust configuration in SAP CPI](https://recodehive.com/wp-content/uploads/2020/05/14-Trust-configuration-1024x419.png)
+
+**Step 16:** Click on **SAP ID Service**, in some cases the name will be different. click on whatever present there. The SAP ID Service has changed the name to **Default Identity provider**. Both are the same, Click on that.
+
+![Creating New Trust Configuration](https://recodehive.com/wp-content/uploads/2020/05/15-SAP-ID-1024x286.png)
+
+**Step 17**: Enter your Email Address which you registered while setting up the SAP CPI tenant there and click on **Show Assignments**. You will be able to see all the assignments on that name. Even if you dont see any assignment iit’s eperfectly ine proceed with clicking on Assign Role collection.
+
+![View assignment in SAP CPI](https://recodehive.com/wp-content/uploads/2020/12/image-122.png)
+
+**Step 18:** Click on Assign Role Collection and click on **Assign Role Collection** in the prompt box.
+
+![Assigning role in SAP CPI](https://recodehive.com/wp-content/uploads/2020/12/image-121.png)
+
+**Step 19:** Now again Click here and go back to the subaccount.
+
+![](https://recodehive.com/wp-content/uploads/2020/10/GetImage-7.png)
+
+**Step 20:** You will be on the Home page again, Now click on Subscriptions. This subscription name has changed to **SAP marketplace.**
+
+![SAP CPI Integration Suite](https://recodehive.com/wp-content/uploads/2021/03/image.jpeg)
+
+New Tenant changed IDE
+
+**Step 21:** Now you see process integration is enabled, now click on **Go to Integration Suite** as highlighted. Click on **Subscribe.** Once you click on Subscribe a **Go to Application** icon will be active. Click on that .
+
+![ cloud platform integration trial](https://recodehive.com/wp-content/uploads/2021/03/image-1.jpeg)
+
+![sap cloud platform integration trial](https://recodehive.com/wp-content/uploads/2021/03/image-2.jpeg)
+
+**Step 22:** Once you click on Go to Application, on the right top corner you might end up getting a screen like this, we need to **add Capabilities here.** Please follow the below steps.
+
+![Adding Capabilities to SAP CPI](https://recodehive.com/wp-content/uploads/2020/12/image-124.png)
+
+**Step 23:** Click all the checkboxes and click Next, at the end click on Activate.
+
+![Trial CPI completed](https://recodehive.com/wp-content/uploads/2020/12/image-125.png)
+
+![Activate Capabilities in SAP CPI](https://recodehive.com/wp-content/uploads/2020/12/image-126.png)
+
+**Step 24:** You will get a URL in this screen, this is the URL for Cloud platform Integration after this we will go with creating key creation and service instance.
+
+Note the URL in a Notepad because these urls are important and might require in the future.
+
+![URL for Cloud Integration SAP](https://recodehive.com/wp-content/uploads/2020/12/image-127.png)
+
+**Step 25:** Now through this URL you can create Integration packages and Integration flows, this URL also can be used for SAP cloud platform Integration Application. 
+
+Try to click on the first URL. If you are redirected to a page with Null please Go to **Step 9** and add those roles, If you were not able to add them before it will be available now. Make sure the roles select **AuthGroup\_Administrator, AuthGroup\_BusinessExpert**, and **AuthGroup\_Integration Developer**. Once you did that proceed with **step 26**.
+
+![Role Name Selection](https://recodehive.com/wp-content/uploads/2020/12/image-128.png)
+
+**Step 26:** Click on Service Market place and go to Process Integration Runtime (scroll down to see **process integration runtime**). on the 3rd you can see **Process integration** click on that.
+
+![Cloud platform Integration](https://recodehive.com/wp-content/uploads/2021/03/image-3.jpeg)
+
+**Step 27:** Now click on **create Instance** and click on New Instance.
+
+![Creating new instance in CPI](https://recodehive.com/wp-content/uploads/2020/10/GetImage-1024x327.png)
+
+**Step 28:** Click on Next 
+
+![Selecting new instance](https://recodehive.com/wp-content/uploads/2020/12/image-130.png)
+
+**Step 29:**  Click in specify **Parameters tab,** and enter the below command and click Next .
+
+{ 
+    "roles": \[ 
+        "ESBMessaging.send" 
+    \] 
+}  
+
+![Adding custom code as parameters](https://recodehive.com/wp-content/uploads/2020/12/image-131.png)
+
+**Step 30: ** Enter the instance name and click on Finish.
+
+**Step 31:** So this is the newly created service instance and click on that.
+
+**Step 32:** Click on the **service key** and **Create a service Key** this key will be useful later.
+
+![Finding the Service Keys](https://recodehive.com/wp-content/uploads/2020/12/image-132.png)
+
+**Step 33:** Specify a name for the service key and **click on save.**
+
+![Service key for the Tenant](https://recodehive.com/wp-content/uploads/2020/12/image-133.png)
+
+Make sure you click on Update Instance.
+
+![Updating Instance](https://recodehive.com/wp-content/uploads/2020/12/image-134.png)
+
+**Step 34:** FINAL STEP. Click on View from the drop-down, you can see the option as shown above. Copy the Client Id and the one below in notepad this might require an authentication key when you connect Post man and SOAP UI.
+
+![Client ID, in SAP CPI](https://recodehive.com/wp-content/uploads/2020/12/image-135.png)
+
+**Step 35:** Go to **SAP Market Place -> Process Integration -> Go to Application**s. Then click on the 1st option has highlighted. Give some time over here, around 1 hr and come back and try to open the Application as shown here.
+
+![SAP Cloud platform Integration suite](https://recodehive.com/wp-content/uploads/2021/03/image-4.jpeg)
+
+You will be reaching this screen which is final stage of setting SAP cpi trial account.
+
+![Design Capablities](https://recodehive.com/wp-content/uploads/2020/12/image-136.png)
+
+**Step 36:** The process is complete this is the place where you create Integration flows. The SAP CPI Tenant set up is completed now. Please refer to our other Tutorials to build.
+
+![Integration Suite in SAP CPI](https://recodehive.com/wp-content/uploads/2020/12/image-137.png)
+
+[<– Part 2: Tenant Setup](https://recodehive.com/setup-your-sap-cpi-trial-account-2/)
+
+[Part 3: Build your CPI Flow–>](https://recodehive.com/start-with-sap-cpi-integration-flow-beginner-tutorial/)
+
+#### SAP CPI Updates 2021
+
+The below is an update of SAP Cloud Platform Integration updates on April 2021. There are few UI changes and name changes and few added features to this integration platform. Watch the SAP updates below.
+
+[](https://sapvideoa35699dc5.hana.ondemand.com/?entry_id=1_g9lk7hhw)
+
+#### Final Verdict :
+
+In conclusion, I hope you enjoyed reading this article on “**Set up SAP CPI Trial Account**, SAP CPI Tutorials”, Note: SAP CPI IDE is constantly updated, so any changes in the screenshot while setting up your CPI trial please let us know through the mail, it will help a lot of people struggling to setup the tenant environment. Signing off **[sanjay@recodehive.com](https://recodehive.com/about-us/)**

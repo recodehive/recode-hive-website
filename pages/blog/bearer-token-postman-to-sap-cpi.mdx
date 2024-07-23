@@ -1,0 +1,96 @@
+   Bearer Token | Postman to SAP CPI
+
+Bearer Token | Postman to SAP CPI
+=================================
+
+Tags: Authorization,Bearer,Postman,RecodeHive,SAP CPI,Token
+
+**Author:** Sudarshan Patwardhan
+
+**Date:** Thu Aug 04 2022
+
+Table of Contents
+
+Toggle
+
+*   [Overview](https://recodehive.com/bearer-token-postman-to-sap-cpi/#Overview "Overview")
+*   [Prerequisites](https://recodehive.com/bearer-token-postman-to-sap-cpi/#Prerequisites "Prerequisites")
+*   [Mocking a receiver](https://recodehive.com/bearer-token-postman-to-sap-cpi/#Mocking_a_receiver "Mocking a receiver")
+*   [Fetching Bearer Token](https://recodehive.com/bearer-token-postman-to-sap-cpi/#Fetching_Bearer_Token "Fetching Bearer Token")
+*   [Using the Bearer Token as Authorization](https://recodehive.com/bearer-token-postman-to-sap-cpi/#Using_the_Bearer_Token_as_Authorization "Using the Bearer Token as Authorization ")
+*   [Final Verdict](https://recodehive.com/bearer-token-postman-to-sap-cpi/#Final_Verdict "Final Verdict")
+
+Overview
+--------
+
+The article shows the process of accessing an SAP CPI endpoint from the Postman client using **_Bearer Token_** as an Authorization mechanism.
+
+Prerequisites
+-------------
+
+*   Roles to design, deploy, and monitor integration artifacts in SAP CI.
+*   An [instance of Process Integration Runtime and Its Service Key](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/).
+
+Mocking a receiver
+------------------
+
+For the demo, I have created a simple integration flow to a mock receiver in SAP CPI. It uses an _**HTTPS sender adapter**_ and a _**Content Modifier**_ whose body is set to “**_This is a dummy receiver used for testing_**” ( _This will be the response that we will be expecting at the end of the demo_). The **_endpoint_** obtained by deploying the integration artifact looks as shown below.
+
+![CPI End point](https://recodehive.com/wp-content/uploads/2022/02/image-1.png)
+
+**Step 1 :** Copy the end point and keep it handy to use as described in further steps.
+
+Fetching Bearer Token
+---------------------
+
+**Step 2 :** Open [POSTMAN](https://www.postman.com/downloads/). Create a new request with the type **POST**. 
+
+Fill the Request URL with _**tokenurl**_ obtained from **Step 10** of [this](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/) post.
+
+ **Under Authorization,**
+
+**Type**: Basic Auth 
+
+**Username**: Client ID 
+
+**Password**: Client Secret 
+
+Client Id and Client Secret you will get when you create Process Integration Runtime Instance. ( Refer to **Step 10** of [this](https://recodehive.com/creating-instances-and-service-keys-in-sap-cpi/) post ).
+
+**Step 3:** Switch to t**_he Body_** tab. Select the radio button _**x-www-form-urlencoded**_.
+
+**Key :** grant\_type
+
+**Value :** client\_credentials
+
+Click on **_Send_**.
+
+You will get the Token as a response body as shown in the picture below. Copy the same.
+
+![Fetch Bearer Token](https://recodehive.com/wp-content/uploads/2022/02/image-4.png)
+
+The steps to get an access token is completed. The next step is to use the token as Authorization to access SAP CPI iflow using the endpoint captured earlier.
+
+Using the Bearer Token as Authorization
+---------------------------------------
+
+**Step 4:** Open a fresh request in postman. Paste the _**endpoint**_ obtained in _**Step 1**_ into _th**e request URL**_.
+
+**Operation:** GET.
+
+Under _**Authorization**_, Choose Type as **Bearer Token**. Paste the Token received in **_Step 3_** into the Token space.
+
+Click on **Send.**
+
+![Using Bearer Token](https://recodehive.com/wp-content/uploads/2022/02/image-3.png)
+
+You will receive the expected response. In my case, I am getting the content set in Content Modifier as a response.
+
+This token can be used until it expires. The expiry period will be displayed when you fetch the token. Once the token expires, a new token has to be generated.
+
+**TIP:** It is advised to set the Token as a variable for security reasons.
+
+Final Verdict
+-------------
+
+In conclusion, I hope you enjoyed reading this article on “**Bearer Token | Postman to SAP CPI**”, If yes, then don’t forget to spread the word about it. Do send the feedback to know more about it. Signing off [sudarshanpatwardhan@gmail.com](mailto:sudarshanpatwardhan@gmail.com)
