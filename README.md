@@ -1,3 +1,7 @@
+# recode-hive-website
+Migration of recode hive website to GitHub Hosting.
+
+
 ## Getting started
 
 Process to setup the project in your localhost.
