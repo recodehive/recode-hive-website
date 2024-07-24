@@ -1,56 +1,48 @@
-   A Beginner’s Guide to LATEX – Basic Commands
-
-A Beginner’s Guide to LATEX – Basic Commands
-============================================
-
-Tags: Latex
+# A Beginner’s Guide to LATEX – Basic Commands
 
 **Author:** Sanjay KV
 
 **Date:** Wed Oct 06 2021
 
-Table of Contents
+**Tags:** Latex
 
-Toggle
+## Table of Contents
 
-*   [Is Latex Commands Easy to Learn?](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#Is_Latex_Commands_Easy_to_Learn "Is Latex Commands Easy to Learn?")
-*   [How to Comment in the Latex Editor](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#How_to_Comment_in_the_Latex_Editor "How to Comment in the Latex Editor")
-*   [How to start with Latex Editor](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#How_to_start_with_Latex_Editor "How to start with Latex Editor")
-*   [How to add Title in Latex](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#How_to_add_Title_in_Latex "How to add Title in Latex")
-*   [Modifying the Section & Numbering in Latex](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#Modifying_the_Section_Numbering_in_Latex "Modifying the Section & Numbering in Latex")
-*   [Creating paragraph in Latex Editor](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#Creating_paragraph_in_Latex_Editor "Creating paragraph in Latex Editor")
-*   [Adding pictures to Latex](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#Adding_pictures_to_Latex "Adding pictures to Latex")
-*   [How to add Multiple images/subfigures to Latex](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#How_to_add_Multiple_imagessubfigures_to_Latex "How to add Multiple images/subfigures to Latex")
-*   [Adding Table of contents in Latex](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#Adding_Table_of_contents_in_Latex "Adding Table of contents in Latex")
-*   [Generating the Bibliography using Latex](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#Generating_the_Bibliography_using_Latex "Generating the Bibliography using Latex")
-*   [How to add Codes to Latex](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#How_to_add_Codes_to_Latex "How to add Codes to Latex")
-*   [How to create Table in Latex](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#How_to_create_Table_in_Latex "How to create Table in Latex")
-    *   *   [FINAL VERDICT :](https://recodehive.com/a-beginners-guide-to-latex-basic-commands/#FINAL_VERDICT "FINAL VERDICT :")
 
-Is Latex Commands Easy to Learn?
---------------------------------
+- [Is Latex Commands Easy to Learn?](#is-latex-commands-easy-to-learn)
+- [How to Comment in the Latex Editor](#how-to-comment-in-the-latex-editor)
+- [How to start with Latex Editor](#how-to-start-with-latex-editor)
+- [How to add Title in Latex](#how-to-add-title-in-latex)
+- [Modifying the Section & Numbering in Latex](#modifying-the-section-numbering-in-latex)
+- [Creating paragraph in Latex Editor](#creating-paragraph-in-latex-editor)
+- [Adding pictures to Latex](#adding-pictures-to-latex)
+- [How to add Multiple images/subfigures to Latex](#how-to-add-multiple-images-subfigures-to-latex)
+- [Adding Table of contents in Latex](#adding-table-of-contents-in-latex)
+- [Generating the Bibliography using Latex](#generating-the-bibliography-using-latex)
+- [How to add Codes to Latex](#how-to-add-codes-to-latex)
+- [How to create Table in Latex](#how-to-create-table-in-latex)
+- [FINAL VERDICT](#final-verdict)
+
+## Is Latex Commands Easy to Learn?
 
 Latex commands are really easy to learn and implement almost like writing English, the good part is that the setup and technical documents are readily available for any beginners to learn the process. The installation of the Latex software is explained in the previous post. [Have a reference here.](https://recodehive.com/install-miktex-editor-on-windows/)
 
 Once you installed the software and create a Latex file and save it the extension will be in **.tex format.** Let’s look at the most useful and frequent commands in Latex. Once you write the below commands in MiKTeX Latex editor use **crtl+T** to run the Latex compilation.
 
-How to Comment in the Latex Editor
-----------------------------------
+## How to Comment in the Latex Editor
 
 To comment a line use **% key** for the purpose. Usage of **\\ tells t**hat it’s not texted to print it will be taken care of by the latex compiler as the command and **\\\\** for a line break.
 
     %----------------------------------------------------------------------------------------
     %	Main Page PAGE
     %----------------------------------------------------------------------------------------
-    
 
-    % for comment to 
+
+    % for comment to
     \break   to put line break
-    \{commandname{option}
-    
+    \commandname{option}
 
-How to start with Latex Editor
-------------------------------
+## How to start with Latex Editor
 
 Before going ahead and type the body, the user has to set the **document class**, usually its set to article for paper documents. This sets the layout as article these sets are called document classes.
 
@@ -65,8 +57,7 @@ Whatever goes to the body should define after the document class and it will be 
 
 ![](https://recodehive.com/wp-content/uploads/2021/08/image-61-1024x312.png)
 
-How to add Title in Latex
--------------------------
+## How to add Title in Latex
 
 The title will be defined as mentioned above right after the document class. Similar goes for defining the author and date of publishing. This is the very important standard followed in writing the **documents in Latex.** So the other user referring to your latex editor will get to know who is working on it who are all the authors and the date of the last update.
 
@@ -78,8 +69,7 @@ The title will be defined as mentioned above right after the document class. Sim
 
 \\maketitle brings the heading to the document environment.
 
-Modifying the Section & Numbering in Latex
-------------------------------------------
+## Modifying the Section & Numbering in Latex
 
 You can define the sections using \\section and define a new page in the similar way \\pagenumbering{specify-type}, Type can be without numbers, Arabic, and roman.
 
@@ -88,39 +78,38 @@ You can define the sections using \\section and define a new page in the similar
       \pagenumbering{arabic}
     	Hello World!
 
-*   _gobble_ – no numbers
-*   _arabic_ – arabic numbers
-*   _roman_ – roman numbers
+- *gobble* – no numbers
+- *arabic* – arabic numbers
+- *roman* – roman numbers
 
 ![](https://recodehive.com/wp-content/uploads/2021/08/image-63-1024x309.png)
 
 Sections help to segregate the info accordingly, These sections will appear in the table of contents as well. The sample code of the above representation is given below.
 
     \documentclass{article}
-    
+
     \title{This is the research paper}
     \date{2013-09-01}
     \author{John Doe}
-    
+
     \begin{document}
      \maketitle
     \pagenumbering{gobble}
      \newpage
       \pagenumbering{arabic}
     	Hello World!
-    
+
     \section{Section Heading}
     This is frist subsection
-    
+
     \subsection{Subsection Heading}
-    
+
     Here goes the subsection
-    
-    
+
+
     \end{document}
 
-Creating paragraph in Latex Editor
-----------------------------------
+## Creating paragraph in Latex Editor
 
 The command **\\newpage** helps to create a new page and if you want to start the new page content with the paragraph can use **\\paragraph{}** which brings paragraph and followed by **\\subparagraph{}** starting of sub-para **\\end{document}** which will eventually stop the document. Any further details enter below the end document won’t be displayed on the Latex page.
 
@@ -131,8 +120,7 @@ The command **\\newpage** helps to create a new page and if you want to start th
     starting of sub para
     \end{document}
 
-Adding pictures to Latex
-------------------------
+## Adding pictures to Latex
 
 \\usepackage{graphicx}
 %...
@@ -148,16 +136,16 @@ A picture can be added by **\\beign{figure}** command, **\\includegraphics{pic.p
     \title{This is the research paper}
     \date{2021-09-01}
     \author{sanjay}
-    
+
     \begin{document}
-    
+
      \maketitle
     \pagenumbering{gobble}
      \newpage
       \pagenumbering{arabic}
-    
-    
-    
+
+
+
     \begin{figure}
       \includegraphics[width=\linewidth]{sanjay.png}
       \caption{Sanjay K V.}
@@ -170,16 +158,15 @@ A picture can be added by **\\beign{figure}** command, **\\includegraphics{pic.p
 
 Further customization to the picture can be added by using the label, caption. The below commands can be used to fix the position of your image in the document.
 
-*   h (here) – same location
-*   t (top) – top of page
-*   b (bottom) – bottom of page
-*   p (page) – on an extra page
-*   ! (override) – will force the specified location
+- h (here) – same location
+- t (top) – top of page
+- b (bottom) – bottom of page
+- p (page) – on an extra page
+- ! (override) – will force the specified location
 
 ![](https://recodehive.com/wp-content/uploads/2021/08/image-72-1024x570.png)
 
-How to add Multiple images/subfigures to Latex
-----------------------------------------------
+## How to add Multiple images/subfigures to Latex
 
 Sub Figure can be used to plot the image like below. linewidth represents the space between that image horizontally. **\\begin{subfigure}\[b\]{0.4\\linewidth}** This should be done before including the image as shown below.
 
@@ -191,16 +178,16 @@ Sub Figure can be used to plot the image like below. linewidth represents the sp
     \title{This is the research paper}
     \date{2021-09-01}
     \author{sanjay}
-    
+
     \begin{document}
-    
+
      \maketitle
     \pagenumbering{gobble}
      \newpage
       \pagenumbering{arabic}
-    
-    
-    
+
+
+
     \begin{figure}
       \centering
       \begin{subfigure}[b]{0.4\linewidth}
@@ -216,15 +203,14 @@ Sub Figure can be used to plot the image like below. linewidth represents the sp
     \end{figure}
     \end{document}
 
-Adding Table of contents in Latex
----------------------------------
+## Adding Table of contents in Latex
 
 Table of content is another integral part of making the documentation. using section and subsection, This can be implemented by using **\\tableofcontents.** And further topics can be included with **\\subsection.**
 
 ![](https://recodehive.com/wp-content/uploads/2021/08/image-74-1024x387.png)
 
     \tableofcontents
-    
+
     \section{Heading Topic}
     Here goes the first heading of the document
     \subsection{Why this paper?}
@@ -236,23 +222,22 @@ Table of content is another integral part of making the documentation. using sec
     \title{This is the research paper}
     \date{2021-09-01}
     \author{sanjay}
-    
+
     \begin{document}
-    
+
      \maketitle
     \doublespacing
     \tableofcontents
-    
+
     \section{Heading Topic}
     Here goes the first heading of the document
-    
+
     \subsection{Why this paper?}
-    
-    
+
+
     \end{document}
 
-Generating the Bibliography using Latex
----------------------------------------
+## Generating the Bibliography using Latex
 
 **.bib file** will have full details about the Project a sample is given below.
 
@@ -267,8 +252,7 @@ You can use the BibTeX _generator_ from [google](https://www.bibme.org/bibtex), 
 
 ![](https://recodehive.com/wp-content/uploads/2021/08/image-75.png)
 
-How to add Codes to Latex
--------------------------
+## How to add Codes to Latex
 
 Adding Coding is a bit tricky you have to be careful when inserting the code and there is a lot of package dependency as you see below. Before you insert a code you need to install the package listed below like listing and color to differentiate your code from the document.
 
@@ -297,20 +281,19 @@ Sample code I have inputted in LAtex in red and blue color. If you the code in p
 
 \\lstinputlisting**{**script.pl**}**
 
-How to create Table in Latex
-----------------------------
+## How to create Table in Latex
 
 Now let’s look at how the table looks like in LAtex, like other sample tables inserting doesn’t require any kind of package installation. hline will help to draw the horizontal line, each table will be started by begin \\{table} command
 
     %------------------------------------------------
-    
+
       \begin{table}[h!]
       \begin{center}
         \caption{Emotion Counts.}
         \label{tab:table1}
         \begin{tabular}{o\l|c|r|u} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
           \textbf{ } & \textbf{Source} & \textbf{sentiment} & \textbf{total words} & \textbf{words}\\
-          
+
           \hline
           1 & Android & anger & 4901 & 321 \\
           2 & Android & anticipation & 4901 & 256\\
@@ -321,7 +304,7 @@ Now let’s look at how the table looks like in LAtex, like other sample tables 
         \end{tabular}
       \end{center}
     \end{table}
-      
+
       %----------------------------------------------------------------------------------------
 
 ![](https://recodehive.com/wp-content/uploads/2021/08/image-85.png)
@@ -338,4 +321,4 @@ For hyperlinks inserting the package, hyperref is important and define the conte
 
 #### FINAL VERDICT :
 
-In conclusion, I hope you enjoyed reading this article on “**A Beginner’s Guide to LATEX – Basic Commands**” Let us know in case you find any issues in executing the above steps. Signing off **[Sanjay Kv](https://recodehive.com/sanjay/)**
+In conclusion, I hope you enjoyed reading this article on “**A Beginner’s Guide to LATEX – Basic Commands**” Let us know in case you find any issues in executing the above steps. Signing off **[Sanjay Kv](https://recodehive.com/sanjay)**

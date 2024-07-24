@@ -223,7 +223,7 @@ const MainPage = () => {
             </div>
 
             <p className="text-2xl text-white font-normal">
-              What you were looking for wasn't found? Our writing team will
+              What you were looking for wasn&apos;t found? Our writing team will
               ensure that we start covering the topic extensively
             </p>
             <p className="text-xl text-white font-light">Suggest topics</p>

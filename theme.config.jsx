@@ -1,7 +1,7 @@
 export default {
-    logo: <span>My Nextra Documentation</span>,
+    logo: <span>RecodeHive</span>,
     project: {
-      link: 'https://github.com/shuding/nextra'
+      link: 'https://github.com/recodehive/recode-hive-website'
     }
     // ... other theme options
   }
